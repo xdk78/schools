@@ -1,0 +1,70 @@
+{
+  "name": "schools",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "xdk78",
+    "email": "xdk78888@gmail.com"
+  },
+  "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts-ts start",
+    "eject": "react-native-scripts-ts eject",
+    "android": "react-native-scripts-ts android",
+    "ios": "react-native-scripts-ts ios",
+    "test": "jest --verbose",
+    "testWithCoverage": "jest --verbose --updateSnapshot --watch --coverage && open ./coverage/lcov-report/index.html",
+    "lint": "tslint \"src/**/*.ts*\"",
+    "lint-fix": "prettier --write \"src/**/*.ts*\" && tslint \"src/**/*.ts*\" --fix"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "babelConfig": true
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "preset": "jest-expo",
+    "testMatch": [
+      "**/__tests__/**/*.[tj]s?(x)",
+      "**/?(*.)(spec|test).[tj]s?(x)"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
+  },
+  "dependencies": {
+    "expo": "^30.0.1",
+    "react": "^16.5.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "react-navigation": "^2.17.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "styled-components": "^3.4.9"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.2",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.8",
+    "@types/react-native": "^0.57.0",
+    "@types/react-test-renderer": "^16.0.2",
+    "jest": "^23.6.0",
+    "jest-expo": "^30.0.0",
+    "prettier": "^1.14.3",
+    "react-native-scripts-ts": "^1.15.0",
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-test-renderer": "16.5.2",
+    "ts-jest": "^23.10.3",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.1.1"
+  }
+}
