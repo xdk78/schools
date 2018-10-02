@@ -17,6 +17,11 @@
     "lint": "tslint \"src/**/*.ts*\"",
     "lint-fix": "prettier --write \"src/**/*.ts*\" && tslint \"src/**/*.ts*\" --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "jest": {
     "globals": {
       "ts-jest": {
@@ -55,6 +60,7 @@
     "@types/react-dom": "^16.0.8",
     "@types/react-native": "^0.57.0",
     "@types/react-test-renderer": "^16.0.2",
+    "husky": "^1.1.0",
     "jest": "^23.6.0",
     "jest-expo": "^30.0.0",
     "prettier": "^1.14.3",
