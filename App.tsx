@@ -3,11 +3,14 @@ import Home from './src/views/Home'
 import styled from 'styled-components/native'
 import { createStackNavigator } from 'react-navigation'
 import About from './src/views/About'
+import Login from './src/views/Login'
+import { StatusBar } from 'react-native'
 
 export default class App extends React.Component {
   render() {
     return (
       <Wrapper>
+        <StatusBar barStyle="dark-content" />
         <RootStack />
       </Wrapper>
     )
@@ -17,10 +20,11 @@ export default class App extends React.Component {
 const RootStack = createStackNavigator(
   {
     Home,
-    About
+    About,
+    Login
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Login'
   }
 )
 
