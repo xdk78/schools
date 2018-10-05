@@ -33,7 +33,7 @@ const Wrapper = styled.View`
 `
 
 const LoginButton = styled.TouchableHighlight`
-  background-color: #fff;
+  background-color: #0186D4;
   height: 48;
   width: 100%;
   elevation: 2;
@@ -46,6 +46,7 @@ const LoginButton = styled.TouchableHighlight`
 
 const LoginLabel = styled.Text`
   font-size: 18;
+  color: #fff;
 `
 
 const Card = styled.KeyboardAvoidingView`
