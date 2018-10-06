@@ -33,7 +33,7 @@ const Wrapper = styled.View`
 `
 
 const LoginButton = styled.TouchableHighlight`
-  background-color: #0186D4;
+  background-color: #0186d4;
   height: 48;
   width: 100%;
   elevation: 2;

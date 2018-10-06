@@ -46,6 +46,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "expo": "^30.0.1",
     "react": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
