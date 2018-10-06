@@ -1,5 +1,5 @@
 import BaseClient from './BaseClient'
-import { BASE_LIBRUS_URL, LIBRUS_CSRF_URL, LIBRUS_LOGIN_URL, LIBRUS_CODE_EXCHANGE_URL, LIBRUS_CLIENT_ID } from './constants'
+import { BASE_LIBRUS_URL, LIBRUS_CODE_URL, LIBRUS_LOGIN_URL, LIBRUS_CODE_EXCHANGE_URL, LIBRUS_CLIENT_ID } from './constants'
 import cheerio from 'cheerio'
 
 export default class LibrusClient extends BaseClient {
@@ -9,7 +9,7 @@ export default class LibrusClient extends BaseClient {
 
   public async login(email: string, password: string) {
     try {
-      const response = await this.request(LIBRUS_CSRF_URL, { method: 'get' })
+      const response = await this.request(LIBRUS_CODE_URL, { method: 'get' })
 
       const $ = cheerio.load(response.data)
       const csrfToken = $('meta[name="csrf-token"]').attr('content')
@@ -25,14 +25,14 @@ export default class LibrusClient extends BaseClient {
 
       // Get auth code by re-visiting the code URL
       // It will now redirect to localhost with auth code supplied as a parameter.
-      const authResposne = await this.request(LIBRUS_CSRF_URL, {
+      const authResponse = await this.request(LIBRUS_CODE_URL, {
         method: 'get',
         maxRedirects: 0
       })
-      const authCode = authResposne.headers.get('location').split('code=')[1]
+      const authCode = authResponse.headers.get('location').split('code=')[1]
 
       // Exchange auth code for Librus account token
-      const exchangeResposne = await this.request(LIBRUS_CODE_EXCHANGE_URL, {
+      const exchangeResponse = await this.request(LIBRUS_CODE_EXCHANGE_URL, {
         method: 'post',
         data: {
           grant_type: 'authorization_code',
@@ -44,7 +44,7 @@ export default class LibrusClient extends BaseClient {
           'Content-Type': 'application/json'
         }
       })
-      const accessToken = exchangeResposne.data['access_token']
+      const accessToken = exchangeResponse.data['access_token']
 
       return accessToken
     } catch (error) {
