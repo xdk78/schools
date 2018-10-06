@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
     "expo": "^30.0.1",
     "react": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
@@ -56,6 +57,7 @@
     "styled-components": "^3.4.9"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.9",
     "@types/expo": "^27.0.11",
     "@types/jest": "^23.3.2",
     "@types/react": "^16.4.14",

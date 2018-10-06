@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 export default abstract class BaseClient {
   protected _baseUrl: string
@@ -12,10 +12,15 @@ export default abstract class BaseClient {
     })
   }
 
-  protected async request(endpoint: string) {
-    const response = await this._axiosClient({
-      url: endpoint
-    })
-    return response
+  protected async request(endpoint: string, config?: AxiosRequestConfig) {
+    try {
+      const response = await this._axiosClient({
+        url: endpoint,
+        ...config
+      })
+      return response
+    } catch (error) {
+      throw error
+    }
   }
 }
