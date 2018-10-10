@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ui/login.dart';
 import 'ui/login_librus.dart';
+import 'ui/timetable.dart';
 
 void main() => runApp(new MyApp());
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginScreen(),
         '/loginlibrus': (context) => LoginLibrusScreen(),
+        '/timetable': (context) => TimetableScreen(),
       },
     );
   }
