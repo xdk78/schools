@@ -4,30 +4,36 @@ class LoginLibrusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Logowanie - Librus'),
+      ),
       body: Center(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-        new Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15.00),
-            child: new Text('Konto Librus',
-                textAlign: TextAlign.center,
-                style: new TextStyle(fontSize: 25.00))),
-        new Card(
-            margin: new EdgeInsets.symmetric(horizontal: 20.0),
-            child: new Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.00),
+        Card(
+            margin: EdgeInsets.symmetric(horizontal: 12.0),
+            child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
                 child: Column(children: [
-                  new TextField(
+                  TextField(
                     decoration: InputDecoration(hintText: 'Email'),
                   ),
-                  new TextField(
+                  TextField(
                     decoration: InputDecoration(hintText: 'Hasło'),
+                    obscureText: true,
                   ),
-                  new FlatButton(
-                    textColor: Colors.green[400],
-                    child: const Text('Zaloguj się'),
-                    onPressed: () {},
-                  )
+                  Container(
+                      margin: EdgeInsets.only(top: 12.0),
+                      child: FlatButton(
+                        textColor: Theme.of(context).accentColor,
+                        color: Colors.grey[100],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.0)),
+                        child: Text(
+                          'Zaloguj się',
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        onPressed: () {},
+                      ))
                 ])))
       ])),
     );

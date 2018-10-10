@@ -8,9 +8,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Schools',
+      theme: ThemeData(
+        primaryColor: Colors.white,
+        accentColor: Colors.indigo,
       ),
       routes: {
         '/': (context) => LoginScreen(),

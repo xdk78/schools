@@ -5,32 +5,31 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Zaloguj się'),
+        title: Text('Logowanie'),
       ),
       body: Center(
-          child: new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-        new Padding(
-            padding: const EdgeInsets.all(15.00),
-            child: new Text('Zaloguj się poprzez',
-                textAlign: TextAlign.center,
-                style: new TextStyle(fontSize: 25.00))),
-        new Card(
-          margin: new EdgeInsets.symmetric(horizontal: 20.0),
-          child: new Column(
+          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+        Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text('Zaloguj się poprzez',
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 24.0))),
+        Card(
+          margin: EdgeInsets.symmetric(horizontal: 18.0),
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new ListTile(
+              ListTile(
                 onTap: () {
                   Navigator.pushNamed(context, '/loginlibrus');
                 },
-                leading: const Icon(Icons.school),
-                title: const Text('Konto Librus'),
-                subtitle: const Text('Zaloguj się do systemu Synergia'),
+                leading: Icon(Icons.school),
+                title: Text('Konto Librus'),
+                subtitle: Text('Zaloguj się do systemu Synergia'),
               ),
-              new ListTile(
-                leading: const Icon(Icons.message),
-                title: const Text('Konto Vulcan'),
-                subtitle: const Text('Zaloguj się do systemu UONET+'),
+              ListTile(
+                leading: Icon(Icons.message),
+                title: Text('Konto Vulcan'),
+                subtitle: Text('Zaloguj się do systemu UONET+'),
               ),
             ],
           ),
