@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login/login.dart';
-import 'loginlibrus/loginlibrus.dart';
+import 'ui/login.dart';
+import 'ui/login_librus.dart';
 
 void main() => runApp(new MyApp());
 
