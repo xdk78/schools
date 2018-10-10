@@ -27,6 +27,9 @@ class LoginScreen extends StatelessWidget {
                 subtitle: Text('Zaloguj się do systemu Synergia'),
               ),
               ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, '/testscreen');
+                },
                 leading: Icon(Icons.message),
                 title: Text('Konto Vulcan'),
                 subtitle: Text('Zaloguj się do systemu UONET+'),
