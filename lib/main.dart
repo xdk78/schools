@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'ui/login.dart';
 import 'ui/login_librus.dart';
-import 'ui/test_screen.dart';
+import 'ui/login_vulcan.dart';
 import 'ui/timetable.dart';
 import 'package:redux_logging/redux_logging.dart';
 
@@ -37,6 +37,7 @@ class SchoolsApp extends StatelessWidget {
           '/testscreen': (context) => TestScreen(),
           '/': (context) => LoginScreen(),
           '/loginlibrus': (context) => LoginLibrusScreen(),
+          '/loginvulcan': (context) => LoginVulcanScreen(),
           '/timetable': (context) => TimetableScreen(),
         },
       )

@@ -4,7 +4,6 @@ import 'package:schools/reducers/app_state.dart';
 
 AppState appReducer(AppState state, action) {
   return state.rebuild((b) => b
-    ..isLoading = loadingReducer(state.isLoading, action),
   );
 }
  

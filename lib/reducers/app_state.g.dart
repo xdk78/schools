@@ -31,9 +31,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
   Iterable serialize(Serializers serializers, AppState object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'isLoading',
-      serializers.serialize(object.isLoading,
-          specifiedType: const FullType(bool)),
+      'vulcanAuthState',
+      serializers.serialize(object.vulcanAuthState,
+          specifiedType: const FullType(VulcanAuthState)),
     ];
 
     return result;
@@ -50,9 +50,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'isLoading':
-          result.isLoading = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+        case 'vulcanAuthState':
+          result.vulcanAuthState.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(VulcanAuthState))
+              as VulcanAuthState);
           break;
       }
     }
@@ -63,14 +64,14 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
 
 class _$AppState extends AppState {
   @override
-  final bool isLoading;
+  final VulcanAuthState vulcanAuthState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.isLoading}) : super._() {
-    if (isLoading == null) {
-      throw new BuiltValueNullFieldError('AppState', 'isLoading');
+  _$AppState._({this.vulcanAuthState}) : super._() {
+    if (vulcanAuthState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'vulcanAuthState');
     }
   }
 
@@ -84,18 +85,18 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && isLoading == other.isLoading;
+    return other is AppState && vulcanAuthState == other.vulcanAuthState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, isLoading.hashCode));
+    return $jf($jc(0, vulcanAuthState.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
-          ..add('isLoading', isLoading))
+          ..add('vulcanAuthState', vulcanAuthState))
         .toString();
   }
 }
@@ -103,15 +104,17 @@ class _$AppState extends AppState {
 class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState _$v;
 
-  bool _isLoading;
-  bool get isLoading => _$this._isLoading;
-  set isLoading(bool isLoading) => _$this._isLoading = isLoading;
+  VulcanAuthStateBuilder _vulcanAuthState;
+  VulcanAuthStateBuilder get vulcanAuthState =>
+      _$this._vulcanAuthState ??= new VulcanAuthStateBuilder();
+  set vulcanAuthState(VulcanAuthStateBuilder vulcanAuthState) =>
+      _$this._vulcanAuthState = vulcanAuthState;
 
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
-      _isLoading = _$v.isLoading;
+      _vulcanAuthState = _$v.vulcanAuthState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -132,7 +135,21 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
 
   @override
   _$AppState build() {
-    final _$result = _$v ?? new _$AppState._(isLoading: isLoading);
+    _$AppState _$result;
+    try {
+      _$result =
+          _$v ?? new _$AppState._(vulcanAuthState: vulcanAuthState.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'vulcanAuthState';
+        vulcanAuthState.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'AppState', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
