@@ -32,29 +32,49 @@ class _$VulcanAuthStateSerializer
   @override
   Iterable serialize(Serializers serializers, VulcanAuthState object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'deviceId',
-      serializers.serialize(object.deviceId,
-          specifiedType: const FullType(String)),
-      'deviceName',
-      serializers.serialize(object.deviceName,
-          specifiedType: const FullType(String)),
-      'certificatePfx',
-      serializers.serialize(object.certificatePfx,
-          specifiedType: const FullType(String)),
-      'certificateKey',
-      serializers.serialize(object.certificateKey,
-          specifiedType: const FullType(String)),
-      'apiEndpoint',
-      serializers.serialize(object.apiEndpoint,
-          specifiedType: const FullType(String)),
-      'email',
-      serializers.serialize(object.email,
-          specifiedType: const FullType(String)),
-      'schoolKey',
-      serializers.serialize(object.schoolKey,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object>[];
+    if (object.deviceId != null) {
+      result
+        ..add('deviceId')
+        ..add(serializers.serialize(object.deviceId,
+            specifiedType: const FullType(String)));
+    }
+    if (object.deviceName != null) {
+      result
+        ..add('deviceName')
+        ..add(serializers.serialize(object.deviceName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.certificatePfx != null) {
+      result
+        ..add('certificatePfx')
+        ..add(serializers.serialize(object.certificatePfx,
+            specifiedType: const FullType(String)));
+    }
+    if (object.certificateKey != null) {
+      result
+        ..add('certificateKey')
+        ..add(serializers.serialize(object.certificateKey,
+            specifiedType: const FullType(String)));
+    }
+    if (object.apiEndpoint != null) {
+      result
+        ..add('apiEndpoint')
+        ..add(serializers.serialize(object.apiEndpoint,
+            specifiedType: const FullType(String)));
+    }
+    if (object.email != null) {
+      result
+        ..add('email')
+        ..add(serializers.serialize(object.email,
+            specifiedType: const FullType(String)));
+    }
+    if (object.schoolKey != null) {
+      result
+        ..add('schoolKey')
+        ..add(serializers.serialize(object.schoolKey,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -132,29 +152,7 @@ class _$VulcanAuthState extends VulcanAuthState {
       this.apiEndpoint,
       this.email,
       this.schoolKey})
-      : super._() {
-    if (deviceId == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'deviceId');
-    }
-    if (deviceName == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'deviceName');
-    }
-    if (certificatePfx == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'certificatePfx');
-    }
-    if (certificateKey == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'certificateKey');
-    }
-    if (apiEndpoint == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'apiEndpoint');
-    }
-    if (email == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'email');
-    }
-    if (schoolKey == null) {
-      throw new BuiltValueNullFieldError('VulcanAuthState', 'schoolKey');
-    }
-  }
+      : super._();
 
   @override
   VulcanAuthState rebuild(void updates(VulcanAuthStateBuilder b)) =>

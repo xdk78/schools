@@ -8,7 +8,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   VulcanAuthState get vulcanAuthState;
   
   factory AppState() {
-    return _$AppState._();
+    return _$AppState._(vulcanAuthState: VulcanAuthState());
   }
 
   AppState._();

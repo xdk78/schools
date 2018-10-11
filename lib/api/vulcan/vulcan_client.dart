@@ -1,11 +1,12 @@
 import 'package:http/http.dart';
 import 'dart:async';
+import 'package:schools/api/vulcan/auth/vulcan_auth_state.dart';
 
-class BaseLibrusClient extends BaseClient {
+class BaseVulcanClient extends BaseClient {
   final String _userAgent = '';
   final Client _inner = new Client();
 
-  BaseLibrusClient();
+  BaseVulcanClient();
 
   @override
   Future<StreamedResponse> send(BaseRequest request) {
@@ -14,14 +15,8 @@ class BaseLibrusClient extends BaseClient {
   }
 }
 
-class LibrusClient {
+class VulcanClient {
   final String baseUrl = 'https://portal.librus.pl';
   final String clientId = 'wmSyUMo8llDAs4y9tJVYY92oyZ6h4lAt7KCuy0Gv';
-  final BaseLibrusClient client = new BaseLibrusClient();
-
-  Future login(String email, String password) async {
-    var response = await client.get(
-        '$baseUrl/oauth2/authorize?client_id=$clientId&redirect_uri=http://localhost/bar&response_type=code');
-    return response.body;
-  }
+  final BaseVulcanClient client = new BaseVulcanClient();
 }

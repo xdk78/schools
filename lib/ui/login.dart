@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, '/testscreen');
+                  Navigator.pushNamed(context, '/loginvulcan');
                 },
                 leading: Icon(Icons.message),
                 title: Text('Konto Vulcan'),

@@ -34,7 +34,6 @@ class SchoolsApp extends StatelessWidget {
           accentColor: Colors.indigo,
         ),
         routes: {
-          '/testscreen': (context) => TestScreen(),
           '/': (context) => LoginScreen(),
           '/loginlibrus': (context) => LoginLibrusScreen(),
           '/loginvulcan': (context) => LoginVulcanScreen(),
