@@ -37,7 +37,7 @@ class _$StudentsListResponseSerializer
   Iterable serialize(Serializers serializers, StudentsListResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'TokenCert',
+      'Data',
       serializers.serialize(object.students,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Data)])),
@@ -57,7 +57,7 @@ class _$StudentsListResponseSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'TokenCert':
+        case 'Data':
           result.students.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Data)]))

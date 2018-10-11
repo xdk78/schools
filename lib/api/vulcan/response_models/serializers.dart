@@ -10,6 +10,5 @@ part 'serializers.g.dart';
   CertificateResponse,
   StudentsListResponse,
 ])
-
 final Serializers serializers =
-  (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
+    (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

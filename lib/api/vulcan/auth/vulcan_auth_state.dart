@@ -3,13 +3,8 @@ import 'package:built_value/serializer.dart';
 
 part 'vulcan_auth_state.g.dart';
 
-abstract class VulcanAuthState implements Built<VulcanAuthState, VulcanAuthStateBuilder> {
-  @nullable
-  String get deviceId;
-
-  @nullable
-  String get deviceName;
-
+abstract class VulcanAuthState
+    implements Built<VulcanAuthState, VulcanAuthStateBuilder> {
   @nullable
   String get certificatePfx;
 
@@ -20,15 +15,18 @@ abstract class VulcanAuthState implements Built<VulcanAuthState, VulcanAuthState
   String get apiEndpoint;
 
   @nullable
-  String get identifier;
+  String get schoolKey;
 
   @nullable
-  String get schoolKey;
-  
+  String get symbol;
+
+  @nullable
+  String get name;
   factory VulcanAuthState() {
     return _$VulcanAuthState._();
   }
 
   VulcanAuthState._();
-  static Serializer<VulcanAuthState> get serializer => _$vulcanAuthStateSerializer;
+  static Serializer<VulcanAuthState> get serializer =>
+      _$vulcanAuthStateSerializer;
 }

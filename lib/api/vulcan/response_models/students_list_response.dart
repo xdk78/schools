@@ -4,14 +4,17 @@ import 'package:built_value/serializer.dart';
 
 part 'students_list_response.g.dart';
 
-abstract class StudentsListResponse implements Built<StudentsListResponse, StudentsListResponseBuilder> {
-  @BuiltValueField(wireName: 'TokenCert')
+abstract class StudentsListResponse
+    implements Built<StudentsListResponse, StudentsListResponseBuilder> {
+  @BuiltValueField(wireName: 'Data')
   BuiltList<Data> get students;
-  
-  factory StudentsListResponse([updates(StudentsListResponseBuilder b)]) = _$StudentsListResponse;
+
+  factory StudentsListResponse([updates(StudentsListResponseBuilder b)]) =
+      _$StudentsListResponse;
 
   StudentsListResponse._();
-  static Serializer<StudentsListResponse> get serializer => _$studentsListResponseSerializer;
+  static Serializer<StudentsListResponse> get serializer =>
+      _$studentsListResponseSerializer;
 }
 
 abstract class Data implements Built<Data, DataBuilder> {

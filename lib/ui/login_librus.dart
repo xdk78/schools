@@ -32,7 +32,8 @@ class LoginLibrusScreen extends StatelessWidget {
                           'Zaloguj się',
                           style: TextStyle(fontSize: 18.0),
                         ),
-                        onPressed: () => Navigator.pushNamed(context, '/timetable'),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/timetable'),
                       ))
                 ])))
       ])),

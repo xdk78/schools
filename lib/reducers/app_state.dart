@@ -6,9 +6,10 @@ part 'app_state.g.dart';
 
 abstract class AppState implements Built<AppState, AppStateBuilder> {
   VulcanAuthState get vulcanAuthState;
-  
+
   factory AppState() {
-    return _$AppState._(vulcanAuthState: VulcanAuthState());
+    return _$AppState._(
+        vulcanAuthState: VulcanAuthState().rebuild((b) => b..name = 'elo'));
   }
 
   AppState._();

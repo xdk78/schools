@@ -33,18 +33,6 @@ class _$VulcanAuthStateSerializer
   Iterable serialize(Serializers serializers, VulcanAuthState object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.deviceId != null) {
-      result
-        ..add('deviceId')
-        ..add(serializers.serialize(object.deviceId,
-            specifiedType: const FullType(String)));
-    }
-    if (object.deviceName != null) {
-      result
-        ..add('deviceName')
-        ..add(serializers.serialize(object.deviceName,
-            specifiedType: const FullType(String)));
-    }
     if (object.certificatePfx != null) {
       result
         ..add('certificatePfx')
@@ -63,16 +51,22 @@ class _$VulcanAuthStateSerializer
         ..add(serializers.serialize(object.apiEndpoint,
             specifiedType: const FullType(String)));
     }
-    if (object.identifier != null) {
-      result
-        ..add('identifier')
-        ..add(serializers.serialize(object.identifier,
-            specifiedType: const FullType(String)));
-    }
     if (object.schoolKey != null) {
       result
         ..add('schoolKey')
         ..add(serializers.serialize(object.schoolKey,
+            specifiedType: const FullType(String)));
+    }
+    if (object.symbol != null) {
+      result
+        ..add('symbol')
+        ..add(serializers.serialize(object.symbol,
+            specifiedType: const FullType(String)));
+    }
+    if (object.name != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(object.name,
             specifiedType: const FullType(String)));
     }
 
@@ -90,14 +84,6 @@ class _$VulcanAuthStateSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'deviceId':
-          result.deviceId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'deviceName':
-          result.deviceName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'certificatePfx':
           result.certificatePfx = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -110,12 +96,16 @@ class _$VulcanAuthStateSerializer
           result.apiEndpoint = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'identifier':
-          result.identifier = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'schoolKey':
           result.schoolKey = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'symbol':
+          result.symbol = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -127,31 +117,28 @@ class _$VulcanAuthStateSerializer
 
 class _$VulcanAuthState extends VulcanAuthState {
   @override
-  final String deviceId;
-  @override
-  final String deviceName;
-  @override
   final String certificatePfx;
   @override
   final String certificateKey;
   @override
   final String apiEndpoint;
   @override
-  final String identifier;
-  @override
   final String schoolKey;
+  @override
+  final String symbol;
+  @override
+  final String name;
 
   factory _$VulcanAuthState([void updates(VulcanAuthStateBuilder b)]) =>
       (new VulcanAuthStateBuilder()..update(updates)).build();
 
   _$VulcanAuthState._(
-      {this.deviceId,
-      this.deviceName,
-      this.certificatePfx,
+      {this.certificatePfx,
       this.certificateKey,
       this.apiEndpoint,
-      this.identifier,
-      this.schoolKey})
+      this.schoolKey,
+      this.symbol,
+      this.name})
       : super._();
 
   @override
@@ -166,13 +153,12 @@ class _$VulcanAuthState extends VulcanAuthState {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is VulcanAuthState &&
-        deviceId == other.deviceId &&
-        deviceName == other.deviceName &&
         certificatePfx == other.certificatePfx &&
         certificateKey == other.certificateKey &&
         apiEndpoint == other.apiEndpoint &&
-        identifier == other.identifier &&
-        schoolKey == other.schoolKey;
+        schoolKey == other.schoolKey &&
+        symbol == other.symbol &&
+        name == other.name;
   }
 
   @override
@@ -181,24 +167,23 @@ class _$VulcanAuthState extends VulcanAuthState {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, deviceId.hashCode), deviceName.hashCode),
-                        certificatePfx.hashCode),
-                    certificateKey.hashCode),
-                apiEndpoint.hashCode),
-            identifier.hashCode),
-        schoolKey.hashCode));
+                    $jc($jc(0, certificatePfx.hashCode),
+                        certificateKey.hashCode),
+                    apiEndpoint.hashCode),
+                schoolKey.hashCode),
+            symbol.hashCode),
+        name.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VulcanAuthState')
-          ..add('deviceId', deviceId)
-          ..add('deviceName', deviceName)
           ..add('certificatePfx', certificatePfx)
           ..add('certificateKey', certificateKey)
           ..add('apiEndpoint', apiEndpoint)
-          ..add('identifier', identifier)
-          ..add('schoolKey', schoolKey))
+          ..add('schoolKey', schoolKey)
+          ..add('symbol', symbol)
+          ..add('name', name))
         .toString();
   }
 }
@@ -206,14 +191,6 @@ class _$VulcanAuthState extends VulcanAuthState {
 class VulcanAuthStateBuilder
     implements Builder<VulcanAuthState, VulcanAuthStateBuilder> {
   _$VulcanAuthState _$v;
-
-  String _deviceId;
-  String get deviceId => _$this._deviceId;
-  set deviceId(String deviceId) => _$this._deviceId = deviceId;
-
-  String _deviceName;
-  String get deviceName => _$this._deviceName;
-  set deviceName(String deviceName) => _$this._deviceName = deviceName;
 
   String _certificatePfx;
   String get certificatePfx => _$this._certificatePfx;
@@ -229,25 +206,28 @@ class VulcanAuthStateBuilder
   String get apiEndpoint => _$this._apiEndpoint;
   set apiEndpoint(String apiEndpoint) => _$this._apiEndpoint = apiEndpoint;
 
-  String _identifier;
-  String get identifier => _$this._identifier;
-  set identifier(String identifier) => _$this._identifier = identifier;
-
   String _schoolKey;
   String get schoolKey => _$this._schoolKey;
   set schoolKey(String schoolKey) => _$this._schoolKey = schoolKey;
+
+  String _symbol;
+  String get symbol => _$this._symbol;
+  set symbol(String symbol) => _$this._symbol = symbol;
+
+  String _name;
+  String get name => _$this._name;
+  set name(String name) => _$this._name = name;
 
   VulcanAuthStateBuilder();
 
   VulcanAuthStateBuilder get _$this {
     if (_$v != null) {
-      _deviceId = _$v.deviceId;
-      _deviceName = _$v.deviceName;
       _certificatePfx = _$v.certificatePfx;
       _certificateKey = _$v.certificateKey;
       _apiEndpoint = _$v.apiEndpoint;
-      _identifier = _$v.identifier;
       _schoolKey = _$v.schoolKey;
+      _symbol = _$v.symbol;
+      _name = _$v.name;
       _$v = null;
     }
     return this;
@@ -270,13 +250,12 @@ class VulcanAuthStateBuilder
   _$VulcanAuthState build() {
     final _$result = _$v ??
         new _$VulcanAuthState._(
-            deviceId: deviceId,
-            deviceName: deviceName,
             certificatePfx: certificatePfx,
             certificateKey: certificateKey,
             apiEndpoint: apiEndpoint,
-            identifier: identifier,
-            schoolKey: schoolKey);
+            schoolKey: schoolKey,
+            symbol: symbol,
+            name: name);
     replace(_$result);
     return _$result;
   }

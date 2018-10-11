@@ -59,7 +59,7 @@ public class MainActivity extends FlutterActivity {
         final PrivateKey privateKey = (PrivateKey) instance.getKey(CONTAINER_NAME, PASSWORD.toCharArray());
         final Signature instance2 = Signature.getInstance(ALGORITHM_NAME);
         instance2.initSign(privateKey);
-        instance2.update(contents.getBytes("UTF8"));
-        return Base64.encodeToString(instance2.sign(), Base64.DEFAULT);
+        instance2.update(contents.getBytes("UTF-8"));
+        return Base64.encodeToString(instance2.sign(), Base64.NO_WRAP);
     }
 }

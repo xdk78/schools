@@ -1,21 +1,10 @@
 import 'package:redux/redux.dart';
 import 'package:schools/reducers/app_actions.dart';
 import 'package:schools/reducers/app_state.dart';
+import 'package:schools/api/vulcan/auth/vulcan_auth_reducer.dart';
 
 AppState appReducer(AppState state, action) {
-  return state.rebuild((b) => b
-  );
-}
- 
-Reducer<bool> loadingReducer = combineReducers<bool>([
-  new TypedReducer<bool, StartLoading>(setLoading),
-  new TypedReducer<bool, StopLoading>(setLoaded),
-]);
-
-bool setLoading(bool state, action) {
-  return true;
-}
-
-bool setLoaded(bool state, action) {
-  return false;
+  return state.rebuild((b) =>
+      b
+      ..vulcanAuthState.replace(authReducer(state.vulcanAuthState, action)));
 }
