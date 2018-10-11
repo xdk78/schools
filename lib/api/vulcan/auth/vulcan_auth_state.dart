@@ -20,7 +20,7 @@ abstract class VulcanAuthState implements Built<VulcanAuthState, VulcanAuthState
   String get apiEndpoint;
 
   @nullable
-  String get email;
+  String get identifier;
 
   @nullable
   String get schoolKey;

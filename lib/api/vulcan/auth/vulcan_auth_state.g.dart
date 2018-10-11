@@ -63,10 +63,10 @@ class _$VulcanAuthStateSerializer
         ..add(serializers.serialize(object.apiEndpoint,
             specifiedType: const FullType(String)));
     }
-    if (object.email != null) {
+    if (object.identifier != null) {
       result
-        ..add('email')
-        ..add(serializers.serialize(object.email,
+        ..add('identifier')
+        ..add(serializers.serialize(object.identifier,
             specifiedType: const FullType(String)));
     }
     if (object.schoolKey != null) {
@@ -110,8 +110,8 @@ class _$VulcanAuthStateSerializer
           result.apiEndpoint = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'email':
-          result.email = serializers.deserialize(value,
+        case 'identifier':
+          result.identifier = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'schoolKey':
@@ -137,7 +137,7 @@ class _$VulcanAuthState extends VulcanAuthState {
   @override
   final String apiEndpoint;
   @override
-  final String email;
+  final String identifier;
   @override
   final String schoolKey;
 
@@ -150,7 +150,7 @@ class _$VulcanAuthState extends VulcanAuthState {
       this.certificatePfx,
       this.certificateKey,
       this.apiEndpoint,
-      this.email,
+      this.identifier,
       this.schoolKey})
       : super._();
 
@@ -171,7 +171,7 @@ class _$VulcanAuthState extends VulcanAuthState {
         certificatePfx == other.certificatePfx &&
         certificateKey == other.certificateKey &&
         apiEndpoint == other.apiEndpoint &&
-        email == other.email &&
+        identifier == other.identifier &&
         schoolKey == other.schoolKey;
   }
 
@@ -185,7 +185,7 @@ class _$VulcanAuthState extends VulcanAuthState {
                         certificatePfx.hashCode),
                     certificateKey.hashCode),
                 apiEndpoint.hashCode),
-            email.hashCode),
+            identifier.hashCode),
         schoolKey.hashCode));
   }
 
@@ -197,7 +197,7 @@ class _$VulcanAuthState extends VulcanAuthState {
           ..add('certificatePfx', certificatePfx)
           ..add('certificateKey', certificateKey)
           ..add('apiEndpoint', apiEndpoint)
-          ..add('email', email)
+          ..add('identifier', identifier)
           ..add('schoolKey', schoolKey))
         .toString();
   }
@@ -229,9 +229,9 @@ class VulcanAuthStateBuilder
   String get apiEndpoint => _$this._apiEndpoint;
   set apiEndpoint(String apiEndpoint) => _$this._apiEndpoint = apiEndpoint;
 
-  String _email;
-  String get email => _$this._email;
-  set email(String email) => _$this._email = email;
+  String _identifier;
+  String get identifier => _$this._identifier;
+  set identifier(String identifier) => _$this._identifier = identifier;
 
   String _schoolKey;
   String get schoolKey => _$this._schoolKey;
@@ -246,7 +246,7 @@ class VulcanAuthStateBuilder
       _certificatePfx = _$v.certificatePfx;
       _certificateKey = _$v.certificateKey;
       _apiEndpoint = _$v.apiEndpoint;
-      _email = _$v.email;
+      _identifier = _$v.identifier;
       _schoolKey = _$v.schoolKey;
       _$v = null;
     }
@@ -275,7 +275,7 @@ class VulcanAuthStateBuilder
             certificatePfx: certificatePfx,
             certificateKey: certificateKey,
             apiEndpoint: apiEndpoint,
-            email: email,
+            identifier: identifier,
             schoolKey: schoolKey);
     replace(_$result);
     return _$result;
