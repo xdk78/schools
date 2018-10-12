@@ -42,6 +42,20 @@ class LibrusClient {
 
     var authCode = codeResponse.headers.value('location').split('code=')[1];
 
-    return authCode;
+    // Exchange auth code for Librus account token
+    var exchangeToken = await client.post(
+      '$baseUrl/oauth2/access_token',
+      data: json.encode({
+        "grant_type": "authorization_code",
+        "code": authCode,
+        "client_id": this.clientId,
+        "redirect_uri": "http://localhost/bar"
+      }),
+      options: Options(headers: {"Content-Type": "application/json"}),
+    );
+
+    var accessToken = exchangeToken.data['access_token'];
+
+    return accessToken;
   }
 }
