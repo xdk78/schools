@@ -1,35 +1,47 @@
-import 'package:http/http.dart';
 import 'dart:async';
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:html/parser.dart' show parse;
-import 'package:html/dom.dart';
-
-class BaseLibrusClient extends BaseClient {
-  final String _userAgent = 'LibrusMobileApp';
-  final Client _inner = new Client();
-
-  BaseLibrusClient();
-
-  @override
-  Future<StreamedResponse> send(BaseRequest request) {
-    request.headers['user-agent'] = _userAgent;
-    return _inner.send(request);
-  }
-}
+import 'dart:convert';
+import 'package:dio/dio.dart';
 
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
   final String clientId = 'wmSyUMo8llDAs4y9tJVYY92oyZ6h4lAt7KCuy0Gv';
-  final BaseLibrusClient client = new BaseLibrusClient();
+  Dio client;
+
+  LibrusClient() {
+    var _client = Dio(Options(headers: {'user-agent': 'LibrusMobileApp'}));
+    // _client.cookieJar = PersistCookieJar("./cookies"); // TODO: persist cookies
+    this.client = _client;
+  }
 
   Future login(String email, String password) async {
-    var response = await client.get(
+    var response = await this.client.get(
         '$baseUrl/oauth2/authorize?client_id=$clientId&redirect_uri=http://localhost/bar&response_type=code');
-    var document = parse(response.body);
+    var document = parse(response.data);
+
     // Get CSRF from HTML
     var csrfToken = document
         .querySelector('meta[name="csrf-token"][content]')
         .attributes['content'];
 
-    return csrfToken;
+    // Authorize by POSTing credentials
+    await client.post('$baseUrl/rodzina/login/action',
+        data: json.encode({'email': email, 'password': password}),
+        options: Options(headers: {
+          'X-CSRF-TOKEN': csrfToken,
+          'Content-Type': "application/json"
+        }));
+
+    // Get auth code by re-visiting the code URL
+    // It will now redirect to localhost with auth code supplied as a parameter.
+    var codeResponse = await client.get(
+        '$baseUrl/oauth2/authorize?client_id=$clientId&redirect_uri=http://localhost/bar&response_type=code',
+        options: Options(
+            followRedirects: false, validateStatus: (status) => status < 500));
+
+    var authCode = codeResponse.headers.value('location').split('code=')[1];
+
+    return authCode;
   }
 }
