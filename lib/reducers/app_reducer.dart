@@ -5,6 +5,5 @@ import 'package:schools/api/vulcan/auth/vulcan_auth_reducer.dart';
 
 AppState appReducer(AppState state, action) {
   return state.rebuild((b) =>
-      b
-      ..vulcanAuthState.replace(authReducer(state.vulcanAuthState, action)));
+      b..vulcanAuthState.replace(authReducer(state.vulcanAuthState, action)));
 }

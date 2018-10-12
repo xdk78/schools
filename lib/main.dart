@@ -14,7 +14,8 @@ final logger = new LoggingMiddleware.printer();
 
 void main() {
   final store = Store<AppState>(appReducer,
-      initialState: AppState(), middleware: [new LoggingMiddleware.printer(), vulcanAuthMiddleware]);
+      initialState: AppState(),
+      middleware: [new LoggingMiddleware.printer(), vulcanAuthMiddleware]);
   runApp(SchoolsApp(
     store: store,
   ));
@@ -32,9 +33,15 @@ class SchoolsApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Schools',
           theme: ThemeData(
-            primaryColor: Colors.white,
-            accentColor: Colors.indigo,
-          ),
+              primaryColor: Colors.white,
+              accentColor: Colors.indigo,
+              hintColor: Colors.grey,
+              inputDecorationTheme: new InputDecorationTheme(
+                labelStyle: new TextStyle(color: Colors.blue),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.cyan),
+                ),
+              )),
           routes: {
             '/': (context) => LoginScreen(),
             '/loginlibrus': (context) => LoginLibrusScreen(),

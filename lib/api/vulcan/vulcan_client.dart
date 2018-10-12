@@ -88,7 +88,6 @@ class VulcanClient {
           "User-Agent": "MobileUserAgent",
           "Content-Type": "application/json",
         }));
-    print(studentsResponse.body);
 
     StudentsListResponse studentsList = serializers.deserializeWith(
         StudentsListResponse.serializer, json.decode(studentsResponse.body));
