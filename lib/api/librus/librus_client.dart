@@ -1,8 +1,10 @@
 import 'package:http/http.dart';
 import 'dart:async';
+import 'package:html/parser.dart' show parse;
+import 'package:html/dom.dart';
 
 class BaseLibrusClient extends BaseClient {
-  final String _userAgent = '';
+  final String _userAgent = 'LibrusMobileApp';
   final Client _inner = new Client();
 
   BaseLibrusClient();
@@ -22,6 +24,12 @@ class LibrusClient {
   Future login(String email, String password) async {
     var response = await client.get(
         '$baseUrl/oauth2/authorize?client_id=$clientId&redirect_uri=http://localhost/bar&response_type=code');
-    return response.body;
+    var document = parse(response.body);
+    // Get CSRF from HTML
+    var csrfToken = document
+        .querySelector('meta[name="csrf-token"][content]')
+        .attributes['content'];
+
+    return csrfToken;
   }
 }
