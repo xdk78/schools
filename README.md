@@ -1,8 +1,62 @@
-# schools
+# Schools
 
-A new Flutter project.
+<img src="https://img.shields.io/github/license/xdk78/schools.svg?style=for-the-badge" alt="GitHub"/> <a href="https://github.com/xdk78/schools/issues"><img src="https://img.shields.io/github/issues/xdk78/schools.svg?style=for-the-badge" alt="GitHub issues" /></a>
 
-## Getting Started
+# 📰 What is this?
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Mobile client for [Liburs](https://portal.librus.pl/) & [vulcan](https://www.vulcan.edu.pl/)
+
+# 👾 Mobile app
+
+Download [`.APK`](https://github.com/xdk78/schools/releases)
+
+# 🚑 Support
+
+Describe your problem in [issues](https://github.com/xdk78/schools/issues).
+
+# ✋ Contributing
+
+If you want to help with the project, you can have a look at some [issues](https://github.com/xdk78/schools/issues). All help is much appreciated 🍻
+
+# 🏃 Running application
+
+### What do you need?
+
+- [Flutter](https://flutter.io/get-started/install/)
+
+### 🤘 Let's start
+
+- Clone repo</br>
+   - Via https
+    ```
+    git clone https://github.com/xdk78/schools.git
+    ```
+   - Via ssh
+    ```
+    git clone git@github.com:xdk78/schools.git
+    ```
+
+- Now enter to app folder
+  ```
+  cd Schools
+  ```
+- Install depedencies
+  ```
+  pub get
+  ```
+- Running application
+  ```
+  flutter run
+  ```
+- Running application in production mode
+  ```
+  flutter run --release
+  ```
+- Running linter
+  ```
+  flutter format
+  ```
+
+
+# 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.# Schools
