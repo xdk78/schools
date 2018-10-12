@@ -3,6 +3,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:html/parser.dart' show parse;
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:path_provider/path_provider.dart';
 
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
@@ -11,7 +12,8 @@ class LibrusClient {
 
   LibrusClient() {
     var _client = Dio(Options(headers: {'user-agent': 'LibrusMobileApp'}));
-    // _client.cookieJar = PersistCookieJar("./cookies"); // TODO: persist cookies
+    getTemporaryDirectory()
+        .then((dir) => _client.cookieJar = PersistCookieJar(dir.path));
     this.client = _client;
   }
 
