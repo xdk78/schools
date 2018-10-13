@@ -13,6 +13,8 @@ class AuthenticateLibrusAction {
         this.password = password;
 }
 
+class LoadSavedLibrusAuthState {}
+
 class LoggedInAction {
   final LibrusAuthResponse authResp;
   LoggedInAction(this.authResp);
