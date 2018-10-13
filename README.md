@@ -42,7 +42,7 @@ If you want to help with the project, you can have a look at some [issues](https
   ```
 - Install depedencies
   ```
-  flutter pub get
+  flutter packages get
   ```
 - Running application
   ```
