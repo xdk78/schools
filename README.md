@@ -22,8 +22,7 @@ If you want to help with the project, you can have a look at some [issues](https
 
 ### What do you need?
 
-- [Node.js](https://nodejs.org/en/)
-- [NPM](https://www.npmjs.com/)
+- [Flutter](https://flutter.io/get-started/install/)
 
 ### 🤘 Let's start
 
@@ -43,16 +42,21 @@ If you want to help with the project, you can have a look at some [issues](https
   ```
 - Install depedencies
   ```
-  npm i
+  flutter pub get
   ```
 - Running application
   ```
-  npm start
+  flutter run
   ```
-- Testing application
+- Running application in production mode
   ```
-  npm test
+  flutter run --release
+  ```
+- Running linter
+  ```
+  flutter format .
   ```
 
+
 # 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.# Schools
