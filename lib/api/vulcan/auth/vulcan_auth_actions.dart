@@ -21,7 +21,6 @@ class AuthenticateVulcanAction {
 
 class LoadSavedVulcanAuthState {}
 
-
 class LoggedInAction {
   final VulcanAuthResponse authResp;
   LoggedInAction(this.authResp);
