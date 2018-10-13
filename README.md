@@ -42,7 +42,7 @@ If you want to help with the project, you can have a look at some [issues](https
   ```
 - Install depedencies
   ```
-  pub get
+  flutter pub get
   ```
 - Running application
   ```
@@ -54,7 +54,7 @@ If you want to help with the project, you can have a look at some [issues](https
   ```
 - Running linter
   ```
-  flutter format
+  flutter format .
   ```
 
 
