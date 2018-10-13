@@ -9,6 +9,7 @@ void librusAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
   if (action is AuthenticateLibrusAction) {
     var client = LibrusClient();
     client.login(action.email, action.password).then((el) {
+      _saveAuthState(el);
       store.dispatch(LoggedInAction(el));
       action.completer.complete();
     }, onError: (e) => print(e));
