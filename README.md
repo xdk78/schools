@@ -38,7 +38,7 @@ If you want to help with the project, you can have a look at some [issues](https
 
 - Now enter to app folder
   ```
-  cd Schools
+  cd schools
   ```
 - Install depedencies
   ```
