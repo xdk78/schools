@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:schools/api/librus/response_models/accounts_response.dart';
+import 'package:schools/api/librus/response_models/serializers.dart';
 
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
@@ -64,13 +65,14 @@ class LibrusClient {
   }
 
   /// Get list of Librus Synergia accounts tied to provided Librus account
-  Future<LibrusSynergiaAccountsResponse> getAccounts(String accessToken) async {
+  Future<LibrusAccountsResponse> getAccounts(String accessToken) async {
     var accountsResponse = await this.client.get(
         '$baseUrl/api/SynergiaAccounts',
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
 
-    LibrusSynergiaAccountsResponse response =
-        LibrusSynergiaAccountsResponse.fromJson(accountsResponse.data);
+    LibrusAccountsResponse response = serializers.deserializeWith(
+        LibrusAccountsResponse.serializer, json.decode(accountsResponse.data));
+
     return response;
   }
 }

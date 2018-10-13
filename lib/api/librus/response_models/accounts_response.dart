@@ -1,28 +1,34 @@
-class LibrusSynergiaAccountsResponse {
-  final num lastModification;
-  List<dynamic> accounts;
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:built_collection/built_collection.dart';
 
-  LibrusSynergiaAccountsResponse(this.lastModification, this.accounts);
+part 'accounts_response.g.dart';
 
-  LibrusSynergiaAccountsResponse.fromJson(Map<String, dynamic> json)
-      : lastModification = json['lastModification'],
-        accounts = ['accounts'];
+abstract class LibrusAccountsResponse
+    implements Built<LibrusAccountsResponse, LibrusAccountsResponseBuilder> {
+  num get lastModification;
+  BuiltList<LibrusAccountResponse> get accounts;
+
+  LibrusAccountsResponse._();
+  factory LibrusAccountsResponse([updates(LibrusAccountsResponseBuilder b)]) =
+      _$LibrusAccountsResponse;
+
+  static Serializer<LibrusAccountsResponse> get serializer =>
+      _$librusAccountsResponseSerializer;
 }
 
-class LibrusSynergiaAccountResponse {
-  final String id;
-  final String group;
-  final String accessToken;
-  final String login;
-  final String studentName;
+abstract class LibrusAccountResponse
+    implements Built<LibrusAccountResponse, LibrusAccountResponseBuilder> {
+  String get id;
+  String get group;
+  String get accessToken;
+  String get login;
+  String get studentName;
 
-  LibrusSynergiaAccountResponse(
-      this.id, this.group, this.accessToken, this.login, this.studentName);
+  LibrusAccountResponse._();
+  factory LibrusAccountResponse([updates(LibrusAccountResponseBuilder b)]) =
+      _$LibrusAccountResponse;
 
-  LibrusSynergiaAccountResponse.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        group = json['group'],
-        accessToken = json['accessToken'],
-        login = json['login'],
-        studentName = json['studentName'];
+  static Serializer<LibrusAccountResponse> get serializer =>
+      _$librusAccountResponseSerializer;
 }

@@ -91,7 +91,9 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                       child: StoreConnector<AppState, VoidCallback>(
                           converter: (store) {
                         return () => store.dispatch(AuthenticateVulcanAction(
-                            pin: this._data.pin, symbol: this._data.symbol, token: this._data.token));
+                            pin: this._data.pin,
+                            symbol: this._data.symbol,
+                            token: this._data.token));
                       }, builder: (context, callback) {
                         return RaisedButton(
                           shape: RoundedRectangleBorder(
