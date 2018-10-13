@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:schools/reducers/app_state.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_actions.dart';
-import 'package:validate/validate.dart'; // Add import for validate package.
 
 class LoginVulcanScreen extends StatefulWidget {
   @override
@@ -95,20 +93,20 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                             symbol: this._data.symbol,
                             token: this._data.token));
                       }, builder: (context, callback) {
-                        return RaisedButton(
+                        return FlatButton(
+                          textColor: Theme.of(context).accentColor,
+                          color: Colors.grey[100],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.0)),
                           child: new Text(
                             'Zaloguj się',
                             style: new TextStyle(
-                              color: Colors.white,
                               fontSize: 18.0,
                             ),
                           ),
                           onPressed: () {
                             this.submit(callback);
                           },
-                          color: Colors.blue,
                         );
                       })),
                 ],
