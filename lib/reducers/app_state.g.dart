@@ -34,6 +34,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'vulcanAuthState',
       serializers.serialize(object.vulcanAuthState,
           specifiedType: const FullType(VulcanAuthState)),
+      'librusAuthState',
+      serializers.serialize(object.librusAuthState,
+          specifiedType: const FullType(LibrusAuthState)),
     ];
 
     return result;
@@ -55,6 +58,11 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
                   specifiedType: const FullType(VulcanAuthState))
               as VulcanAuthState);
           break;
+        case 'librusAuthState':
+          result.librusAuthState.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(LibrusAuthState))
+              as LibrusAuthState);
+          break;
       }
     }
 
@@ -65,13 +73,18 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
 class _$AppState extends AppState {
   @override
   final VulcanAuthState vulcanAuthState;
+  @override
+  final LibrusAuthState librusAuthState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.vulcanAuthState}) : super._() {
+  _$AppState._({this.vulcanAuthState, this.librusAuthState}) : super._() {
     if (vulcanAuthState == null) {
       throw new BuiltValueNullFieldError('AppState', 'vulcanAuthState');
+    }
+    if (librusAuthState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'librusAuthState');
     }
   }
 
@@ -85,18 +98,21 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && vulcanAuthState == other.vulcanAuthState;
+    return other is AppState &&
+        vulcanAuthState == other.vulcanAuthState &&
+        librusAuthState == other.librusAuthState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, vulcanAuthState.hashCode));
+    return $jf($jc($jc(0, vulcanAuthState.hashCode), librusAuthState.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
-          ..add('vulcanAuthState', vulcanAuthState))
+          ..add('vulcanAuthState', vulcanAuthState)
+          ..add('librusAuthState', librusAuthState))
         .toString();
   }
 }
@@ -110,11 +126,18 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set vulcanAuthState(VulcanAuthStateBuilder vulcanAuthState) =>
       _$this._vulcanAuthState = vulcanAuthState;
 
+  LibrusAuthStateBuilder _librusAuthState;
+  LibrusAuthStateBuilder get librusAuthState =>
+      _$this._librusAuthState ??= new LibrusAuthStateBuilder();
+  set librusAuthState(LibrusAuthStateBuilder librusAuthState) =>
+      _$this._librusAuthState = librusAuthState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
       _vulcanAuthState = _$v.vulcanAuthState?.toBuilder();
+      _librusAuthState = _$v.librusAuthState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -137,13 +160,17 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState build() {
     _$AppState _$result;
     try {
-      _$result =
-          _$v ?? new _$AppState._(vulcanAuthState: vulcanAuthState.build());
+      _$result = _$v ??
+          new _$AppState._(
+              vulcanAuthState: vulcanAuthState.build(),
+              librusAuthState: librusAuthState.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'vulcanAuthState';
         vulcanAuthState.build();
+        _$failedField = 'librusAuthState';
+        librusAuthState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

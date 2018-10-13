@@ -7,6 +7,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:schools/api/librus/response_models/accounts_response.dart';
 import 'package:schools/api/librus/response_models/serializers.dart';
 
+class LibrusAuthResponse {
+  final String accessToken;
+
+  LibrusAuthResponse(this.accessToken);
+}
+
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
   final String clientId = 'wmSyUMo8llDAs4y9tJVYY92oyZ6h4lAt7KCuy0Gv';
@@ -20,7 +26,7 @@ class LibrusClient {
   }
 
   /// Login and get Librus Bearer access token
-  Future<String> login(String email, String password) async {
+  Future<LibrusAuthResponse> login(String email, String password) async {
     var response = await this.client.get(
         '$baseUrl/oauth2/authorize?client_id=$clientId&redirect_uri=http://localhost/bar&response_type=code');
     var document = parse(response.data);
@@ -61,7 +67,7 @@ class LibrusClient {
 
     var accessToken = exchangeToken.data['access_token'];
 
-    return accessToken;
+    return LibrusAuthResponse(accessToken);
   }
 
   /// Get list of Librus Synergia accounts tied to provided Librus account
