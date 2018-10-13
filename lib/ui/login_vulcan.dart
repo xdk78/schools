@@ -97,19 +97,19 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                             token: this._data.token));
                       }, builder: (context, callback) {
                         return FlatButton(
+                          textColor: Theme.of(context).accentColor,
+                          color: Colors.grey[100],
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.0)),
                           child: new Text(
                             'Zaloguj się',
                             style: new TextStyle(
-                              color: Colors.white,
                               fontSize: 18.0,
                             ),
                           ),
                           onPressed: () {
                             this.submit(callback);
                           },
-                          color: Colors.blue,
                         );
                       })),
                 ],
