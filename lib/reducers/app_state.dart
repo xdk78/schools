@@ -11,7 +11,13 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   factory AppState() {
     return _$AppState._(
-        vulcanAuthState: VulcanAuthState().rebuild((b) => b..name = 'elo'),
+        vulcanAuthState: VulcanAuthState().rebuild((b) => b
+        ..name = ''
+        ..certificateKey = ''
+        ..certificatePfx = ''
+        ..apiEndpoint = ''
+        ..schoolKey = ''
+        ..symbol = ''),
         librusAuthState: LibrusAuthState().rebuild((b) => b..accessToken = ''));
   }
 

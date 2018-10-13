@@ -19,6 +19,9 @@ class AuthenticateVulcanAction {
         this.pin = pin;
 }
 
+class LoadSavedVulcanAuthState {}
+
+
 class LoggedInAction {
   final VulcanAuthResponse authResp;
   LoggedInAction(this.authResp);

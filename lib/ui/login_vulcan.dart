@@ -24,7 +24,7 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
 
   String _validatePin(String value) {
     if (!_pinRegex.hasMatch(value)) {
-      return 'pin się nie zgadza';
+      return 'pin się nie zgadza';
     }
     return null;
   }
@@ -35,7 +35,7 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
 
   String _validateToken(String value) {
     if (!_tokenRegex.hasMatch(value)) {
-      return 'token się nie zgadza';
+      return 'token się nie zgadza';
     }
     return null;
   }
@@ -89,13 +89,14 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                   new Container(
                       margin: EdgeInsets.only(top: 12.0),
                       child: StoreConnector<AppState, VoidCallback>(
+                          onInit: (store) { store.dispatch(LoadSavedVulcanAuthState());},
                           converter: (store) {
                         return () => store.dispatch(AuthenticateVulcanAction(
                             pin: this._data.pin,
                             symbol: this._data.symbol,
                             token: this._data.token));
                       }, builder: (context, callback) {
-                        return RaisedButton(
+                        return FlatButton(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.0)),
                           child: new Text(
