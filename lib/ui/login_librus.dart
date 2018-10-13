@@ -17,7 +17,8 @@ class _LoginLibrusState extends State<LoginLibrusScreen> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   _LoginData _data = new _LoginData();
   RegExp _emailRegex = RegExp(
-      r'/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/');
+    r'(\S+)[\@]([a-zA-Z0-9]+)[\.]([a-zA-Z0-9]+)'
+  );
 
   String _validateEmail(String value) {
     if (!_emailRegex.hasMatch(value)) {
