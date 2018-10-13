@@ -4,6 +4,7 @@ import 'package:html/parser.dart' show parse;
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:schools/api/librus/response_models/accounts_response.dart';
 
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
@@ -17,7 +18,8 @@ class LibrusClient {
     this.client = _client;
   }
 
-  Future login(String email, String password) async {
+  /// Login and get Librus Bearer access token
+  Future<String> login(String email, String password) async {
     var response = await this.client.get(
         '$baseUrl/oauth2/authorize?client_id=$clientId&redirect_uri=http://localhost/bar&response_type=code');
     var document = parse(response.data);
@@ -47,17 +49,28 @@ class LibrusClient {
     // Exchange auth code for Librus account token
     var exchangeToken = await client.post(
       '$baseUrl/oauth2/access_token',
-      data: json.encode({
+      data: {
         "grant_type": "authorization_code",
         "code": authCode,
         "client_id": this.clientId,
         "redirect_uri": "http://localhost/bar"
-      }),
+      },
       options: Options(headers: {"Content-Type": "application/json"}),
     );
 
     var accessToken = exchangeToken.data['access_token'];
 
     return accessToken;
+  }
+
+  /// Get list of Librus Synergia accounts tied to provided Librus account
+  Future<LibrusSynergiaAccountsResponse> getAccounts(String accessToken) async {
+    var accountsResponse = await this.client.get(
+        '$baseUrl/api/SynergiaAccounts',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    LibrusSynergiaAccountsResponse response =
+        LibrusSynergiaAccountsResponse.fromJson(accountsResponse.data);
+    return response;
   }
 }
