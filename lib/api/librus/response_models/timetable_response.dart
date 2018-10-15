@@ -4,69 +4,96 @@ import 'package:built_value/serializer.dart';
 
 part 'timetable_response.g.dart';
 
-abstract class LibrusTimetableResponse
-    implements Built<LibrusTimetableResponse, LibrusTimetableResponseBuilder> {
-  String get id;
+abstract class TimetableResponse
+    implements Built<TimetableResponse, TimetableResponseBuilder> {
+  @BuiltValueField(wireName: 'Lessons')
+  BuiltList<LessonsResponse> get lessons;
+
+  TimetableResponse._();
+  factory TimetableResponse([updates(TimetableResponseBuilder b)]) =
+      _$TimetableResponse;
+
+  static Serializer<TimetableResponse> get serializer =>
+      _$timetableResponseSerializer;
+}
+
+abstract class LessonsResponse
+    implements Built<LessonsResponse, LessonsResponseBuilder> {
+  @BuiltValueField(wireName: 'Id')
+  num get id;
 
   @BuiltValueField(wireName: 'LessonNo')
   num get lessonNumber;
 
-  @nullable
-  BuiltMap<String, LibrusSubjectResponse> get subject;
+  @BuiltValueField(wireName: 'Subject')
+  SubjectResponse get subject;
 
-  @nullable
-  BuiltMap<String, LibrusTeacherResponse> get teacher;
+  @BuiltValueField(wireName: 'Teacher')
+  TeacherResponse get teacher;
 
   @BuiltValueField(wireName: 'IsSubstitutionClass')
-  bool get substitution;
+  bool get isSubstitutionClass;
 
   @BuiltValueField(wireName: 'IsCanceled')
-  bool get canceled;
+  bool get isCanceled;
 
-  @nullable
-  BuiltMap<String, LibrusTeacherResponse> get orgTeacher;
+  @BuiltValueField(wireName: 'OrgTeacher')
+  TeacherResponse get orgTeacher;
 
-  @nullable
-  BuiltMap<String, LibrusSubjectResponse> get orgSubject;
+  @BuiltValueField(wireName: 'OrgSubject')
+  SubjectResponse get orgSubject;
 
-  DateTime get date;
+  @BuiltValueField(wireName: 'Date')
+  String get date;
 
-  DateTime get hourFrom;
+  @BuiltValueField(wireName: 'HourFrom')
+  String get hourFrom;
 
-  DateTime get hourTo;
+  @BuiltValueField(wireName: 'HourTo')
+  String get hourTo;
 
-  LibrusTimetableResponse._();
-  factory LibrusTimetableResponse([updates(LibrusTimetableResponseBuilder b)]) =
-      _$LibrusTimetableResponse;
+  LessonsResponse._();
+  factory LessonsResponse([updates(LessonsResponseBuilder b)]) =
+      _$LessonsResponse;
 
-  static Serializer<LibrusTimetableResponse> get serializer =>
-      _$librusTimetableResponseSerializer;
+  static Serializer<LessonsResponse> get serializer =>
+      _$lessonsResponseSerializer;
 }
 
-abstract class LibrusSubjectResponse
-    implements Built<LibrusSubjectResponse, LibrusSubjectResponseBuilder> {
+abstract class SubjectResponse
+    implements Built<SubjectResponse, SubjectResponseBuilder> {
+  @BuiltValueField(wireName: 'Id')
   String get id;
+
+  @BuiltValueField(wireName: 'Name')
   String get name;
+
+  @BuiltValueField(wireName: 'Average')
   String get average;
 
-  LibrusSubjectResponse._();
-  factory LibrusSubjectResponse([updates(LibrusSubjectResponseBuilder b)]) =
-      _$LibrusSubjectResponse;
+  SubjectResponse._();
+  factory SubjectResponse([updates(SubjectResponseBuilder b)]) =
+      _$SubjectResponse;
 
-  static Serializer<LibrusSubjectResponse> get serializer =>
-      _$librusSubjectResponseSerializer;
+  static Serializer<SubjectResponse> get serializer =>
+      _$subjectResponseSerializer;
 }
 
-abstract class LibrusTeacherResponse
-    implements Built<LibrusTeacherResponse, LibrusTeacherResponseBuilder> {
+abstract class TeacherResponse
+    implements Built<TeacherResponse, TeacherResponseBuilder> {
+  @BuiltValueField(wireName: 'Id')
   String get id;
+
+  @BuiltValueField(wireName: 'FirstName')
   String get firstName;
+
+  @BuiltValueField(wireName: 'LastName')
   String get lastName;
 
-  LibrusTeacherResponse._();
-  factory LibrusTeacherResponse([updates(LibrusTeacherResponseBuilder b)]) =
-      _$LibrusTeacherResponse;
+  TeacherResponse._();
+  factory TeacherResponse([updates(TeacherResponseBuilder b)]) =
+      _$TeacherResponse;
 
-  static Serializer<LibrusTeacherResponse> get serializer =>
-      _$librusTeacherResponseSerializer;
+  static Serializer<TeacherResponse> get serializer =>
+      _$teacherResponseSerializer;
 }

@@ -4,31 +4,31 @@ import 'package:built_collection/built_collection.dart';
 
 part 'accounts_response.g.dart';
 
-abstract class LibrusAccountsResponse
-    implements Built<LibrusAccountsResponse, LibrusAccountsResponseBuilder> {
+abstract class AccountsResponse
+    implements Built<AccountsResponse, AccountsResponseBuilder> {
   num get lastModification;
-  BuiltList<LibrusAccountResponse> get accounts;
+  BuiltList<AccountResponse> get accounts;
 
-  LibrusAccountsResponse._();
-  factory LibrusAccountsResponse([updates(LibrusAccountsResponseBuilder b)]) =
-      _$LibrusAccountsResponse;
+  AccountsResponse._();
+  factory AccountsResponse([updates(AccountsResponseBuilder b)]) =
+      _$AccountsResponse;
 
-  static Serializer<LibrusAccountsResponse> get serializer =>
-      _$librusAccountsResponseSerializer;
+  static Serializer<AccountsResponse> get serializer =>
+      _$accountsResponseSerializer;
 }
 
-abstract class LibrusAccountResponse
-    implements Built<LibrusAccountResponse, LibrusAccountResponseBuilder> {
+abstract class AccountResponse
+    implements Built<AccountResponse, AccountResponseBuilder> {
   String get id;
   String get group;
   String get accessToken;
   String get login;
   String get studentName;
 
-  LibrusAccountResponse._();
-  factory LibrusAccountResponse([updates(LibrusAccountResponseBuilder b)]) =
-      _$LibrusAccountResponse;
+  AccountResponse._();
+  factory AccountResponse([updates(AccountResponseBuilder b)]) =
+      _$AccountResponse;
 
-  static Serializer<LibrusAccountResponse> get serializer =>
-      _$librusAccountResponseSerializer;
+  static Serializer<AccountResponse> get serializer =>
+      _$accountResponseSerializer;
 }

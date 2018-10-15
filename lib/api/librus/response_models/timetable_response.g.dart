@@ -19,93 +19,39 @@ part of 'timetable_response.dart';
 // ignore_for_file: unnecessary_new
 // ignore_for_file: test_types_in_equals
 
-Serializer<LibrusTimetableResponse> _$librusTimetableResponseSerializer =
-    new _$LibrusTimetableResponseSerializer();
-Serializer<LibrusSubjectResponse> _$librusSubjectResponseSerializer =
-    new _$LibrusSubjectResponseSerializer();
-Serializer<LibrusTeacherResponse> _$librusTeacherResponseSerializer =
-    new _$LibrusTeacherResponseSerializer();
+Serializer<TimetableResponse> _$timetableResponseSerializer =
+    new _$TimetableResponseSerializer();
+Serializer<LessonsResponse> _$lessonsResponseSerializer =
+    new _$LessonsResponseSerializer();
+Serializer<SubjectResponse> _$subjectResponseSerializer =
+    new _$SubjectResponseSerializer();
+Serializer<TeacherResponse> _$teacherResponseSerializer =
+    new _$TeacherResponseSerializer();
 
-class _$LibrusTimetableResponseSerializer
-    implements StructuredSerializer<LibrusTimetableResponse> {
+class _$TimetableResponseSerializer
+    implements StructuredSerializer<TimetableResponse> {
   @override
-  final Iterable<Type> types = const [
-    LibrusTimetableResponse,
-    _$LibrusTimetableResponse
-  ];
+  final Iterable<Type> types = const [TimetableResponse, _$TimetableResponse];
   @override
-  final String wireName = 'LibrusTimetableResponse';
+  final String wireName = 'TimetableResponse';
 
   @override
-  Iterable serialize(Serializers serializers, LibrusTimetableResponse object,
+  Iterable serialize(Serializers serializers, TimetableResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'LessonNo',
-      serializers.serialize(object.lessonNumber,
-          specifiedType: const FullType(num)),
-      'IsSubstitutionClass',
-      serializers.serialize(object.substitution,
-          specifiedType: const FullType(bool)),
-      'IsCanceled',
-      serializers.serialize(object.canceled,
-          specifiedType: const FullType(bool)),
-      'date',
-      serializers.serialize(object.date,
-          specifiedType: const FullType(DateTime)),
-      'hourFrom',
-      serializers.serialize(object.hourFrom,
-          specifiedType: const FullType(DateTime)),
-      'hourTo',
-      serializers.serialize(object.hourTo,
-          specifiedType: const FullType(DateTime)),
+      'Lessons',
+      serializers.serialize(object.lessons,
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(LessonsResponse)])),
     ];
-    if (object.subject != null) {
-      result
-        ..add('subject')
-        ..add(serializers.serialize(object.subject,
-            specifiedType: const FullType(BuiltMap, const [
-              const FullType(String),
-              const FullType(LibrusSubjectResponse)
-            ])));
-    }
-    if (object.teacher != null) {
-      result
-        ..add('teacher')
-        ..add(serializers.serialize(object.teacher,
-            specifiedType: const FullType(BuiltMap, const [
-              const FullType(String),
-              const FullType(LibrusTeacherResponse)
-            ])));
-    }
-    if (object.orgTeacher != null) {
-      result
-        ..add('orgTeacher')
-        ..add(serializers.serialize(object.orgTeacher,
-            specifiedType: const FullType(BuiltMap, const [
-              const FullType(String),
-              const FullType(LibrusTeacherResponse)
-            ])));
-    }
-    if (object.orgSubject != null) {
-      result
-        ..add('orgSubject')
-        ..add(serializers.serialize(object.orgSubject,
-            specifiedType: const FullType(BuiltMap, const [
-              const FullType(String),
-              const FullType(LibrusSubjectResponse)
-            ])));
-    }
 
     return result;
   }
 
   @override
-  LibrusTimetableResponse deserialize(
-      Serializers serializers, Iterable serialized,
+  TimetableResponse deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new LibrusTimetableResponseBuilder();
+    final result = new TimetableResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -113,61 +59,11 @@ class _$LibrusTimetableResponseSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'LessonNo':
-          result.lessonNumber = serializers.deserialize(value,
-              specifiedType: const FullType(num)) as num;
-          break;
-        case 'subject':
-          result.subject.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(LibrusSubjectResponse)
-              ])) as BuiltMap);
-          break;
-        case 'teacher':
-          result.teacher.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(LibrusTeacherResponse)
-              ])) as BuiltMap);
-          break;
-        case 'IsSubstitutionClass':
-          result.substitution = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'IsCanceled':
-          result.canceled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'orgTeacher':
-          result.orgTeacher.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(LibrusTeacherResponse)
-              ])) as BuiltMap);
-          break;
-        case 'orgSubject':
-          result.orgSubject.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap, const [
-                const FullType(String),
-                const FullType(LibrusSubjectResponse)
-              ])) as BuiltMap);
-          break;
-        case 'date':
-          result.date = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
-          break;
-        case 'hourFrom':
-          result.hourFrom = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
-          break;
-        case 'hourTo':
-          result.hourTo = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+        case 'Lessons':
+          result.lessons.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(LessonsResponse)]))
+              as BuiltList);
           break;
       }
     }
@@ -176,25 +72,135 @@ class _$LibrusTimetableResponseSerializer
   }
 }
 
-class _$LibrusSubjectResponseSerializer
-    implements StructuredSerializer<LibrusSubjectResponse> {
+class _$LessonsResponseSerializer
+    implements StructuredSerializer<LessonsResponse> {
   @override
-  final Iterable<Type> types = const [
-    LibrusSubjectResponse,
-    _$LibrusSubjectResponse
-  ];
+  final Iterable<Type> types = const [LessonsResponse, _$LessonsResponse];
   @override
-  final String wireName = 'LibrusSubjectResponse';
+  final String wireName = 'LessonsResponse';
 
   @override
-  Iterable serialize(Serializers serializers, LibrusSubjectResponse object,
+  Iterable serialize(Serializers serializers, LessonsResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'id',
+      'Id',
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
+      'LessonNo',
+      serializers.serialize(object.lessonNumber,
+          specifiedType: const FullType(num)),
+      'Subject',
+      serializers.serialize(object.subject,
+          specifiedType: const FullType(SubjectResponse)),
+      'Teacher',
+      serializers.serialize(object.teacher,
+          specifiedType: const FullType(TeacherResponse)),
+      'IsSubstitutionClass',
+      serializers.serialize(object.isSubstitutionClass,
+          specifiedType: const FullType(bool)),
+      'IsCanceled',
+      serializers.serialize(object.isCanceled,
+          specifiedType: const FullType(bool)),
+      'OrgTeacher',
+      serializers.serialize(object.orgTeacher,
+          specifiedType: const FullType(TeacherResponse)),
+      'OrgSubject',
+      serializers.serialize(object.orgSubject,
+          specifiedType: const FullType(SubjectResponse)),
+      'Date',
+      serializers.serialize(object.date, specifiedType: const FullType(String)),
+      'HourFrom',
+      serializers.serialize(object.hourFrom,
+          specifiedType: const FullType(String)),
+      'HourTo',
+      serializers.serialize(object.hourTo,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  LessonsResponse deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new LessonsResponseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'Id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
+          break;
+        case 'LessonNo':
+          result.lessonNumber = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
+          break;
+        case 'Subject':
+          result.subject.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(SubjectResponse))
+              as SubjectResponse);
+          break;
+        case 'Teacher':
+          result.teacher.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(TeacherResponse))
+              as TeacherResponse);
+          break;
+        case 'IsSubstitutionClass':
+          result.isSubstitutionClass = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'IsCanceled':
+          result.isCanceled = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'OrgTeacher':
+          result.orgTeacher.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(TeacherResponse))
+              as TeacherResponse);
+          break;
+        case 'OrgSubject':
+          result.orgSubject.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(SubjectResponse))
+              as SubjectResponse);
+          break;
+        case 'Date':
+          result.date = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'HourFrom':
+          result.hourFrom = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'HourTo':
+          result.hourTo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$SubjectResponseSerializer
+    implements StructuredSerializer<SubjectResponse> {
+  @override
+  final Iterable<Type> types = const [SubjectResponse, _$SubjectResponse];
+  @override
+  final String wireName = 'SubjectResponse';
+
+  @override
+  Iterable serialize(Serializers serializers, SubjectResponse object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'Id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
+      'Name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'average',
+      'Average',
       serializers.serialize(object.average,
           specifiedType: const FullType(String)),
     ];
@@ -203,10 +209,9 @@ class _$LibrusSubjectResponseSerializer
   }
 
   @override
-  LibrusSubjectResponse deserialize(
-      Serializers serializers, Iterable serialized,
+  SubjectResponse deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new LibrusSubjectResponseBuilder();
+    final result = new SubjectResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -214,15 +219,15 @@ class _$LibrusSubjectResponseSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
+        case 'Id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'name':
+        case 'Name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'average':
+        case 'Average':
           result.average = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
@@ -233,26 +238,23 @@ class _$LibrusSubjectResponseSerializer
   }
 }
 
-class _$LibrusTeacherResponseSerializer
-    implements StructuredSerializer<LibrusTeacherResponse> {
+class _$TeacherResponseSerializer
+    implements StructuredSerializer<TeacherResponse> {
   @override
-  final Iterable<Type> types = const [
-    LibrusTeacherResponse,
-    _$LibrusTeacherResponse
-  ];
+  final Iterable<Type> types = const [TeacherResponse, _$TeacherResponse];
   @override
-  final String wireName = 'LibrusTeacherResponse';
+  final String wireName = 'TeacherResponse';
 
   @override
-  Iterable serialize(Serializers serializers, LibrusTeacherResponse object,
+  Iterable serialize(Serializers serializers, TeacherResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'id',
+      'Id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'firstName',
+      'FirstName',
       serializers.serialize(object.firstName,
           specifiedType: const FullType(String)),
-      'lastName',
+      'LastName',
       serializers.serialize(object.lastName,
           specifiedType: const FullType(String)),
     ];
@@ -261,10 +263,9 @@ class _$LibrusTeacherResponseSerializer
   }
 
   @override
-  LibrusTeacherResponse deserialize(
-      Serializers serializers, Iterable serialized,
+  TeacherResponse deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new LibrusTeacherResponseBuilder();
+    final result = new TeacherResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -272,15 +273,15 @@ class _$LibrusTeacherResponseSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
+        case 'Id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'firstName':
+        case 'FirstName':
           result.firstName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'lastName':
+        case 'LastName':
           result.lastName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
@@ -291,41 +292,134 @@ class _$LibrusTeacherResponseSerializer
   }
 }
 
-class _$LibrusTimetableResponse extends LibrusTimetableResponse {
+class _$TimetableResponse extends TimetableResponse {
   @override
-  final String id;
+  final BuiltList<LessonsResponse> lessons;
+
+  factory _$TimetableResponse([void updates(TimetableResponseBuilder b)]) =>
+      (new TimetableResponseBuilder()..update(updates)).build();
+
+  _$TimetableResponse._({this.lessons}) : super._() {
+    if (lessons == null) {
+      throw new BuiltValueNullFieldError('TimetableResponse', 'lessons');
+    }
+  }
+
+  @override
+  TimetableResponse rebuild(void updates(TimetableResponseBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  TimetableResponseBuilder toBuilder() =>
+      new TimetableResponseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is TimetableResponse && lessons == other.lessons;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, lessons.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('TimetableResponse')
+          ..add('lessons', lessons))
+        .toString();
+  }
+}
+
+class TimetableResponseBuilder
+    implements Builder<TimetableResponse, TimetableResponseBuilder> {
+  _$TimetableResponse _$v;
+
+  ListBuilder<LessonsResponse> _lessons;
+  ListBuilder<LessonsResponse> get lessons =>
+      _$this._lessons ??= new ListBuilder<LessonsResponse>();
+  set lessons(ListBuilder<LessonsResponse> lessons) =>
+      _$this._lessons = lessons;
+
+  TimetableResponseBuilder();
+
+  TimetableResponseBuilder get _$this {
+    if (_$v != null) {
+      _lessons = _$v.lessons?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(TimetableResponse other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$TimetableResponse;
+  }
+
+  @override
+  void update(void updates(TimetableResponseBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$TimetableResponse build() {
+    _$TimetableResponse _$result;
+    try {
+      _$result = _$v ?? new _$TimetableResponse._(lessons: lessons.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'lessons';
+        lessons.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'TimetableResponse', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$LessonsResponse extends LessonsResponse {
+  @override
+  final num id;
   @override
   final num lessonNumber;
   @override
-  final BuiltMap<String, LibrusSubjectResponse> subject;
+  final SubjectResponse subject;
   @override
-  final BuiltMap<String, LibrusTeacherResponse> teacher;
+  final TeacherResponse teacher;
   @override
-  final bool substitution;
+  final bool isSubstitutionClass;
   @override
-  final bool canceled;
+  final bool isCanceled;
   @override
-  final BuiltMap<String, LibrusTeacherResponse> orgTeacher;
+  final TeacherResponse orgTeacher;
   @override
-  final BuiltMap<String, LibrusSubjectResponse> orgSubject;
+  final SubjectResponse orgSubject;
   @override
-  final DateTime date;
+  final String date;
   @override
-  final DateTime hourFrom;
+  final String hourFrom;
   @override
-  final DateTime hourTo;
+  final String hourTo;
 
-  factory _$LibrusTimetableResponse(
-          [void updates(LibrusTimetableResponseBuilder b)]) =>
-      (new LibrusTimetableResponseBuilder()..update(updates)).build();
+  factory _$LessonsResponse([void updates(LessonsResponseBuilder b)]) =>
+      (new LessonsResponseBuilder()..update(updates)).build();
 
-  _$LibrusTimetableResponse._(
+  _$LessonsResponse._(
       {this.id,
       this.lessonNumber,
       this.subject,
       this.teacher,
-      this.substitution,
-      this.canceled,
+      this.isSubstitutionClass,
+      this.isCanceled,
       this.orgTeacher,
       this.orgSubject,
       this.date,
@@ -333,49 +427,59 @@ class _$LibrusTimetableResponse extends LibrusTimetableResponse {
       this.hourTo})
       : super._() {
     if (id == null) {
-      throw new BuiltValueNullFieldError('LibrusTimetableResponse', 'id');
+      throw new BuiltValueNullFieldError('LessonsResponse', 'id');
     }
     if (lessonNumber == null) {
-      throw new BuiltValueNullFieldError(
-          'LibrusTimetableResponse', 'lessonNumber');
+      throw new BuiltValueNullFieldError('LessonsResponse', 'lessonNumber');
     }
-    if (substitution == null) {
-      throw new BuiltValueNullFieldError(
-          'LibrusTimetableResponse', 'substitution');
+    if (subject == null) {
+      throw new BuiltValueNullFieldError('LessonsResponse', 'subject');
     }
-    if (canceled == null) {
-      throw new BuiltValueNullFieldError('LibrusTimetableResponse', 'canceled');
+    if (teacher == null) {
+      throw new BuiltValueNullFieldError('LessonsResponse', 'teacher');
+    }
+    if (isSubstitutionClass == null) {
+      throw new BuiltValueNullFieldError(
+          'LessonsResponse', 'isSubstitutionClass');
+    }
+    if (isCanceled == null) {
+      throw new BuiltValueNullFieldError('LessonsResponse', 'isCanceled');
+    }
+    if (orgTeacher == null) {
+      throw new BuiltValueNullFieldError('LessonsResponse', 'orgTeacher');
+    }
+    if (orgSubject == null) {
+      throw new BuiltValueNullFieldError('LessonsResponse', 'orgSubject');
     }
     if (date == null) {
-      throw new BuiltValueNullFieldError('LibrusTimetableResponse', 'date');
+      throw new BuiltValueNullFieldError('LessonsResponse', 'date');
     }
     if (hourFrom == null) {
-      throw new BuiltValueNullFieldError('LibrusTimetableResponse', 'hourFrom');
+      throw new BuiltValueNullFieldError('LessonsResponse', 'hourFrom');
     }
     if (hourTo == null) {
-      throw new BuiltValueNullFieldError('LibrusTimetableResponse', 'hourTo');
+      throw new BuiltValueNullFieldError('LessonsResponse', 'hourTo');
     }
   }
 
   @override
-  LibrusTimetableResponse rebuild(
-          void updates(LibrusTimetableResponseBuilder b)) =>
+  LessonsResponse rebuild(void updates(LessonsResponseBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LibrusTimetableResponseBuilder toBuilder() =>
-      new LibrusTimetableResponseBuilder()..replace(this);
+  LessonsResponseBuilder toBuilder() =>
+      new LessonsResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is LibrusTimetableResponse &&
+    return other is LessonsResponse &&
         id == other.id &&
         lessonNumber == other.lessonNumber &&
         subject == other.subject &&
         teacher == other.teacher &&
-        substitution == other.substitution &&
-        canceled == other.canceled &&
+        isSubstitutionClass == other.isSubstitutionClass &&
+        isCanceled == other.isCanceled &&
         orgTeacher == other.orgTeacher &&
         orgSubject == other.orgSubject &&
         date == other.date &&
@@ -398,8 +502,8 @@ class _$LibrusTimetableResponse extends LibrusTimetableResponse {
                                             lessonNumber.hashCode),
                                         subject.hashCode),
                                     teacher.hashCode),
-                                substitution.hashCode),
-                            canceled.hashCode),
+                                isSubstitutionClass.hashCode),
+                            isCanceled.hashCode),
                         orgTeacher.hashCode),
                     orgSubject.hashCode),
                 date.hashCode),
@@ -409,13 +513,13 @@ class _$LibrusTimetableResponse extends LibrusTimetableResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LibrusTimetableResponse')
+    return (newBuiltValueToStringHelper('LessonsResponse')
           ..add('id', id)
           ..add('lessonNumber', lessonNumber)
           ..add('subject', subject)
           ..add('teacher', teacher)
-          ..add('substitution', substitution)
-          ..add('canceled', canceled)
+          ..add('isSubstitutionClass', isSubstitutionClass)
+          ..add('isCanceled', isCanceled)
           ..add('orgTeacher', orgTeacher)
           ..add('orgSubject', orgSubject)
           ..add('date', date)
@@ -425,73 +529,71 @@ class _$LibrusTimetableResponse extends LibrusTimetableResponse {
   }
 }
 
-class LibrusTimetableResponseBuilder
-    implements
-        Builder<LibrusTimetableResponse, LibrusTimetableResponseBuilder> {
-  _$LibrusTimetableResponse _$v;
+class LessonsResponseBuilder
+    implements Builder<LessonsResponse, LessonsResponseBuilder> {
+  _$LessonsResponse _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   num _lessonNumber;
   num get lessonNumber => _$this._lessonNumber;
   set lessonNumber(num lessonNumber) => _$this._lessonNumber = lessonNumber;
 
-  MapBuilder<String, LibrusSubjectResponse> _subject;
-  MapBuilder<String, LibrusSubjectResponse> get subject =>
-      _$this._subject ??= new MapBuilder<String, LibrusSubjectResponse>();
-  set subject(MapBuilder<String, LibrusSubjectResponse> subject) =>
-      _$this._subject = subject;
+  SubjectResponseBuilder _subject;
+  SubjectResponseBuilder get subject =>
+      _$this._subject ??= new SubjectResponseBuilder();
+  set subject(SubjectResponseBuilder subject) => _$this._subject = subject;
 
-  MapBuilder<String, LibrusTeacherResponse> _teacher;
-  MapBuilder<String, LibrusTeacherResponse> get teacher =>
-      _$this._teacher ??= new MapBuilder<String, LibrusTeacherResponse>();
-  set teacher(MapBuilder<String, LibrusTeacherResponse> teacher) =>
-      _$this._teacher = teacher;
+  TeacherResponseBuilder _teacher;
+  TeacherResponseBuilder get teacher =>
+      _$this._teacher ??= new TeacherResponseBuilder();
+  set teacher(TeacherResponseBuilder teacher) => _$this._teacher = teacher;
 
-  bool _substitution;
-  bool get substitution => _$this._substitution;
-  set substitution(bool substitution) => _$this._substitution = substitution;
+  bool _isSubstitutionClass;
+  bool get isSubstitutionClass => _$this._isSubstitutionClass;
+  set isSubstitutionClass(bool isSubstitutionClass) =>
+      _$this._isSubstitutionClass = isSubstitutionClass;
 
-  bool _canceled;
-  bool get canceled => _$this._canceled;
-  set canceled(bool canceled) => _$this._canceled = canceled;
+  bool _isCanceled;
+  bool get isCanceled => _$this._isCanceled;
+  set isCanceled(bool isCanceled) => _$this._isCanceled = isCanceled;
 
-  MapBuilder<String, LibrusTeacherResponse> _orgTeacher;
-  MapBuilder<String, LibrusTeacherResponse> get orgTeacher =>
-      _$this._orgTeacher ??= new MapBuilder<String, LibrusTeacherResponse>();
-  set orgTeacher(MapBuilder<String, LibrusTeacherResponse> orgTeacher) =>
+  TeacherResponseBuilder _orgTeacher;
+  TeacherResponseBuilder get orgTeacher =>
+      _$this._orgTeacher ??= new TeacherResponseBuilder();
+  set orgTeacher(TeacherResponseBuilder orgTeacher) =>
       _$this._orgTeacher = orgTeacher;
 
-  MapBuilder<String, LibrusSubjectResponse> _orgSubject;
-  MapBuilder<String, LibrusSubjectResponse> get orgSubject =>
-      _$this._orgSubject ??= new MapBuilder<String, LibrusSubjectResponse>();
-  set orgSubject(MapBuilder<String, LibrusSubjectResponse> orgSubject) =>
+  SubjectResponseBuilder _orgSubject;
+  SubjectResponseBuilder get orgSubject =>
+      _$this._orgSubject ??= new SubjectResponseBuilder();
+  set orgSubject(SubjectResponseBuilder orgSubject) =>
       _$this._orgSubject = orgSubject;
 
-  DateTime _date;
-  DateTime get date => _$this._date;
-  set date(DateTime date) => _$this._date = date;
+  String _date;
+  String get date => _$this._date;
+  set date(String date) => _$this._date = date;
 
-  DateTime _hourFrom;
-  DateTime get hourFrom => _$this._hourFrom;
-  set hourFrom(DateTime hourFrom) => _$this._hourFrom = hourFrom;
+  String _hourFrom;
+  String get hourFrom => _$this._hourFrom;
+  set hourFrom(String hourFrom) => _$this._hourFrom = hourFrom;
 
-  DateTime _hourTo;
-  DateTime get hourTo => _$this._hourTo;
-  set hourTo(DateTime hourTo) => _$this._hourTo = hourTo;
+  String _hourTo;
+  String get hourTo => _$this._hourTo;
+  set hourTo(String hourTo) => _$this._hourTo = hourTo;
 
-  LibrusTimetableResponseBuilder();
+  LessonsResponseBuilder();
 
-  LibrusTimetableResponseBuilder get _$this {
+  LessonsResponseBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _lessonNumber = _$v.lessonNumber;
       _subject = _$v.subject?.toBuilder();
       _teacher = _$v.teacher?.toBuilder();
-      _substitution = _$v.substitution;
-      _canceled = _$v.canceled;
+      _isSubstitutionClass = _$v.isSubstitutionClass;
+      _isCanceled = _$v.isCanceled;
       _orgTeacher = _$v.orgTeacher?.toBuilder();
       _orgSubject = _$v.orgSubject?.toBuilder();
       _date = _$v.date;
@@ -503,32 +605,32 @@ class LibrusTimetableResponseBuilder
   }
 
   @override
-  void replace(LibrusTimetableResponse other) {
+  void replace(LessonsResponse other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$LibrusTimetableResponse;
+    _$v = other as _$LessonsResponse;
   }
 
   @override
-  void update(void updates(LibrusTimetableResponseBuilder b)) {
+  void update(void updates(LessonsResponseBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$LibrusTimetableResponse build() {
-    _$LibrusTimetableResponse _$result;
+  _$LessonsResponse build() {
+    _$LessonsResponse _$result;
     try {
       _$result = _$v ??
-          new _$LibrusTimetableResponse._(
+          new _$LessonsResponse._(
               id: id,
               lessonNumber: lessonNumber,
-              subject: _subject?.build(),
-              teacher: _teacher?.build(),
-              substitution: substitution,
-              canceled: canceled,
-              orgTeacher: _orgTeacher?.build(),
-              orgSubject: _orgSubject?.build(),
+              subject: subject.build(),
+              teacher: teacher.build(),
+              isSubstitutionClass: isSubstitutionClass,
+              isCanceled: isCanceled,
+              orgTeacher: orgTeacher.build(),
+              orgSubject: orgSubject.build(),
               date: date,
               hourFrom: hourFrom,
               hourTo: hourTo);
@@ -536,17 +638,17 @@ class LibrusTimetableResponseBuilder
       String _$failedField;
       try {
         _$failedField = 'subject';
-        _subject?.build();
+        subject.build();
         _$failedField = 'teacher';
-        _teacher?.build();
+        teacher.build();
 
         _$failedField = 'orgTeacher';
-        _orgTeacher?.build();
+        orgTeacher.build();
         _$failedField = 'orgSubject';
-        _orgSubject?.build();
+        orgSubject.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'LibrusTimetableResponse', _$failedField, e.toString());
+            'LessonsResponse', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -555,7 +657,7 @@ class LibrusTimetableResponseBuilder
   }
 }
 
-class _$LibrusSubjectResponse extends LibrusSubjectResponse {
+class _$SubjectResponse extends SubjectResponse {
   @override
   final String id;
   @override
@@ -563,34 +665,33 @@ class _$LibrusSubjectResponse extends LibrusSubjectResponse {
   @override
   final String average;
 
-  factory _$LibrusSubjectResponse(
-          [void updates(LibrusSubjectResponseBuilder b)]) =>
-      (new LibrusSubjectResponseBuilder()..update(updates)).build();
+  factory _$SubjectResponse([void updates(SubjectResponseBuilder b)]) =>
+      (new SubjectResponseBuilder()..update(updates)).build();
 
-  _$LibrusSubjectResponse._({this.id, this.name, this.average}) : super._() {
+  _$SubjectResponse._({this.id, this.name, this.average}) : super._() {
     if (id == null) {
-      throw new BuiltValueNullFieldError('LibrusSubjectResponse', 'id');
+      throw new BuiltValueNullFieldError('SubjectResponse', 'id');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('LibrusSubjectResponse', 'name');
+      throw new BuiltValueNullFieldError('SubjectResponse', 'name');
     }
     if (average == null) {
-      throw new BuiltValueNullFieldError('LibrusSubjectResponse', 'average');
+      throw new BuiltValueNullFieldError('SubjectResponse', 'average');
     }
   }
 
   @override
-  LibrusSubjectResponse rebuild(void updates(LibrusSubjectResponseBuilder b)) =>
+  SubjectResponse rebuild(void updates(SubjectResponseBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LibrusSubjectResponseBuilder toBuilder() =>
-      new LibrusSubjectResponseBuilder()..replace(this);
+  SubjectResponseBuilder toBuilder() =>
+      new SubjectResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is LibrusSubjectResponse &&
+    return other is SubjectResponse &&
         id == other.id &&
         name == other.name &&
         average == other.average;
@@ -603,7 +704,7 @@ class _$LibrusSubjectResponse extends LibrusSubjectResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LibrusSubjectResponse')
+    return (newBuiltValueToStringHelper('SubjectResponse')
           ..add('id', id)
           ..add('name', name)
           ..add('average', average))
@@ -611,9 +712,9 @@ class _$LibrusSubjectResponse extends LibrusSubjectResponse {
   }
 }
 
-class LibrusSubjectResponseBuilder
-    implements Builder<LibrusSubjectResponse, LibrusSubjectResponseBuilder> {
-  _$LibrusSubjectResponse _$v;
+class SubjectResponseBuilder
+    implements Builder<SubjectResponse, SubjectResponseBuilder> {
+  _$SubjectResponse _$v;
 
   String _id;
   String get id => _$this._id;
@@ -627,9 +728,9 @@ class LibrusSubjectResponseBuilder
   String get average => _$this._average;
   set average(String average) => _$this._average = average;
 
-  LibrusSubjectResponseBuilder();
+  SubjectResponseBuilder();
 
-  LibrusSubjectResponseBuilder get _$this {
+  SubjectResponseBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _name = _$v.name;
@@ -640,28 +741,28 @@ class LibrusSubjectResponseBuilder
   }
 
   @override
-  void replace(LibrusSubjectResponse other) {
+  void replace(SubjectResponse other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$LibrusSubjectResponse;
+    _$v = other as _$SubjectResponse;
   }
 
   @override
-  void update(void updates(LibrusSubjectResponseBuilder b)) {
+  void update(void updates(SubjectResponseBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$LibrusSubjectResponse build() {
-    final _$result = _$v ??
-        new _$LibrusSubjectResponse._(id: id, name: name, average: average);
+  _$SubjectResponse build() {
+    final _$result =
+        _$v ?? new _$SubjectResponse._(id: id, name: name, average: average);
     replace(_$result);
     return _$result;
   }
 }
 
-class _$LibrusTeacherResponse extends LibrusTeacherResponse {
+class _$TeacherResponse extends TeacherResponse {
   @override
   final String id;
   @override
@@ -669,35 +770,33 @@ class _$LibrusTeacherResponse extends LibrusTeacherResponse {
   @override
   final String lastName;
 
-  factory _$LibrusTeacherResponse(
-          [void updates(LibrusTeacherResponseBuilder b)]) =>
-      (new LibrusTeacherResponseBuilder()..update(updates)).build();
+  factory _$TeacherResponse([void updates(TeacherResponseBuilder b)]) =>
+      (new TeacherResponseBuilder()..update(updates)).build();
 
-  _$LibrusTeacherResponse._({this.id, this.firstName, this.lastName})
-      : super._() {
+  _$TeacherResponse._({this.id, this.firstName, this.lastName}) : super._() {
     if (id == null) {
-      throw new BuiltValueNullFieldError('LibrusTeacherResponse', 'id');
+      throw new BuiltValueNullFieldError('TeacherResponse', 'id');
     }
     if (firstName == null) {
-      throw new BuiltValueNullFieldError('LibrusTeacherResponse', 'firstName');
+      throw new BuiltValueNullFieldError('TeacherResponse', 'firstName');
     }
     if (lastName == null) {
-      throw new BuiltValueNullFieldError('LibrusTeacherResponse', 'lastName');
+      throw new BuiltValueNullFieldError('TeacherResponse', 'lastName');
     }
   }
 
   @override
-  LibrusTeacherResponse rebuild(void updates(LibrusTeacherResponseBuilder b)) =>
+  TeacherResponse rebuild(void updates(TeacherResponseBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LibrusTeacherResponseBuilder toBuilder() =>
-      new LibrusTeacherResponseBuilder()..replace(this);
+  TeacherResponseBuilder toBuilder() =>
+      new TeacherResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is LibrusTeacherResponse &&
+    return other is TeacherResponse &&
         id == other.id &&
         firstName == other.firstName &&
         lastName == other.lastName;
@@ -711,7 +810,7 @@ class _$LibrusTeacherResponse extends LibrusTeacherResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LibrusTeacherResponse')
+    return (newBuiltValueToStringHelper('TeacherResponse')
           ..add('id', id)
           ..add('firstName', firstName)
           ..add('lastName', lastName))
@@ -719,9 +818,9 @@ class _$LibrusTeacherResponse extends LibrusTeacherResponse {
   }
 }
 
-class LibrusTeacherResponseBuilder
-    implements Builder<LibrusTeacherResponse, LibrusTeacherResponseBuilder> {
-  _$LibrusTeacherResponse _$v;
+class TeacherResponseBuilder
+    implements Builder<TeacherResponse, TeacherResponseBuilder> {
+  _$TeacherResponse _$v;
 
   String _id;
   String get id => _$this._id;
@@ -735,9 +834,9 @@ class LibrusTeacherResponseBuilder
   String get lastName => _$this._lastName;
   set lastName(String lastName) => _$this._lastName = lastName;
 
-  LibrusTeacherResponseBuilder();
+  TeacherResponseBuilder();
 
-  LibrusTeacherResponseBuilder get _$this {
+  TeacherResponseBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _firstName = _$v.firstName;
@@ -748,22 +847,22 @@ class LibrusTeacherResponseBuilder
   }
 
   @override
-  void replace(LibrusTeacherResponse other) {
+  void replace(TeacherResponse other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$LibrusTeacherResponse;
+    _$v = other as _$TeacherResponse;
   }
 
   @override
-  void update(void updates(LibrusTeacherResponseBuilder b)) {
+  void update(void updates(TeacherResponseBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$LibrusTeacherResponse build() {
+  _$TeacherResponse build() {
     final _$result = _$v ??
-        new _$LibrusTeacherResponse._(
+        new _$TeacherResponse._(
             id: id, firstName: firstName, lastName: lastName);
     replace(_$result);
     return _$result;

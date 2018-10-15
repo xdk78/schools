@@ -20,10 +20,16 @@ part of 'serializers.dart';
 // ignore_for_file: test_types_in_equals
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(LibrusAccountResponse.serializer)
-      ..add(LibrusAccountsResponse.serializer)
+      ..add(AccountResponse.serializer)
+      ..add(AccountsResponse.serializer)
+      ..add(LessonsResponse.serializer)
+      ..add(SubjectResponse.serializer)
+      ..add(TeacherResponse.serializer)
+      ..add(TimetableResponse.serializer)
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(LibrusAccountResponse)]),
-          () => new ListBuilder<LibrusAccountResponse>()))
+          const FullType(BuiltList, const [const FullType(AccountResponse)]),
+          () => new ListBuilder<AccountResponse>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(LessonsResponse)]),
+          () => new ListBuilder<LessonsResponse>()))
     .build();

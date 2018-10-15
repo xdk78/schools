@@ -71,13 +71,13 @@ class LibrusClient {
   }
 
   /// Get list of Librus Synergia accounts tied to provided Librus account
-  Future<LibrusAccountsResponse> getAccounts(String accessToken) async {
+  Future<AccountsResponse> getAccounts(String accessToken) async {
     var accountsResponse = await this.client.get(
         '$baseUrl/api/SynergiaAccounts',
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
 
-    LibrusAccountsResponse response = serializers.deserializeWith(
-        LibrusAccountsResponse.serializer, json.decode(accountsResponse.data));
+    AccountsResponse response = serializers.deserializeWith(
+        AccountsResponse.serializer, json.decode(accountsResponse.data));
 
     return response;
   }
