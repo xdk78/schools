@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
         Padding(
             padding: EdgeInsets.all(16.0),
-            child: Text('Zaloguj się poprzez',
+            child: Text('Dodaj konto',
                 textAlign: TextAlign.center, style: TextStyle(fontSize: 24.0))),
         Card(
           margin: EdgeInsets.symmetric(horizontal: 18.0),
@@ -34,6 +34,14 @@ class LoginScreen extends StatelessWidget {
                 title: Text('Konto Vulcan'),
                 subtitle: Text('Zaloguj się do systemu UONET+'),
               ),
+              ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, '/timetable');
+                },
+                leading: Icon(Icons.bug_report),
+                title: Text('Kontynuuj bez logowania'),
+                subtitle: Text('Test interfejsu')
+              )
             ],
           ),
         ),

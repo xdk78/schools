@@ -64,14 +64,14 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                 children: <Widget>[
                   new TextFormField(
                       decoration: new InputDecoration(
-                          hintText: 'token', labelText: 'Podaj token'),
+                          hintText: 'token', labelText: 'Token'),
                       validator: this._validateToken,
                       onSaved: (String value) {
                         this._data.token = value;
                       }),
                   new TextFormField(
                       decoration: new InputDecoration(
-                          hintText: 'Symbol', labelText: 'Podaj symbol szkoły'),
+                          hintText: 'symbol', labelText: 'Symbol szkoły'),
                       validator: this._validateSymbol,
                       onSaved: (String value) {
                         this._data.symbol = value;
@@ -79,7 +79,7 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                   new TextFormField(
                       keyboardType: TextInputType.number,
                       decoration: new InputDecoration(
-                          hintText: 'numer PIN', labelText: 'Podaj PIN'),
+                          hintText: 'PIN', labelText: 'PIN'),
                       validator: this._validatePin,
                       onSaved: (String value) {
                         this._data.pin = value;

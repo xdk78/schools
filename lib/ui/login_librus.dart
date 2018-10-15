@@ -16,9 +16,7 @@ class _LoginData {
 class _LoginLibrusState extends State<LoginLibrusScreen> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   _LoginData _data = new _LoginData();
-  RegExp _emailRegex = RegExp(
-    r'(\S+)[\@]([a-zA-Z0-9]+)[\.]([a-zA-Z0-9]+)'
-  );
+  RegExp _emailRegex = RegExp(r'(\S+)[\@]([a-zA-Z0-9]+)[\.]([a-zA-Z0-9]+)');
 
   String _validateEmail(String value) {
     if (!_emailRegex.hasMatch(value)) {
@@ -54,7 +52,7 @@ class _LoginLibrusState extends State<LoginLibrusScreen> {
                   new TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       decoration: new InputDecoration(
-                          hintText: 'Email', labelText: 'Podaj email'),
+                          hintText: 'Email', labelText: 'Email'),
                       validator: this._validateEmail,
                       onSaved: (String value) {
                         this._data.email = value;
@@ -63,7 +61,7 @@ class _LoginLibrusState extends State<LoginLibrusScreen> {
                       keyboardType: TextInputType.text,
                       obscureText: true,
                       decoration: new InputDecoration(
-                          hintText: 'Hasło', labelText: 'Podaj hasło'),
+                          hintText: 'Hasło', labelText: 'Hasło'),
                       onSaved: (String value) {
                         this._data.password = value;
                       }),
@@ -91,7 +89,9 @@ class _LoginLibrusState extends State<LoginLibrusScreen> {
                             this.submit(callback);
                           },
                         );
-                      })),
+                      }
+                    )
+                  ),
                 ],
               ),
             )),
