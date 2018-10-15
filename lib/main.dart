@@ -12,6 +12,7 @@ import 'ui/login_vulcan.dart';
 import 'ui/timetable.dart';
 import 'package:redux_logging/redux_logging.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 final logger = new LoggingMiddleware.printer();
 
 void main() {
@@ -38,6 +39,7 @@ class SchoolsApp extends StatelessWidget {
         store: store,
         child: MaterialApp(
           title: 'Schools',
+          navigatorKey: navigatorKey,
           theme: ThemeData(
               primaryColor: Colors.white,
               accentColor: Colors.indigo,
