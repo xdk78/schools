@@ -26,7 +26,7 @@ abstract class TeacherDictonary
 
   @BuiltValueField(wireName: "LoginId")
   int get loginId;
-  
+
   TeacherDictonary._();
   factory TeacherDictonary([updates(TeacherDictonaryBuilder b)]) =
       _$TeacherDictonary;

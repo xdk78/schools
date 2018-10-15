@@ -37,6 +37,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'librusAuthState',
       serializers.serialize(object.librusAuthState,
           specifiedType: const FullType(LibrusAuthState)),
+      'vulcanState',
+      serializers.serialize(object.vulcanState,
+          specifiedType: const FullType(VulcanState)),
     ];
 
     return result;
@@ -63,6 +66,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
                   specifiedType: const FullType(LibrusAuthState))
               as LibrusAuthState);
           break;
+        case 'vulcanState':
+          result.vulcanState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(VulcanState)) as VulcanState);
+          break;
       }
     }
 
@@ -75,16 +82,22 @@ class _$AppState extends AppState {
   final VulcanAuthState vulcanAuthState;
   @override
   final LibrusAuthState librusAuthState;
+  @override
+  final VulcanState vulcanState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.vulcanAuthState, this.librusAuthState}) : super._() {
+  _$AppState._({this.vulcanAuthState, this.librusAuthState, this.vulcanState})
+      : super._() {
     if (vulcanAuthState == null) {
       throw new BuiltValueNullFieldError('AppState', 'vulcanAuthState');
     }
     if (librusAuthState == null) {
       throw new BuiltValueNullFieldError('AppState', 'librusAuthState');
+    }
+    if (vulcanState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'vulcanState');
     }
   }
 
@@ -100,19 +113,23 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         vulcanAuthState == other.vulcanAuthState &&
-        librusAuthState == other.librusAuthState;
+        librusAuthState == other.librusAuthState &&
+        vulcanState == other.vulcanState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, vulcanAuthState.hashCode), librusAuthState.hashCode));
+    return $jf($jc(
+        $jc($jc(0, vulcanAuthState.hashCode), librusAuthState.hashCode),
+        vulcanState.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('vulcanAuthState', vulcanAuthState)
-          ..add('librusAuthState', librusAuthState))
+          ..add('librusAuthState', librusAuthState)
+          ..add('vulcanState', vulcanState))
         .toString();
   }
 }
@@ -132,12 +149,19 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set librusAuthState(LibrusAuthStateBuilder librusAuthState) =>
       _$this._librusAuthState = librusAuthState;
 
+  VulcanStateBuilder _vulcanState;
+  VulcanStateBuilder get vulcanState =>
+      _$this._vulcanState ??= new VulcanStateBuilder();
+  set vulcanState(VulcanStateBuilder vulcanState) =>
+      _$this._vulcanState = vulcanState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
       _vulcanAuthState = _$v.vulcanAuthState?.toBuilder();
       _librusAuthState = _$v.librusAuthState?.toBuilder();
+      _vulcanState = _$v.vulcanState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -163,7 +187,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               vulcanAuthState: vulcanAuthState.build(),
-              librusAuthState: librusAuthState.build());
+              librusAuthState: librusAuthState.build(),
+              vulcanState: vulcanState.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -171,6 +196,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         vulcanAuthState.build();
         _$failedField = 'librusAuthState';
         librusAuthState.build();
+        _$failedField = 'vulcanState';
+        vulcanState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

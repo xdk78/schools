@@ -87,8 +87,9 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                   new Container(
                       margin: EdgeInsets.only(top: 12.0),
                       child: StoreConnector<AppState, VoidCallback>(
-                          onInit: (store) { store.dispatch(LoadSavedVulcanAuthState());},
-                          converter: (store) {
+                          onInit: (store) {
+                        store.dispatch(LoadSavedVulcanAuthState());
+                      }, converter: (store) {
                         return () => store.dispatch(AuthenticateVulcanAction(
                             pin: this._data.pin,
                             symbol: this._data.symbol,

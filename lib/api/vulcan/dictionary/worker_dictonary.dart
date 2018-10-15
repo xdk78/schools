@@ -26,7 +26,7 @@ abstract class WorkerDictonary
 
   @BuiltValueField(wireName: "LoginId")
   int get loginId;
-  
+
   WorkerDictonary._();
   factory WorkerDictonary([updates(WorkerDictonaryBuilder b)]) =
       _$WorkerDictonary;

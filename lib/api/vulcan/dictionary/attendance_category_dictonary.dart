@@ -5,7 +5,8 @@ import 'package:built_collection/built_collection.dart';
 part 'attendance_category_dictonary.g.dart';
 
 abstract class AttendanceCategoryDictonary
-    implements Built<AttendanceCategoryDictonary, AttendanceCategoryDictonaryBuilder> {
+    implements
+        Built<AttendanceCategoryDictonary, AttendanceCategoryDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
   int get id;
 
@@ -34,7 +35,8 @@ abstract class AttendanceCategoryDictonary
   bool get deleted;
 
   AttendanceCategoryDictonary._();
-  factory AttendanceCategoryDictonary([updates(AttendanceCategoryDictonaryBuilder b)]) =
+  factory AttendanceCategoryDictonary(
+          [updates(AttendanceCategoryDictonaryBuilder b)]) =
       _$AttendanceCategoryDictonary;
 
   static Serializer<AttendanceCategoryDictonary> get serializer =>

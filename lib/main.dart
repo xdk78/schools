@@ -4,6 +4,7 @@ import 'reducers/app_reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_middleware.dart';
+import 'package:schools/api/vulcan/middleware.dart';
 import 'package:schools/api/librus/auth/librus_auth_middleware.dart';
 import 'ui/login.dart';
 import 'ui/login_librus.dart';
@@ -14,13 +15,13 @@ import 'package:redux_logging/redux_logging.dart';
 final logger = new LoggingMiddleware.printer();
 
 void main() {
-  final store = Store<AppState>(appReducer,
-      initialState: AppState(),
-      middleware: [
-        new LoggingMiddleware.printer(),
-        vulcanAuthMiddleware,
-        librusAuthMiddleware
-      ]);
+  final store =
+      Store<AppState>(appReducer, initialState: AppState(), middleware: [
+    new LoggingMiddleware.printer(),
+    vulcanAuthMiddleware,
+    vulcanMiddleware,
+    librusAuthMiddleware,
+  ]);
   runApp(SchoolsApp(
     store: store,
   ));

@@ -14,7 +14,7 @@ abstract class MarkCategoryDictonary
 
   @BuiltValueField(wireName: "Nazwa")
   String get name;
-  
+
   MarkCategoryDictonary._();
   factory MarkCategoryDictonary([updates(MarkCategoryDictonaryBuilder b)]) =
       _$MarkCategoryDictonary;

@@ -23,7 +23,7 @@ abstract class LessonTimeDictonary
 
   @BuiltValueField(wireName: "KoniecTekst")
   String get endText;
-  
+
   LessonTimeDictonary._();
   factory LessonTimeDictonary([updates(LessonTimeDictonaryBuilder b)]) =
       _$LessonTimeDictonary;

@@ -5,7 +5,8 @@ import 'package:built_collection/built_collection.dart';
 part 'warning_category_dictonary.g.dart';
 
 abstract class WarningCategoryDictonary
-    implements Built<WarningCategoryDictonary, WarningCategoryDictonaryBuilder> {
+    implements
+        Built<WarningCategoryDictonary, WarningCategoryDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
   int get id;
 
@@ -14,9 +15,10 @@ abstract class WarningCategoryDictonary
 
   @BuiltValueField(wireName: "Aktywny")
   bool get active;
-  
+
   WarningCategoryDictonary._();
-  factory WarningCategoryDictonary([updates(WarningCategoryDictonaryBuilder b)]) =
+  factory WarningCategoryDictonary(
+          [updates(WarningCategoryDictonaryBuilder b)]) =
       _$WarningCategoryDictonary;
 
   static Serializer<WarningCategoryDictonary> get serializer =>

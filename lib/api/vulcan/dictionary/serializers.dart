@@ -20,7 +20,6 @@ part 'serializers.g.dart';
   TeacherDictonary,
   WarningCategoryDictonary,
   WorkerDictonary,
-
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

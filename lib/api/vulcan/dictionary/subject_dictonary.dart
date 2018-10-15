@@ -20,7 +20,7 @@ abstract class SubjectDictonary
 
   @BuiltValueField(wireName: "Pozycja")
   int get position;
-  
+
   SubjectDictonary._();
   factory SubjectDictonary([updates(SubjectDictonaryBuilder b)]) =
       _$SubjectDictonary;

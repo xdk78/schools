@@ -1,8 +1,9 @@
 import 'package:http/http.dart';
 import 'dart:async';
 import 'package:schools/api/vulcan/auth/signer.dart';
-import 'package:schools/api/vulcan/auth/vulcan_auth_state.dart';
+import 'package:schools/api/vulcan/response_models/dictonary_response.dart';
 import 'package:schools/api/vulcan/uuid.dart';
+import 'package:schools/api/vulcan/auth/vulcan_auth_state.dart';
 import 'package:schools/api/vulcan/response_models/certificate_response.dart';
 import 'package:schools/api/vulcan/response_models/students_list_response.dart';
 import 'package:schools/api/vulcan/response_models/serializers.dart';
@@ -134,5 +135,29 @@ class VulcanClient {
       "RemoteMobileAppVersion": appVersion,
       "RemoteMobileAppName": "VULCAN-Android-ModulUcznia",
     });
+  }
+
+  Future<DictonaryResponse> fetchDictonary(
+      VulcanAuthState vulcanAuthState) async {
+    var fetchDictonaryBody = createEmptyVulcanRequest();
+    var endpoint = vulcanAuthState.apiEndpoint;
+    var symbol = vulcanAuthState.symbol;
+    var schoolKey = vulcanAuthState.schoolKey;
+    var pfx = vulcanAuthState.certificatePfx;
+    var certKey = vulcanAuthState.certificateKey;
+
+    var dictonaryData = await client.post(
+        '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/Slowniki',
+        body: fetchDictonaryBody,
+        headers: Map.from({
+          "RequestSignatureValue":
+              await signVulcanRequest(fetchDictonaryBody, pfx),
+          "RequestCertificateKey": certKey,
+          "User-Agent": "MobileUserAgent",
+          "Content-Type": "application/json",
+        }));
+    DictonaryResponse dictonaryResponse = serializers.deserializeWith(
+        DictonaryResponse.serializer, json.decode(dictonaryData.body));
+    return dictonaryResponse;
   }
 }
