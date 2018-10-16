@@ -32,6 +32,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(StudentsListResponse.serializer)
       ..add(SubjectDictonary.serializer)
       ..add(TeacherDictonary.serializer)
+      ..add(TimetableData.serializer)
+      ..add(TimetableResponse.serializer)
       ..add(WarningCategoryDictonary.serializer)
       ..add(WorkerDictonary.serializer)
       ..addBuilderFactory(
@@ -65,5 +67,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(AttendanceTypeDictonary)]),
-          () => new ListBuilder<AttendanceTypeDictonary>()))
+          () => new ListBuilder<AttendanceTypeDictonary>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(TimetableData)]),
+          () => new ListBuilder<TimetableData>()))
     .build();

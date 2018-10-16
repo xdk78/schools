@@ -18,7 +18,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
           ..certificateKey = ''
           ..certificatePfx = ''
           ..apiEndpoint = ''
-          ..schoolKey = ''
+          ..schoolKey = null
           ..symbol = ''),
         vulcanState: VulcanState(),
         librusAuthState: LibrusAuthState().rebuild((b) => b..accessToken = ''));

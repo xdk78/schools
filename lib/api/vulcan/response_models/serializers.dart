@@ -12,12 +12,14 @@ import 'package:schools/api/vulcan/dictionary/attendance_category_dictonary.dart
 import 'package:schools/api/vulcan/dictionary/attendance_type_dictonary.dart';
 import 'package:schools/api/vulcan/dictionary/lesson_time_dictonary.dart';
 import 'package:schools/api/vulcan/dictionary/mark_category_dictonary.dart';
+import 'package:schools/api/vulcan/response_models/timetable_response.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor(const [
   CertificateResponse,
   StudentsListResponse,
+  TimetableResponse,
   DictonaryResponse,
   Data,
 ])

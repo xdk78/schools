@@ -3,7 +3,7 @@ import 'package:schools/api/vulcan/vulcan_client.dart';
 import 'package:schools/api/vulcan/actions.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_actions.dart';
 import 'package:schools/reducers/app_state.dart';
-import 'package:schools/main.dart';
+import 'package:schools/keys.dart';
 
 void vulcanMiddleware(Store<AppState> store, action, NextDispatcher next) {
   var client = new VulcanClient();
@@ -13,7 +13,7 @@ void vulcanMiddleware(Store<AppState> store, action, NextDispatcher next) {
       var dictonaryAction = new SetDictonaryAction(el);
       store.dispatch(dictonaryAction);
       store.dispatch(LoginFinished());
-      navigatorKey.currentState.pushNamed("/timetable");
+      Keys.navKey.currentState.pushNamed("/timetable");
     });
   }
 }

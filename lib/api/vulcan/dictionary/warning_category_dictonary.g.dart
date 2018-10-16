@@ -38,8 +38,6 @@ class _$WarningCategoryDictonarySerializer
     final result = <Object>[
       'Id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
-      'Kod',
-      serializers.serialize(object.code, specifiedType: const FullType(String)),
       'Aktywny',
       serializers.serialize(object.active, specifiedType: const FullType(bool)),
     ];
@@ -63,10 +61,6 @@ class _$WarningCategoryDictonarySerializer
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'Kod':
-          result.code = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'Aktywny':
           result.active = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
@@ -82,20 +76,15 @@ class _$WarningCategoryDictonary extends WarningCategoryDictonary {
   @override
   final int id;
   @override
-  final String code;
-  @override
   final bool active;
 
   factory _$WarningCategoryDictonary(
           [void updates(WarningCategoryDictonaryBuilder b)]) =>
       (new WarningCategoryDictonaryBuilder()..update(updates)).build();
 
-  _$WarningCategoryDictonary._({this.id, this.code, this.active}) : super._() {
+  _$WarningCategoryDictonary._({this.id, this.active}) : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('WarningCategoryDictonary', 'id');
-    }
-    if (code == null) {
-      throw new BuiltValueNullFieldError('WarningCategoryDictonary', 'code');
     }
     if (active == null) {
       throw new BuiltValueNullFieldError('WarningCategoryDictonary', 'active');
@@ -116,20 +105,18 @@ class _$WarningCategoryDictonary extends WarningCategoryDictonary {
     if (identical(other, this)) return true;
     return other is WarningCategoryDictonary &&
         id == other.id &&
-        code == other.code &&
         active == other.active;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, id.hashCode), code.hashCode), active.hashCode));
+    return $jf($jc($jc(0, id.hashCode), active.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('WarningCategoryDictonary')
           ..add('id', id)
-          ..add('code', code)
           ..add('active', active))
         .toString();
   }
@@ -144,10 +131,6 @@ class WarningCategoryDictonaryBuilder
   int get id => _$this._id;
   set id(int id) => _$this._id = id;
 
-  String _code;
-  String get code => _$this._code;
-  set code(String code) => _$this._code = code;
-
   bool _active;
   bool get active => _$this._active;
   set active(bool active) => _$this._active = active;
@@ -157,7 +140,6 @@ class WarningCategoryDictonaryBuilder
   WarningCategoryDictonaryBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
-      _code = _$v.code;
       _active = _$v.active;
       _$v = null;
     }
@@ -179,8 +161,8 @@ class WarningCategoryDictonaryBuilder
 
   @override
   _$WarningCategoryDictonary build() {
-    final _$result = _$v ??
-        new _$WarningCategoryDictonary._(id: id, code: code, active: active);
+    final _$result =
+        _$v ?? new _$WarningCategoryDictonary._(id: id, active: active);
     replace(_$result);
     return _$result;
   }

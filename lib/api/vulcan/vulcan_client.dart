@@ -5,6 +5,7 @@ import 'package:schools/api/vulcan/response_models/dictonary_response.dart';
 import 'package:schools/api/vulcan/uuid.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_state.dart';
 import 'package:schools/api/vulcan/response_models/certificate_response.dart';
+import 'package:schools/api/vulcan/response_models/timetable_response.dart';
 import 'package:schools/api/vulcan/response_models/students_list_response.dart';
 import 'package:schools/api/vulcan/response_models/serializers.dart';
 
@@ -15,11 +16,14 @@ class VulcanAuthResponse {
   final String certKey;
   final String endpoint;
   final String schoolSymbol;
+  final int schoolId;
   final String symbol;
+  final int studentId;
+  final int qualifyingPeriodId;
   final String name;
 
   VulcanAuthResponse(this.certPfx, this.certKey, this.endpoint,
-      this.schoolSymbol, this.symbol, this.name);
+      this.schoolSymbol, this.schoolId, this.symbol, this.studentId, this.qualifyingPeriodId, this.name);
 }
 
 class BaseVulcanClient extends BaseClient {
@@ -30,7 +34,6 @@ class BaseVulcanClient extends BaseClient {
 
   @override
   Future<StreamedResponse> send(BaseRequest request) {
-    request.headers['user-agent'] = _userAgent;
     return _inner.send(request);
   }
 }
@@ -95,24 +98,15 @@ class VulcanClient {
 
     final schoolSymbol = studentsList.students[0].schoolSymbol;
 
-    var startLoggingBody = createEmptyVulcanRequest();
-    var loggingResponse = await client.post(
-        '$endpoint/$symbol/$schoolSymbol/mobile-api/Uczen.v3.Uczen/LogAppStart',
-        body: startLoggingBody,
-        headers: Map.from({
-          "RequestSignatureValue": await signVulcanRequest(
-              startLoggingBody, certData.tokenCert.certificatePfx),
-          "RequestCertificateKey": certData.tokenCert.certificateKey,
-          "User-Agent": "MobileUserAgent",
-          "Content-Type": "application/json",
-        }));
-
     return VulcanAuthResponse(
         certData.tokenCert.certificatePfx,
         certData.tokenCert.certificateKey,
         endpoint,
         schoolSymbol,
-        symbol,
+        studentsList.students[0].schoolId,
+        symbol,        
+        studentsList.students[0].studentId,
+        studentsList.students[0].qualifyingPeriodId,
         studentsList.students[0].firstName);
   }
 
@@ -127,14 +121,50 @@ class VulcanClient {
   }
 
   String createEmptyVulcanRequest() {
-    var currentTimestamp = new DateTime.now().millisecondsSinceEpoch;
-    return json.encode({
+    var currentTimestamp = new DateTime.now().millisecondsSinceEpoch / 1000;
+    JsonEncoder encoder = new JsonEncoder.withIndent('    ');
+    return encoder.convert({
       "RemoteMobileTimeKey": currentTimestamp,
       "TimeKey": currentTimestamp - 1,
       "RequestId": generateUuidv4(),
       "RemoteMobileAppVersion": appVersion,
       "RemoteMobileAppName": "VULCAN-Android-ModulUcznia",
     });
+  }
+
+  Future<TimetableResponse> fetchTimetable(VulcanAuthState vulcanAuthState) async {
+    var currentTimestamp = new DateTime.now().millisecondsSinceEpoch / 1000;
+    JsonEncoder encoder = new JsonEncoder.withIndent('    ');
+    var requestData = encoder.convert({
+      "DataPoczatkowa": "2018-10-15",
+      "DataKoncowa": "2018-10-19",
+      "IdOddzial": vulcanAuthState.schoolId,
+      "IdOkresKlasyfikacyjny": vulcanAuthState.qualifyingPeriodId,
+      "IdUczen": vulcanAuthState.studentId,
+      "RemoteMobileTimeKey": currentTimestamp,
+      "TimeKey": currentTimestamp - 1,
+      "RequestId": generateUuidv4(),
+      "RemoteMobileAppVersion": appVersion,
+      "RemoteMobileAppName": "VULCAN-Android-ModulUcznia",
+    });
+    var endpoint = vulcanAuthState.apiEndpoint;
+    var symbol = vulcanAuthState.symbol;
+    var schoolKey = vulcanAuthState.schoolKey;
+    var dictonaryData = await client.post(
+        '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/Slowniki',
+        body: requestData,
+        headers: Map.from({
+          "RequestSignatureValue":
+              await signVulcanRequest(requestData, vulcanAuthState.certificatePfx),
+          "RequestCertificateKey": vulcanAuthState.certificateKey,
+          "User-Agent": "MobileUserAgent",
+          "Content-Type": "application/json",
+        }));
+    
+    TimetableResponse timetableResponse = serializers.deserializeWith(
+        TimetableResponse.serializer, json.decode(dictonaryData.body));
+    return timetableResponse;
+
   }
 
   Future<DictonaryResponse> fetchDictonary(
@@ -145,6 +175,18 @@ class VulcanClient {
     var schoolKey = vulcanAuthState.schoolKey;
     var pfx = vulcanAuthState.certificatePfx;
     var certKey = vulcanAuthState.certificateKey;
+    var startLoggingBody = createEmptyVulcanRequest();
+    var loggingResponse = await client.post(
+        '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/LogAppStart',
+        body: startLoggingBody,
+        headers: Map.from({
+          "RequestSignatureValue": await signVulcanRequest(
+              startLoggingBody, pfx),
+          "RequestCertificateKey": certKey,
+          "User-Agent": "MobileUserAgent",
+          "Content-Type": "application/json",
+        }));
+
 
     var dictonaryData = await client.post(
         '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/Slowniki',

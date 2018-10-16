@@ -22,7 +22,7 @@ abstract class AttendanceTypeDictonary
   bool get defaultEntry;
 
   @BuiltValueField(wireName: "IdKategoriaFrek")
-  String get attendanceCategoryId;
+  int get attendanceCategoryId;
 
   AttendanceTypeDictonary._();
   factory AttendanceTypeDictonary([updates(AttendanceTypeDictonaryBuilder b)]) =
