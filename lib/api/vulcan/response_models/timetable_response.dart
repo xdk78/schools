@@ -17,7 +17,8 @@ abstract class TimetableResponse
       _$timetableResponseSerializer;
 }
 
-abstract class TimetableData implements Built<TimetableData, TimetableDataBuilder> {
+abstract class TimetableData
+    implements Built<TimetableData, TimetableDataBuilder> {
   TimetableData._();
 
   @BuiltValueField(wireName: 'DzienTekst')

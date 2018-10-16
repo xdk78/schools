@@ -25,7 +25,8 @@ abstract class DictonaryResponse
       _$dictonaryResponseSerializer;
 }
 
-abstract class DictonaryData implements Built<DictonaryData, DictonaryDataBuilder> {
+abstract class DictonaryData
+    implements Built<DictonaryData, DictonaryDataBuilder> {
   DictonaryData._();
 
   @BuiltValueField(wireName: 'Nauczyciele')

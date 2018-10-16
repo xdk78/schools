@@ -14,5 +14,15 @@ Reducer<VulcanDictonaryState> dictonaryReducer =
 
 VulcanDictonaryState _setDictonary(
     VulcanDictonaryState state, SetDictonaryAction action) {
-  return state.rebuild((b) => b);
+  return state.rebuild((b) => b
+    ..attendanceCategories
+        .replace(action.dictResponse.data.attendanceCategories)
+    ..teachers.replace(action.dictResponse.data.teachers)
+    ..workers.replace(action.dictResponse.data.workers)
+    ..attendanceTypes.replace(action.dictResponse.data.attendanceTypes)
+    ..lessonTimes.replace(action.dictResponse.data.lessonTimes)
+    ..markCategories.replace(action.dictResponse.data.markCategories)
+    ..subjects.replace(action.dictResponse.data.subjects)
+    ..warningCategories.replace(action.dictResponse.data.warningCategories)
+    ..synced = true);
 }

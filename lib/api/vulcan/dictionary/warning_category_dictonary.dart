@@ -10,7 +10,6 @@ abstract class WarningCategoryDictonary
   @BuiltValueField(wireName: "Id")
   int get id;
 
-
   @BuiltValueField(wireName: "Aktywny")
   bool get active;
 

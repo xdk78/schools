@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:schools/store/app_state.dart';
+import 'package:schools/api/vulcan/auth/vulcan_auth_actions.dart';
+import 'package:schools/store/timetable/timetable_actions.dart';
+import 'package:schools/store/timetable/timetable_state.dart';
 
 class TimetableScreen extends StatelessWidget {
   final List<ListItem> items = List<ListItem>.generate(
@@ -11,30 +16,25 @@ class TimetableScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Plan lekcji'),
-      ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final item = items[index];
-
-          if (item is HeadingItem) {
-            return ListTile(
-              title: Text(
-                item.heading,
-                style: Theme.of(context).textTheme.headline,
-              ),
-            );
-          } else if (item is LessonItem) {
-            return ListTile(
-              title: Text(item.teacher),
-              subtitle: Text(item.body),
-            );
-          }
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Plan lekcji'),
+        ),
+        body: StoreConnector<AppState, TimetableState>(
+            converter: (store) => store.state.timetableState,
+            onInit: (store) {
+              store.dispatch(LoadTimetableAction());
+            },
+            builder: (context, state) {
+              print(state);
+              return ListView.builder(
+                  itemCount: state.monday.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(state.monday[index].subject),
+                      subtitle: Text(state.monday[index].classroom),
+                    );
+                  });
+            }));
   }
 }
 

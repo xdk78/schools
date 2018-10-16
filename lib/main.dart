@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schools/reducers/app_state.dart';
-import 'reducers/app_reducer.dart';
+import 'package:schools/store/app_state.dart';
+import 'store/app_reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_middleware.dart';

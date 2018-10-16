@@ -22,8 +22,16 @@ class VulcanAuthResponse {
   final int qualifyingPeriodId;
   final String name;
 
-  VulcanAuthResponse(this.certPfx, this.certKey, this.endpoint,
-      this.schoolSymbol, this.schoolId, this.symbol, this.studentId, this.qualifyingPeriodId, this.name);
+  VulcanAuthResponse(
+      this.certPfx,
+      this.certKey,
+      this.endpoint,
+      this.schoolSymbol,
+      this.schoolId,
+      this.symbol,
+      this.studentId,
+      this.qualifyingPeriodId,
+      this.name);
 }
 
 class BaseVulcanClient extends BaseClient {
@@ -104,7 +112,7 @@ class VulcanClient {
         endpoint,
         schoolSymbol,
         studentsList.students[0].schoolId,
-        symbol,        
+        symbol,
         studentsList.students[0].studentId,
         studentsList.students[0].qualifyingPeriodId,
         studentsList.students[0].firstName);
@@ -132,7 +140,8 @@ class VulcanClient {
     });
   }
 
-  Future<TimetableResponse> fetchTimetable(VulcanAuthState vulcanAuthState) async {
+  Future<TimetableResponse> fetchTimetable(
+      VulcanAuthState vulcanAuthState) async {
     var currentTimestamp = new DateTime.now().millisecondsSinceEpoch / 1000;
     JsonEncoder encoder = new JsonEncoder.withIndent('    ');
     var requestData = encoder.convert({
@@ -151,20 +160,19 @@ class VulcanClient {
     var symbol = vulcanAuthState.symbol;
     var schoolKey = vulcanAuthState.schoolKey;
     var dictonaryData = await client.post(
-        '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/Slowniki',
+        '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/PlanLekcjiZeZmianami',
         body: requestData,
         headers: Map.from({
-          "RequestSignatureValue":
-              await signVulcanRequest(requestData, vulcanAuthState.certificatePfx),
+          "RequestSignatureValue": await signVulcanRequest(
+              requestData, vulcanAuthState.certificatePfx),
           "RequestCertificateKey": vulcanAuthState.certificateKey,
           "User-Agent": "MobileUserAgent",
           "Content-Type": "application/json",
         }));
-    
+  print(dictonaryData.body);
     TimetableResponse timetableResponse = serializers.deserializeWith(
         TimetableResponse.serializer, json.decode(dictonaryData.body));
     return timetableResponse;
-
   }
 
   Future<DictonaryResponse> fetchDictonary(
@@ -180,13 +188,12 @@ class VulcanClient {
         '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/LogAppStart',
         body: startLoggingBody,
         headers: Map.from({
-          "RequestSignatureValue": await signVulcanRequest(
-              startLoggingBody, pfx),
+          "RequestSignatureValue":
+              await signVulcanRequest(startLoggingBody, pfx),
           "RequestCertificateKey": certKey,
           "User-Agent": "MobileUserAgent",
           "Content-Type": "application/json",
         }));
-
 
     var dictonaryData = await client.post(
         '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/Slowniki',

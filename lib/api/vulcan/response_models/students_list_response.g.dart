@@ -83,7 +83,7 @@ class _$DataSerializer implements StructuredSerializer<Data> {
       'JednostkaSprawozdawczaSymbol',
       serializers.serialize(object.schoolSymbol,
           specifiedType: const FullType(String)),
-      'IdJednostkaSprawozdawcza',
+      'IdOddzial',
       serializers.serialize(object.schoolId,
           specifiedType: const FullType(int)),
       'IdOkresKlasyfikacyjny',
@@ -121,7 +121,7 @@ class _$DataSerializer implements StructuredSerializer<Data> {
           result.schoolSymbol = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'IdJednostkaSprawozdawcza':
+        case 'IdOddzial':
           result.schoolId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;

@@ -19,6 +19,7 @@ class AuthenticateVulcanAction {
 class LoadSavedVulcanAuthState {}
 
 class LoginFinished {}
+
 class LoggedInAction {
   final VulcanAuthResponse authResp;
   LoggedInAction(this.authResp);

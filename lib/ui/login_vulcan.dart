@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:schools/reducers/app_state.dart';
+import 'package:schools/store/app_state.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_actions.dart';
 
 class LoginVulcanScreen extends StatefulWidget {
