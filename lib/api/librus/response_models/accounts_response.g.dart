@@ -19,23 +19,20 @@ part of 'accounts_response.dart';
 // ignore_for_file: unnecessary_new
 // ignore_for_file: test_types_in_equals
 
-Serializer<LibrusAccountsResponse> _$librusAccountsResponseSerializer =
-    new _$LibrusAccountsResponseSerializer();
-Serializer<LibrusAccountResponse> _$librusAccountResponseSerializer =
-    new _$LibrusAccountResponseSerializer();
+Serializer<AccountsResponse> _$accountsResponseSerializer =
+    new _$AccountsResponseSerializer();
+Serializer<AccountResponse> _$accountResponseSerializer =
+    new _$AccountResponseSerializer();
 
-class _$LibrusAccountsResponseSerializer
-    implements StructuredSerializer<LibrusAccountsResponse> {
+class _$AccountsResponseSerializer
+    implements StructuredSerializer<AccountsResponse> {
   @override
-  final Iterable<Type> types = const [
-    LibrusAccountsResponse,
-    _$LibrusAccountsResponse
-  ];
+  final Iterable<Type> types = const [AccountsResponse, _$AccountsResponse];
   @override
-  final String wireName = 'LibrusAccountsResponse';
+  final String wireName = 'AccountsResponse';
 
   @override
-  Iterable serialize(Serializers serializers, LibrusAccountsResponse object,
+  Iterable serialize(Serializers serializers, AccountsResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'lastModification',
@@ -44,17 +41,16 @@ class _$LibrusAccountsResponseSerializer
       'accounts',
       serializers.serialize(object.accounts,
           specifiedType: const FullType(
-              BuiltList, const [const FullType(LibrusAccountResponse)])),
+              BuiltList, const [const FullType(AccountResponse)])),
     ];
 
     return result;
   }
 
   @override
-  LibrusAccountsResponse deserialize(
-      Serializers serializers, Iterable serialized,
+  AccountsResponse deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new LibrusAccountsResponseBuilder();
+    final result = new AccountsResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -69,7 +65,7 @@ class _$LibrusAccountsResponseSerializer
         case 'accounts':
           result.accounts.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(LibrusAccountResponse)]))
+                      BuiltList, const [const FullType(AccountResponse)]))
               as BuiltList);
           break;
       }
@@ -79,18 +75,15 @@ class _$LibrusAccountsResponseSerializer
   }
 }
 
-class _$LibrusAccountResponseSerializer
-    implements StructuredSerializer<LibrusAccountResponse> {
+class _$AccountResponseSerializer
+    implements StructuredSerializer<AccountResponse> {
   @override
-  final Iterable<Type> types = const [
-    LibrusAccountResponse,
-    _$LibrusAccountResponse
-  ];
+  final Iterable<Type> types = const [AccountResponse, _$AccountResponse];
   @override
-  final String wireName = 'LibrusAccountResponse';
+  final String wireName = 'AccountResponse';
 
   @override
-  Iterable serialize(Serializers serializers, LibrusAccountResponse object,
+  Iterable serialize(Serializers serializers, AccountResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
@@ -113,10 +106,9 @@ class _$LibrusAccountResponseSerializer
   }
 
   @override
-  LibrusAccountResponse deserialize(
-      Serializers serializers, Iterable serialized,
+  AccountResponse deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new LibrusAccountResponseBuilder();
+    final result = new AccountResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -151,40 +143,37 @@ class _$LibrusAccountResponseSerializer
   }
 }
 
-class _$LibrusAccountsResponse extends LibrusAccountsResponse {
+class _$AccountsResponse extends AccountsResponse {
   @override
   final num lastModification;
   @override
-  final BuiltList<LibrusAccountResponse> accounts;
+  final BuiltList<AccountResponse> accounts;
 
-  factory _$LibrusAccountsResponse(
-          [void updates(LibrusAccountsResponseBuilder b)]) =>
-      (new LibrusAccountsResponseBuilder()..update(updates)).build();
+  factory _$AccountsResponse([void updates(AccountsResponseBuilder b)]) =>
+      (new AccountsResponseBuilder()..update(updates)).build();
 
-  _$LibrusAccountsResponse._({this.lastModification, this.accounts})
-      : super._() {
+  _$AccountsResponse._({this.lastModification, this.accounts}) : super._() {
     if (lastModification == null) {
       throw new BuiltValueNullFieldError(
-          'LibrusAccountsResponse', 'lastModification');
+          'AccountsResponse', 'lastModification');
     }
     if (accounts == null) {
-      throw new BuiltValueNullFieldError('LibrusAccountsResponse', 'accounts');
+      throw new BuiltValueNullFieldError('AccountsResponse', 'accounts');
     }
   }
 
   @override
-  LibrusAccountsResponse rebuild(
-          void updates(LibrusAccountsResponseBuilder b)) =>
+  AccountsResponse rebuild(void updates(AccountsResponseBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LibrusAccountsResponseBuilder toBuilder() =>
-      new LibrusAccountsResponseBuilder()..replace(this);
+  AccountsResponseBuilder toBuilder() =>
+      new AccountsResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is LibrusAccountsResponse &&
+    return other is AccountsResponse &&
         lastModification == other.lastModification &&
         accounts == other.accounts;
   }
@@ -196,31 +185,31 @@ class _$LibrusAccountsResponse extends LibrusAccountsResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LibrusAccountsResponse')
+    return (newBuiltValueToStringHelper('AccountsResponse')
           ..add('lastModification', lastModification)
           ..add('accounts', accounts))
         .toString();
   }
 }
 
-class LibrusAccountsResponseBuilder
-    implements Builder<LibrusAccountsResponse, LibrusAccountsResponseBuilder> {
-  _$LibrusAccountsResponse _$v;
+class AccountsResponseBuilder
+    implements Builder<AccountsResponse, AccountsResponseBuilder> {
+  _$AccountsResponse _$v;
 
   num _lastModification;
   num get lastModification => _$this._lastModification;
   set lastModification(num lastModification) =>
       _$this._lastModification = lastModification;
 
-  ListBuilder<LibrusAccountResponse> _accounts;
-  ListBuilder<LibrusAccountResponse> get accounts =>
-      _$this._accounts ??= new ListBuilder<LibrusAccountResponse>();
-  set accounts(ListBuilder<LibrusAccountResponse> accounts) =>
+  ListBuilder<AccountResponse> _accounts;
+  ListBuilder<AccountResponse> get accounts =>
+      _$this._accounts ??= new ListBuilder<AccountResponse>();
+  set accounts(ListBuilder<AccountResponse> accounts) =>
       _$this._accounts = accounts;
 
-  LibrusAccountsResponseBuilder();
+  AccountsResponseBuilder();
 
-  LibrusAccountsResponseBuilder get _$this {
+  AccountsResponseBuilder get _$this {
     if (_$v != null) {
       _lastModification = _$v.lastModification;
       _accounts = _$v.accounts?.toBuilder();
@@ -230,24 +219,24 @@ class LibrusAccountsResponseBuilder
   }
 
   @override
-  void replace(LibrusAccountsResponse other) {
+  void replace(AccountsResponse other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$LibrusAccountsResponse;
+    _$v = other as _$AccountsResponse;
   }
 
   @override
-  void update(void updates(LibrusAccountsResponseBuilder b)) {
+  void update(void updates(AccountsResponseBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$LibrusAccountsResponse build() {
-    _$LibrusAccountsResponse _$result;
+  _$AccountsResponse build() {
+    _$AccountsResponse _$result;
     try {
       _$result = _$v ??
-          new _$LibrusAccountsResponse._(
+          new _$AccountsResponse._(
               lastModification: lastModification, accounts: accounts.build());
     } catch (_) {
       String _$failedField;
@@ -256,7 +245,7 @@ class LibrusAccountsResponseBuilder
         accounts.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'LibrusAccountsResponse', _$failedField, e.toString());
+            'AccountsResponse', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -265,7 +254,7 @@ class LibrusAccountsResponseBuilder
   }
 }
 
-class _$LibrusAccountResponse extends LibrusAccountResponse {
+class _$AccountResponse extends AccountResponse {
   @override
   final String id;
   @override
@@ -277,44 +266,41 @@ class _$LibrusAccountResponse extends LibrusAccountResponse {
   @override
   final String studentName;
 
-  factory _$LibrusAccountResponse(
-          [void updates(LibrusAccountResponseBuilder b)]) =>
-      (new LibrusAccountResponseBuilder()..update(updates)).build();
+  factory _$AccountResponse([void updates(AccountResponseBuilder b)]) =>
+      (new AccountResponseBuilder()..update(updates)).build();
 
-  _$LibrusAccountResponse._(
+  _$AccountResponse._(
       {this.id, this.group, this.accessToken, this.login, this.studentName})
       : super._() {
     if (id == null) {
-      throw new BuiltValueNullFieldError('LibrusAccountResponse', 'id');
+      throw new BuiltValueNullFieldError('AccountResponse', 'id');
     }
     if (group == null) {
-      throw new BuiltValueNullFieldError('LibrusAccountResponse', 'group');
+      throw new BuiltValueNullFieldError('AccountResponse', 'group');
     }
     if (accessToken == null) {
-      throw new BuiltValueNullFieldError(
-          'LibrusAccountResponse', 'accessToken');
+      throw new BuiltValueNullFieldError('AccountResponse', 'accessToken');
     }
     if (login == null) {
-      throw new BuiltValueNullFieldError('LibrusAccountResponse', 'login');
+      throw new BuiltValueNullFieldError('AccountResponse', 'login');
     }
     if (studentName == null) {
-      throw new BuiltValueNullFieldError(
-          'LibrusAccountResponse', 'studentName');
+      throw new BuiltValueNullFieldError('AccountResponse', 'studentName');
     }
   }
 
   @override
-  LibrusAccountResponse rebuild(void updates(LibrusAccountResponseBuilder b)) =>
+  AccountResponse rebuild(void updates(AccountResponseBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LibrusAccountResponseBuilder toBuilder() =>
-      new LibrusAccountResponseBuilder()..replace(this);
+  AccountResponseBuilder toBuilder() =>
+      new AccountResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is LibrusAccountResponse &&
+    return other is AccountResponse &&
         id == other.id &&
         group == other.group &&
         accessToken == other.accessToken &&
@@ -332,7 +318,7 @@ class _$LibrusAccountResponse extends LibrusAccountResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LibrusAccountResponse')
+    return (newBuiltValueToStringHelper('AccountResponse')
           ..add('id', id)
           ..add('group', group)
           ..add('accessToken', accessToken)
@@ -342,9 +328,9 @@ class _$LibrusAccountResponse extends LibrusAccountResponse {
   }
 }
 
-class LibrusAccountResponseBuilder
-    implements Builder<LibrusAccountResponse, LibrusAccountResponseBuilder> {
-  _$LibrusAccountResponse _$v;
+class AccountResponseBuilder
+    implements Builder<AccountResponse, AccountResponseBuilder> {
+  _$AccountResponse _$v;
 
   String _id;
   String get id => _$this._id;
@@ -366,9 +352,9 @@ class LibrusAccountResponseBuilder
   String get studentName => _$this._studentName;
   set studentName(String studentName) => _$this._studentName = studentName;
 
-  LibrusAccountResponseBuilder();
+  AccountResponseBuilder();
 
-  LibrusAccountResponseBuilder get _$this {
+  AccountResponseBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _group = _$v.group;
@@ -381,22 +367,22 @@ class LibrusAccountResponseBuilder
   }
 
   @override
-  void replace(LibrusAccountResponse other) {
+  void replace(AccountResponse other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$LibrusAccountResponse;
+    _$v = other as _$AccountResponse;
   }
 
   @override
-  void update(void updates(LibrusAccountResponseBuilder b)) {
+  void update(void updates(AccountResponseBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$LibrusAccountResponse build() {
+  _$AccountResponse build() {
     final _$result = _$v ??
-        new _$LibrusAccountResponse._(
+        new _$AccountResponse._(
             id: id,
             group: group,
             accessToken: accessToken,

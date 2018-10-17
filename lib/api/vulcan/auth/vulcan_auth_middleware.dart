@@ -17,7 +17,6 @@ void vulcanAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
     _loadSavedAuthState().then((el) {
       store.dispatch(LoggedInAction(el));
     });
-
   }
   next(action);
 }
@@ -25,12 +24,12 @@ void vulcanAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
 Future<VulcanAuthResponse> _loadSavedAuthState() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return VulcanAuthResponse(
-    prefs.getString('certPfx'),
-    prefs.getString('certKey'),
-    prefs.getString('endpoint'),
-    prefs.getString('schoolSymbol'),
-    prefs.getString('symbol'),
-    prefs.getString('name'));
+      prefs.getString('certPfx'),
+      prefs.getString('certKey'),
+      prefs.getString('endpoint'),
+      prefs.getString('schoolSymbol'),
+      prefs.getString('symbol'),
+      prefs.getString('name'));
 }
 
 Future<VulcanAuthResponse> _saveAuthState(VulcanAuthResponse state) async {
