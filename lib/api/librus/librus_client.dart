@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:schools/api/librus/response_models/accounts_response.dart';
+import 'package:schools/api/librus/response_models/timetable_response.dart';
 import 'package:schools/api/librus/response_models/serializers.dart';
 
 class LibrusAuthResponse {
@@ -15,6 +16,7 @@ class LibrusAuthResponse {
 
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
+  final String baseApiUrl = 'https://api.librus.pl/2.0';
   final String clientId = 'wmSyUMo8llDAs4y9tJVYY92oyZ6h4lAt7KCuy0Gv';
   Dio client;
 
@@ -78,6 +80,19 @@ class LibrusClient {
 
     AccountsResponse response = serializers.deserializeWith(
         AccountsResponse.serializer, json.decode(accountsResponse.data));
+
+    return response;
+  }
+
+  /// Get timetable data
+  Future<TimetableResponse> getTimetable(String accessToken) async {
+    // TODO: get current `weekStart`
+    var timetableResponse = await this.client.get(
+        '$baseApiUrl/Timetables?weekStart=2018-10-15',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    TimetableResponse response = serializers.deserializeWith(
+        TimetableResponse.serializer, json.decode(timetableResponse.data));
 
     return response;
   }
