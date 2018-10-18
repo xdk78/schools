@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schools/api/librus/librus_client.dart';
 import 'package:schools/api/librus/auth/librus_auth_actions.dart';
-import 'package:schools/reducers/app_state.dart';
+import 'package:schools/store/app_state.dart';
 
 void librusAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
   if (action is AuthenticateLibrusAction) {

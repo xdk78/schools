@@ -18,6 +18,15 @@ abstract class VulcanAuthState
   String get schoolKey;
 
   @nullable
+  int get schoolId;
+
+  @nullable
+  int get studentId;
+
+  @nullable
+  int get qualifyingPeriodId;
+
+  @nullable
   String get symbol;
 
   @nullable

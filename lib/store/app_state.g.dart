@@ -37,6 +37,15 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'librusAuthState',
       serializers.serialize(object.librusAuthState,
           specifiedType: const FullType(LibrusAuthState)),
+      'currentSystem',
+      serializers.serialize(object.currentSystem,
+          specifiedType: const FullType(String)),
+      'vulcanState',
+      serializers.serialize(object.vulcanState,
+          specifiedType: const FullType(VulcanState)),
+      'timetableState',
+      serializers.serialize(object.timetableState,
+          specifiedType: const FullType(TimetableState)),
     ];
 
     return result;
@@ -63,6 +72,18 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
                   specifiedType: const FullType(LibrusAuthState))
               as LibrusAuthState);
           break;
+        case 'currentSystem':
+          result.currentSystem = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'vulcanState':
+          result.vulcanState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(VulcanState)) as VulcanState);
+          break;
+        case 'timetableState':
+          result.timetableState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(TimetableState)) as TimetableState);
+          break;
       }
     }
 
@@ -75,16 +96,37 @@ class _$AppState extends AppState {
   final VulcanAuthState vulcanAuthState;
   @override
   final LibrusAuthState librusAuthState;
+  @override
+  final String currentSystem;
+  @override
+  final VulcanState vulcanState;
+  @override
+  final TimetableState timetableState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.vulcanAuthState, this.librusAuthState}) : super._() {
+  _$AppState._(
+      {this.vulcanAuthState,
+      this.librusAuthState,
+      this.currentSystem,
+      this.vulcanState,
+      this.timetableState})
+      : super._() {
     if (vulcanAuthState == null) {
       throw new BuiltValueNullFieldError('AppState', 'vulcanAuthState');
     }
     if (librusAuthState == null) {
       throw new BuiltValueNullFieldError('AppState', 'librusAuthState');
+    }
+    if (currentSystem == null) {
+      throw new BuiltValueNullFieldError('AppState', 'currentSystem');
+    }
+    if (vulcanState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'vulcanState');
+    }
+    if (timetableState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'timetableState');
     }
   }
 
@@ -100,19 +142,30 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         vulcanAuthState == other.vulcanAuthState &&
-        librusAuthState == other.librusAuthState;
+        librusAuthState == other.librusAuthState &&
+        currentSystem == other.currentSystem &&
+        vulcanState == other.vulcanState &&
+        timetableState == other.timetableState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, vulcanAuthState.hashCode), librusAuthState.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc($jc($jc(0, vulcanAuthState.hashCode), librusAuthState.hashCode),
+                currentSystem.hashCode),
+            vulcanState.hashCode),
+        timetableState.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('vulcanAuthState', vulcanAuthState)
-          ..add('librusAuthState', librusAuthState))
+          ..add('librusAuthState', librusAuthState)
+          ..add('currentSystem', currentSystem)
+          ..add('vulcanState', vulcanState)
+          ..add('timetableState', timetableState))
         .toString();
   }
 }
@@ -132,12 +185,32 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set librusAuthState(LibrusAuthStateBuilder librusAuthState) =>
       _$this._librusAuthState = librusAuthState;
 
+  String _currentSystem;
+  String get currentSystem => _$this._currentSystem;
+  set currentSystem(String currentSystem) =>
+      _$this._currentSystem = currentSystem;
+
+  VulcanStateBuilder _vulcanState;
+  VulcanStateBuilder get vulcanState =>
+      _$this._vulcanState ??= new VulcanStateBuilder();
+  set vulcanState(VulcanStateBuilder vulcanState) =>
+      _$this._vulcanState = vulcanState;
+
+  TimetableStateBuilder _timetableState;
+  TimetableStateBuilder get timetableState =>
+      _$this._timetableState ??= new TimetableStateBuilder();
+  set timetableState(TimetableStateBuilder timetableState) =>
+      _$this._timetableState = timetableState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
       _vulcanAuthState = _$v.vulcanAuthState?.toBuilder();
       _librusAuthState = _$v.librusAuthState?.toBuilder();
+      _currentSystem = _$v.currentSystem;
+      _vulcanState = _$v.vulcanState?.toBuilder();
+      _timetableState = _$v.timetableState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -163,7 +236,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               vulcanAuthState: vulcanAuthState.build(),
-              librusAuthState: librusAuthState.build());
+              librusAuthState: librusAuthState.build(),
+              currentSystem: currentSystem,
+              vulcanState: vulcanState.build(),
+              timetableState: timetableState.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -171,6 +247,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         vulcanAuthState.build();
         _$failedField = 'librusAuthState';
         librusAuthState.build();
+
+        _$failedField = 'vulcanState';
+        vulcanState.build();
+        _$failedField = 'timetableState';
+        timetableState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

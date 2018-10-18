@@ -11,6 +11,9 @@ VulcanAuthState _loggedInReducer(VulcanAuthState state, LoggedInAction action) {
     ..certificatePfx = action.authResp.certPfx
     ..apiEndpoint = action.authResp.endpoint
     ..schoolKey = action.authResp.schoolSymbol
+    ..qualifyingPeriodId = action.authResp.qualifyingPeriodId
+    ..schoolId = action.authResp.schoolId
+    ..studentId = action.authResp.studentId
     ..symbol = action.authResp.symbol
     ..name = action.authResp.name);
 }

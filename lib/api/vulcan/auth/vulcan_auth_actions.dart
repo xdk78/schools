@@ -1,9 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:schools/api/vulcan/vulcan_client.dart';
-import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 
 class AuthenticateVulcanAction {
   final Completer completer;
@@ -20,6 +17,8 @@ class AuthenticateVulcanAction {
 }
 
 class LoadSavedVulcanAuthState {}
+
+class LoginFinished {}
 
 class LoggedInAction {
   final VulcanAuthResponse authResp;

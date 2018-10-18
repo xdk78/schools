@@ -57,6 +57,24 @@ class _$VulcanAuthStateSerializer
         ..add(serializers.serialize(object.schoolKey,
             specifiedType: const FullType(String)));
     }
+    if (object.schoolId != null) {
+      result
+        ..add('schoolId')
+        ..add(serializers.serialize(object.schoolId,
+            specifiedType: const FullType(int)));
+    }
+    if (object.studentId != null) {
+      result
+        ..add('studentId')
+        ..add(serializers.serialize(object.studentId,
+            specifiedType: const FullType(int)));
+    }
+    if (object.qualifyingPeriodId != null) {
+      result
+        ..add('qualifyingPeriodId')
+        ..add(serializers.serialize(object.qualifyingPeriodId,
+            specifiedType: const FullType(int)));
+    }
     if (object.symbol != null) {
       result
         ..add('symbol')
@@ -100,6 +118,18 @@ class _$VulcanAuthStateSerializer
           result.schoolKey = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'schoolId':
+          result.schoolId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'studentId':
+          result.studentId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'qualifyingPeriodId':
+          result.qualifyingPeriodId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'symbol':
           result.symbol = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -125,6 +155,12 @@ class _$VulcanAuthState extends VulcanAuthState {
   @override
   final String schoolKey;
   @override
+  final int schoolId;
+  @override
+  final int studentId;
+  @override
+  final int qualifyingPeriodId;
+  @override
   final String symbol;
   @override
   final String name;
@@ -137,6 +173,9 @@ class _$VulcanAuthState extends VulcanAuthState {
       this.certificateKey,
       this.apiEndpoint,
       this.schoolKey,
+      this.schoolId,
+      this.studentId,
+      this.qualifyingPeriodId,
       this.symbol,
       this.name})
       : super._();
@@ -157,6 +196,9 @@ class _$VulcanAuthState extends VulcanAuthState {
         certificateKey == other.certificateKey &&
         apiEndpoint == other.apiEndpoint &&
         schoolKey == other.schoolKey &&
+        schoolId == other.schoolId &&
+        studentId == other.studentId &&
+        qualifyingPeriodId == other.qualifyingPeriodId &&
         symbol == other.symbol &&
         name == other.name;
   }
@@ -167,10 +209,16 @@ class _$VulcanAuthState extends VulcanAuthState {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc(0, certificatePfx.hashCode),
-                        certificateKey.hashCode),
-                    apiEndpoint.hashCode),
-                schoolKey.hashCode),
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc($jc(0, certificatePfx.hashCode),
+                                    certificateKey.hashCode),
+                                apiEndpoint.hashCode),
+                            schoolKey.hashCode),
+                        schoolId.hashCode),
+                    studentId.hashCode),
+                qualifyingPeriodId.hashCode),
             symbol.hashCode),
         name.hashCode));
   }
@@ -182,6 +230,9 @@ class _$VulcanAuthState extends VulcanAuthState {
           ..add('certificateKey', certificateKey)
           ..add('apiEndpoint', apiEndpoint)
           ..add('schoolKey', schoolKey)
+          ..add('schoolId', schoolId)
+          ..add('studentId', studentId)
+          ..add('qualifyingPeriodId', qualifyingPeriodId)
           ..add('symbol', symbol)
           ..add('name', name))
         .toString();
@@ -210,6 +261,19 @@ class VulcanAuthStateBuilder
   String get schoolKey => _$this._schoolKey;
   set schoolKey(String schoolKey) => _$this._schoolKey = schoolKey;
 
+  int _schoolId;
+  int get schoolId => _$this._schoolId;
+  set schoolId(int schoolId) => _$this._schoolId = schoolId;
+
+  int _studentId;
+  int get studentId => _$this._studentId;
+  set studentId(int studentId) => _$this._studentId = studentId;
+
+  int _qualifyingPeriodId;
+  int get qualifyingPeriodId => _$this._qualifyingPeriodId;
+  set qualifyingPeriodId(int qualifyingPeriodId) =>
+      _$this._qualifyingPeriodId = qualifyingPeriodId;
+
   String _symbol;
   String get symbol => _$this._symbol;
   set symbol(String symbol) => _$this._symbol = symbol;
@@ -226,6 +290,9 @@ class VulcanAuthStateBuilder
       _certificateKey = _$v.certificateKey;
       _apiEndpoint = _$v.apiEndpoint;
       _schoolKey = _$v.schoolKey;
+      _schoolId = _$v.schoolId;
+      _studentId = _$v.studentId;
+      _qualifyingPeriodId = _$v.qualifyingPeriodId;
       _symbol = _$v.symbol;
       _name = _$v.name;
       _$v = null;
@@ -254,6 +321,9 @@ class VulcanAuthStateBuilder
             certificateKey: certificateKey,
             apiEndpoint: apiEndpoint,
             schoolKey: schoolKey,
+            schoolId: schoolId,
+            studentId: studentId,
+            qualifyingPeriodId: qualifyingPeriodId,
             symbol: symbol,
             name: name);
     replace(_$result);
