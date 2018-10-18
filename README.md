@@ -56,6 +56,10 @@ If you want to help with the project, you can have a look at some [issues](https
   ```
   flutter format .
   ```
+- Watching packages for code generation
+  ```
+  flutter packages pub run build_runner watch
+  ```  
 
 
 # 📜 License
