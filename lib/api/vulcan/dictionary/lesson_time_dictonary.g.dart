@@ -37,16 +37,16 @@ class _$LessonTimeDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Numer',
-      serializers.serialize(object.number, specifiedType: const FullType(int)),
+      serializers.serialize(object.number, specifiedType: const FullType(num)),
       'Poczatek',
-      serializers.serialize(object.start, specifiedType: const FullType(int)),
+      serializers.serialize(object.start, specifiedType: const FullType(num)),
       'PoczatekTekst',
       serializers.serialize(object.startText,
           specifiedType: const FullType(String)),
       'Koniec',
-      serializers.serialize(object.end, specifiedType: const FullType(int)),
+      serializers.serialize(object.end, specifiedType: const FullType(num)),
       'KoniecTekst',
       serializers.serialize(object.endText,
           specifiedType: const FullType(String)),
@@ -68,15 +68,15 @@ class _$LessonTimeDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Numer':
           result.number = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Poczatek':
           result.start = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'PoczatekTekst':
           result.startText = serializers.deserialize(value,
@@ -84,7 +84,7 @@ class _$LessonTimeDictonarySerializer
           break;
         case 'Koniec':
           result.end = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'KoniecTekst':
           result.endText = serializers.deserialize(value,
@@ -99,15 +99,15 @@ class _$LessonTimeDictonarySerializer
 
 class _$LessonTimeDictonary extends LessonTimeDictonary {
   @override
-  final int id;
+  final num id;
   @override
-  final int number;
+  final num number;
   @override
-  final int start;
+  final num start;
   @override
   final String startText;
   @override
-  final int end;
+  final num end;
   @override
   final String endText;
 
@@ -189,25 +189,25 @@ class LessonTimeDictonaryBuilder
     implements Builder<LessonTimeDictonary, LessonTimeDictonaryBuilder> {
   _$LessonTimeDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
-  int _number;
-  int get number => _$this._number;
-  set number(int number) => _$this._number = number;
+  num _number;
+  num get number => _$this._number;
+  set number(num number) => _$this._number = number;
 
-  int _start;
-  int get start => _$this._start;
-  set start(int start) => _$this._start = start;
+  num _start;
+  num get start => _$this._start;
+  set start(num start) => _$this._start = start;
 
   String _startText;
   String get startText => _$this._startText;
   set startText(String startText) => _$this._startText = startText;
 
-  int _end;
-  int get end => _$this._end;
-  set end(int end) => _$this._end = end;
+  num _end;
+  num get end => _$this._end;
+  set end(num end) => _$this._end = end;
 
   String _endText;
   String get endText => _$this._endText;

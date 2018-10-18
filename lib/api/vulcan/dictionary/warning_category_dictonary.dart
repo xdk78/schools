@@ -7,7 +7,7 @@ abstract class WarningCategoryDictonary
     implements
         Built<WarningCategoryDictonary, WarningCategoryDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Aktywny")
   bool get active;

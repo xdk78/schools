@@ -35,7 +35,7 @@ class _$LessonSerializer implements StructuredSerializer<Lesson> {
       result
         ..add('lessonNumber')
         ..add(serializers.serialize(object.lessonNumber,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(num)));
     }
     if (object.subject != null) {
       result
@@ -72,7 +72,7 @@ class _$LessonSerializer implements StructuredSerializer<Lesson> {
       switch (key) {
         case 'lessonNumber':
           result.lessonNumber = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'subject':
           result.subject = serializers.deserialize(value,
@@ -95,7 +95,7 @@ class _$LessonSerializer implements StructuredSerializer<Lesson> {
 
 class _$Lesson extends Lesson {
   @override
-  final int lessonNumber;
+  final num lessonNumber;
   @override
   final String subject;
   @override
@@ -149,9 +149,9 @@ class _$Lesson extends Lesson {
 class LessonBuilder implements Builder<Lesson, LessonBuilder> {
   _$Lesson _$v;
 
-  int _lessonNumber;
-  int get lessonNumber => _$this._lessonNumber;
-  set lessonNumber(int lessonNumber) => _$this._lessonNumber = lessonNumber;
+  num _lessonNumber;
+  num get lessonNumber => _$this._lessonNumber;
+  set lessonNumber(num lessonNumber) => _$this._lessonNumber = lessonNumber;
 
   String _subject;
   String get subject => _$this._subject;

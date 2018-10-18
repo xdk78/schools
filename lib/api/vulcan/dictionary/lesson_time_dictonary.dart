@@ -6,19 +6,19 @@ part 'lesson_time_dictonary.g.dart';
 abstract class LessonTimeDictonary
     implements Built<LessonTimeDictonary, LessonTimeDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Numer")
-  int get number;
+  num get number;
 
   @BuiltValueField(wireName: "Poczatek")
-  int get start;
+  num get start;
 
   @BuiltValueField(wireName: "PoczatekTekst")
   String get startText;
 
   @BuiltValueField(wireName: "Koniec")
-  int get end;
+  num get end;
 
   @BuiltValueField(wireName: "KoniecTekst")
   String get endText;

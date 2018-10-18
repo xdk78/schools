@@ -34,7 +34,7 @@ class _$SubjectDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Nazwa',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'Kod',
@@ -43,7 +43,7 @@ class _$SubjectDictonarySerializer
       serializers.serialize(object.active, specifiedType: const FullType(bool)),
       'Pozycja',
       serializers.serialize(object.position,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
     ];
 
     return result;
@@ -62,7 +62,7 @@ class _$SubjectDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Nazwa':
           result.name = serializers.deserialize(value,
@@ -78,7 +78,7 @@ class _$SubjectDictonarySerializer
           break;
         case 'Pozycja':
           result.position = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
       }
     }
@@ -89,7 +89,7 @@ class _$SubjectDictonarySerializer
 
 class _$SubjectDictonary extends SubjectDictonary {
   @override
-  final int id;
+  final num id;
   @override
   final String name;
   @override
@@ -97,7 +97,7 @@ class _$SubjectDictonary extends SubjectDictonary {
   @override
   final bool active;
   @override
-  final int position;
+  final num position;
 
   factory _$SubjectDictonary([void updates(SubjectDictonaryBuilder b)]) =>
       (new SubjectDictonaryBuilder()..update(updates)).build();
@@ -165,9 +165,9 @@ class SubjectDictonaryBuilder
     implements Builder<SubjectDictonary, SubjectDictonaryBuilder> {
   _$SubjectDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   String _name;
   String get name => _$this._name;
@@ -181,9 +181,9 @@ class SubjectDictonaryBuilder
   bool get active => _$this._active;
   set active(bool active) => _$this._active = active;
 
-  int _position;
-  int get position => _$this._position;
-  set position(int position) => _$this._position = position;
+  num _position;
+  num get position => _$this._position;
+  set position(num position) => _$this._position = position;
 
   SubjectDictonaryBuilder();
 

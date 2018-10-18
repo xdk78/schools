@@ -34,7 +34,7 @@ class _$TeacherDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Imie',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'Nazwisko',
@@ -48,7 +48,7 @@ class _$TeacherDictonarySerializer
       serializers.serialize(object.isTeacher,
           specifiedType: const FullType(bool)),
       'LoginId',
-      serializers.serialize(object.loginId, specifiedType: const FullType(int)),
+      serializers.serialize(object.loginId, specifiedType: const FullType(num)),
     ];
 
     return result;
@@ -67,7 +67,7 @@ class _$TeacherDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Imie':
           result.name = serializers.deserialize(value,
@@ -91,7 +91,7 @@ class _$TeacherDictonarySerializer
           break;
         case 'LoginId':
           result.loginId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
       }
     }
@@ -102,7 +102,7 @@ class _$TeacherDictonarySerializer
 
 class _$TeacherDictonary extends TeacherDictonary {
   @override
-  final int id;
+  final num id;
   @override
   final String name;
   @override
@@ -114,7 +114,7 @@ class _$TeacherDictonary extends TeacherDictonary {
   @override
   final bool isTeacher;
   @override
-  final int loginId;
+  final num loginId;
 
   factory _$TeacherDictonary([void updates(TeacherDictonaryBuilder b)]) =>
       (new TeacherDictonaryBuilder()..update(updates)).build();
@@ -204,9 +204,9 @@ class TeacherDictonaryBuilder
     implements Builder<TeacherDictonary, TeacherDictonaryBuilder> {
   _$TeacherDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   String _name;
   String get name => _$this._name;
@@ -228,9 +228,9 @@ class TeacherDictonaryBuilder
   bool get isTeacher => _$this._isTeacher;
   set isTeacher(bool isTeacher) => _$this._isTeacher = isTeacher;
 
-  int _loginId;
-  int get loginId => _$this._loginId;
-  set loginId(int loginId) => _$this._loginId = loginId;
+  num _loginId;
+  num get loginId => _$this._loginId;
+  set loginId(num loginId) => _$this._loginId = loginId;
 
   TeacherDictonaryBuilder();
 

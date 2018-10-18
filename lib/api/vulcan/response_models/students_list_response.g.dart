@@ -85,13 +85,13 @@ class _$DataSerializer implements StructuredSerializer<Data> {
           specifiedType: const FullType(String)),
       'IdOddzial',
       serializers.serialize(object.schoolId,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'IdOkresKlasyfikacyjny',
       serializers.serialize(object.qualifyingPeriodId,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'Id',
       serializers.serialize(object.studentId,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'Imie',
       serializers.serialize(object.firstName,
           specifiedType: const FullType(String)),
@@ -123,15 +123,15 @@ class _$DataSerializer implements StructuredSerializer<Data> {
           break;
         case 'IdOddzial':
           result.schoolId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'IdOkresKlasyfikacyjny':
           result.qualifyingPeriodId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Id':
           result.studentId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Imie':
           result.firstName = serializers.deserialize(value,
@@ -251,11 +251,11 @@ class _$Data extends Data {
   @override
   final String schoolSymbol;
   @override
-  final int schoolId;
+  final num schoolId;
   @override
-  final int qualifyingPeriodId;
+  final num qualifyingPeriodId;
   @override
-  final int studentId;
+  final num studentId;
   @override
   final String firstName;
   @override
@@ -353,18 +353,18 @@ class DataBuilder implements Builder<Data, DataBuilder> {
   String get schoolSymbol => _$this._schoolSymbol;
   set schoolSymbol(String schoolSymbol) => _$this._schoolSymbol = schoolSymbol;
 
-  int _schoolId;
-  int get schoolId => _$this._schoolId;
-  set schoolId(int schoolId) => _$this._schoolId = schoolId;
+  num _schoolId;
+  num get schoolId => _$this._schoolId;
+  set schoolId(num schoolId) => _$this._schoolId = schoolId;
 
-  int _qualifyingPeriodId;
-  int get qualifyingPeriodId => _$this._qualifyingPeriodId;
-  set qualifyingPeriodId(int qualifyingPeriodId) =>
+  num _qualifyingPeriodId;
+  num get qualifyingPeriodId => _$this._qualifyingPeriodId;
+  set qualifyingPeriodId(num qualifyingPeriodId) =>
       _$this._qualifyingPeriodId = qualifyingPeriodId;
 
-  int _studentId;
-  int get studentId => _$this._studentId;
-  set studentId(int studentId) => _$this._studentId = studentId;
+  num _studentId;
+  num get studentId => _$this._studentId;
+  set studentId(num studentId) => _$this._studentId = studentId;
 
   String _firstName;
   String get firstName => _$this._firstName;

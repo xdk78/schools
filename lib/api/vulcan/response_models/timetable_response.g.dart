@@ -82,16 +82,16 @@ class _$TimetableDataSerializer implements StructuredSerializer<TimetableData> {
       serializers.serialize(object.dayText,
           specifiedType: const FullType(String)),
       'Dzien',
-      serializers.serialize(object.dayUnix, specifiedType: const FullType(int)),
+      serializers.serialize(object.dayUnix, specifiedType: const FullType(num)),
       'IdPracownik',
       serializers.serialize(object.teacherId,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'NumerLekcji',
       serializers.serialize(object.lessonNumber,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'IdPoraLekcji',
       serializers.serialize(object.lessonTimeId,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'PrzedmiotNazwa',
       serializers.serialize(object.subjectName,
           specifiedType: const FullType(String)),
@@ -136,19 +136,19 @@ class _$TimetableDataSerializer implements StructuredSerializer<TimetableData> {
           break;
         case 'Dzien':
           result.dayUnix = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'IdPracownik':
           result.teacherId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'NumerLekcji':
           result.lessonNumber = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'IdPoraLekcji':
           result.lessonTimeId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'PrzedmiotNazwa':
           result.subjectName = serializers.deserialize(value,
@@ -271,13 +271,13 @@ class _$TimetableData extends TimetableData {
   @override
   final String subGroupText;
   @override
-  final int dayUnix;
+  final num dayUnix;
   @override
-  final int teacherId;
+  final num teacherId;
   @override
-  final int lessonNumber;
+  final num lessonNumber;
   @override
-  final int lessonTimeId;
+  final num lessonTimeId;
   @override
   final String subjectName;
   @override
@@ -405,21 +405,21 @@ class TimetableDataBuilder
   String get subGroupText => _$this._subGroupText;
   set subGroupText(String subGroupText) => _$this._subGroupText = subGroupText;
 
-  int _dayUnix;
-  int get dayUnix => _$this._dayUnix;
-  set dayUnix(int dayUnix) => _$this._dayUnix = dayUnix;
+  num _dayUnix;
+  num get dayUnix => _$this._dayUnix;
+  set dayUnix(num dayUnix) => _$this._dayUnix = dayUnix;
 
-  int _teacherId;
-  int get teacherId => _$this._teacherId;
-  set teacherId(int teacherId) => _$this._teacherId = teacherId;
+  num _teacherId;
+  num get teacherId => _$this._teacherId;
+  set teacherId(num teacherId) => _$this._teacherId = teacherId;
 
-  int _lessonNumber;
-  int get lessonNumber => _$this._lessonNumber;
-  set lessonNumber(int lessonNumber) => _$this._lessonNumber = lessonNumber;
+  num _lessonNumber;
+  num get lessonNumber => _$this._lessonNumber;
+  set lessonNumber(num lessonNumber) => _$this._lessonNumber = lessonNumber;
 
-  int _lessonTimeId;
-  int get lessonTimeId => _$this._lessonTimeId;
-  set lessonTimeId(int lessonTimeId) => _$this._lessonTimeId = lessonTimeId;
+  num _lessonTimeId;
+  num get lessonTimeId => _$this._lessonTimeId;
+  set lessonTimeId(num lessonTimeId) => _$this._lessonTimeId = lessonTimeId;
 
   String _subjectName;
   String get subjectName => _$this._subjectName;

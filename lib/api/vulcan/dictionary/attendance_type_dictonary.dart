@@ -6,7 +6,7 @@ part 'attendance_type_dictonary.g.dart';
 abstract class AttendanceTypeDictonary
     implements Built<AttendanceTypeDictonary, AttendanceTypeDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Nazwa")
   String get name;
@@ -21,7 +21,7 @@ abstract class AttendanceTypeDictonary
   bool get defaultEntry;
 
   @BuiltValueField(wireName: "IdKategoriaFrek")
-  int get attendanceCategoryId;
+  num get attendanceCategoryId;
 
   AttendanceTypeDictonary._();
   factory AttendanceTypeDictonary([updates(AttendanceTypeDictonaryBuilder b)]) =

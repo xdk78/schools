@@ -29,16 +29,16 @@ abstract class TimetableData
   String get subGroupText;
 
   @BuiltValueField(wireName: 'Dzien')
-  int get dayUnix;
+  num get dayUnix;
 
   @BuiltValueField(wireName: 'IdPracownik')
-  int get teacherId;
+  num get teacherId;
 
   @BuiltValueField(wireName: 'NumerLekcji')
-  int get lessonNumber;
+  num get lessonNumber;
 
   @BuiltValueField(wireName: 'IdPoraLekcji')
-  int get lessonTimeId;
+  num get lessonTimeId;
 
   @BuiltValueField(wireName: 'PrzedmiotNazwa')
   String get subjectName;

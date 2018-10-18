@@ -6,7 +6,7 @@ part 'worker_dictonary.g.dart';
 abstract class WorkerDictonary
     implements Built<WorkerDictonary, WorkerDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Imie")
   String get name;
@@ -24,7 +24,7 @@ abstract class WorkerDictonary
   bool get isTeacher;
 
   @BuiltValueField(wireName: "LoginId")
-  int get loginId;
+  num get loginId;
 
   WorkerDictonary._();
   factory WorkerDictonary([updates(WorkerDictonaryBuilder b)]) =

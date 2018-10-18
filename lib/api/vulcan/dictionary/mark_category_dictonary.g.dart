@@ -37,7 +37,7 @@ class _$MarkCategoryDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Kod',
       serializers.serialize(object.code, specifiedType: const FullType(String)),
       'Nazwa',
@@ -61,7 +61,7 @@ class _$MarkCategoryDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Kod':
           result.code = serializers.deserialize(value,
@@ -80,7 +80,7 @@ class _$MarkCategoryDictonarySerializer
 
 class _$MarkCategoryDictonary extends MarkCategoryDictonary {
   @override
-  final int id;
+  final num id;
   @override
   final String code;
   @override
@@ -138,9 +138,9 @@ class MarkCategoryDictonaryBuilder
     implements Builder<MarkCategoryDictonary, MarkCategoryDictonaryBuilder> {
   _$MarkCategoryDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   String _code;
   String get code => _$this._code;

@@ -7,7 +7,7 @@ abstract class Lesson implements Built<Lesson, LessonBuilder> {
   Lesson._();
 
   @nullable
-  int get lessonNumber;
+  num get lessonNumber;
 
   @nullable
   String get subject;
@@ -19,7 +19,7 @@ abstract class Lesson implements Built<Lesson, LessonBuilder> {
   String get classroom;
 
   factory Lesson(
-      int lessonNumber, String subject, String classroom, String teacherName) {
+      num lessonNumber, String subject, String classroom, String teacherName) {
     return _$Lesson._(
       lessonNumber: lessonNumber,
       subject: subject,

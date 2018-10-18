@@ -7,13 +7,13 @@ abstract class AttendanceCategoryDictonary
     implements
         Built<AttendanceCategoryDictonary, AttendanceCategoryDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Nazwa")
   String get name;
 
   @BuiltValueField(wireName: "Pozycja")
-  int get position;
+  num get position;
 
   @BuiltValueField(wireName: "Obecnosc")
   bool get presence;

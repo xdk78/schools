@@ -39,12 +39,12 @@ class _$AttendanceCategoryDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Nazwa',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'Pozycja',
       serializers.serialize(object.position,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
       'Obecnosc',
       serializers.serialize(object.presence,
           specifiedType: const FullType(bool)),
@@ -81,7 +81,7 @@ class _$AttendanceCategoryDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Nazwa':
           result.name = serializers.deserialize(value,
@@ -89,7 +89,7 @@ class _$AttendanceCategoryDictonarySerializer
           break;
         case 'Pozycja':
           result.position = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Obecnosc':
           result.presence = serializers.deserialize(value,
@@ -124,11 +124,11 @@ class _$AttendanceCategoryDictonarySerializer
 
 class _$AttendanceCategoryDictonary extends AttendanceCategoryDictonary {
   @override
-  final int id;
+  final num id;
   @override
   final String name;
   @override
-  final int position;
+  final num position;
   @override
   final bool presence;
   @override
@@ -256,17 +256,17 @@ class AttendanceCategoryDictonaryBuilder
             AttendanceCategoryDictonaryBuilder> {
   _$AttendanceCategoryDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  int _position;
-  int get position => _$this._position;
-  set position(int position) => _$this._position = position;
+  num _position;
+  num get position => _$this._position;
+  set position(num position) => _$this._position = position;
 
   bool _presence;
   bool get presence => _$this._presence;

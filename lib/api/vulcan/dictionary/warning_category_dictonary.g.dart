@@ -37,7 +37,7 @@ class _$WarningCategoryDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Aktywny',
       serializers.serialize(object.active, specifiedType: const FullType(bool)),
     ];
@@ -59,7 +59,7 @@ class _$WarningCategoryDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Aktywny':
           result.active = serializers.deserialize(value,
@@ -74,7 +74,7 @@ class _$WarningCategoryDictonarySerializer
 
 class _$WarningCategoryDictonary extends WarningCategoryDictonary {
   @override
-  final int id;
+  final num id;
   @override
   final bool active;
 
@@ -127,9 +127,9 @@ class WarningCategoryDictonaryBuilder
         Builder<WarningCategoryDictonary, WarningCategoryDictonaryBuilder> {
   _$WarningCategoryDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   bool _active;
   bool get active => _$this._active;

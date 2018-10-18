@@ -6,7 +6,7 @@ part 'subject_dictonary.g.dart';
 abstract class SubjectDictonary
     implements Built<SubjectDictonary, SubjectDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Nazwa")
   String get name;
@@ -18,7 +18,7 @@ abstract class SubjectDictonary
   bool get active;
 
   @BuiltValueField(wireName: "Pozycja")
-  int get position;
+  num get position;
 
   SubjectDictonary._();
   factory SubjectDictonary([updates(SubjectDictonaryBuilder b)]) =

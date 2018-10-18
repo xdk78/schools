@@ -37,7 +37,7 @@ class _$AttendanceTypeDictonarySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'Id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      serializers.serialize(object.id, specifiedType: const FullType(num)),
       'Nazwa',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'Symbol',
@@ -50,7 +50,7 @@ class _$AttendanceTypeDictonarySerializer
           specifiedType: const FullType(bool)),
       'IdKategoriaFrek',
       serializers.serialize(object.attendanceCategoryId,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(num)),
     ];
 
     return result;
@@ -70,7 +70,7 @@ class _$AttendanceTypeDictonarySerializer
       switch (key) {
         case 'Id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Nazwa':
           result.name = serializers.deserialize(value,
@@ -90,7 +90,7 @@ class _$AttendanceTypeDictonarySerializer
           break;
         case 'IdKategoriaFrek':
           result.attendanceCategoryId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(num)) as num;
           break;
       }
     }
@@ -101,7 +101,7 @@ class _$AttendanceTypeDictonarySerializer
 
 class _$AttendanceTypeDictonary extends AttendanceTypeDictonary {
   @override
-  final int id;
+  final num id;
   @override
   final String name;
   @override
@@ -111,7 +111,7 @@ class _$AttendanceTypeDictonary extends AttendanceTypeDictonary {
   @override
   final bool defaultEntry;
   @override
-  final int attendanceCategoryId;
+  final num attendanceCategoryId;
 
   factory _$AttendanceTypeDictonary(
           [void updates(AttendanceTypeDictonaryBuilder b)]) =>
@@ -196,9 +196,9 @@ class AttendanceTypeDictonaryBuilder
         Builder<AttendanceTypeDictonary, AttendanceTypeDictonaryBuilder> {
   _$AttendanceTypeDictonary _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  num _id;
+  num get id => _$this._id;
+  set id(num id) => _$this._id = id;
 
   String _name;
   String get name => _$this._name;
@@ -216,9 +216,9 @@ class AttendanceTypeDictonaryBuilder
   bool get defaultEntry => _$this._defaultEntry;
   set defaultEntry(bool defaultEntry) => _$this._defaultEntry = defaultEntry;
 
-  int _attendanceCategoryId;
-  int get attendanceCategoryId => _$this._attendanceCategoryId;
-  set attendanceCategoryId(int attendanceCategoryId) =>
+  num _attendanceCategoryId;
+  num get attendanceCategoryId => _$this._attendanceCategoryId;
+  set attendanceCategoryId(num attendanceCategoryId) =>
       _$this._attendanceCategoryId = attendanceCategoryId;
 
   AttendanceTypeDictonaryBuilder();

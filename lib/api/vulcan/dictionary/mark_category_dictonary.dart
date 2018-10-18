@@ -6,7 +6,7 @@ part 'mark_category_dictonary.g.dart';
 abstract class MarkCategoryDictonary
     implements Built<MarkCategoryDictonary, MarkCategoryDictonaryBuilder> {
   @BuiltValueField(wireName: "Id")
-  int get id;
+  num get id;
 
   @BuiltValueField(wireName: "Kod")
   String get code;
