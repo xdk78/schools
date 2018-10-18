@@ -1,5 +1,3 @@
-import 'package:redux/redux.dart';
-import 'package:schools/api/vulcan/vulcan_client.dart';
 import 'package:schools/api/vulcan/response_models/timetable_response.dart';
 import 'package:schools/models/lesson.dart';
 import 'package:built_collection/built_collection.dart';

@@ -2,7 +2,7 @@ import 'package:http/http.dart';
 import 'dart:async';
 import 'package:schools/api/vulcan/auth/signer.dart';
 import 'package:schools/api/vulcan/response_models/dictonary_response.dart';
-import 'package:schools/api/vulcan/uuid.dart';
+import 'package:schools/utils/uuid.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_state.dart';
 import 'package:schools/api/vulcan/response_models/certificate_response.dart';
 import 'package:schools/api/vulcan/response_models/timetable_response.dart';

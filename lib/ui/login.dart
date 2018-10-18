@@ -35,13 +35,12 @@ class LoginScreen extends StatelessWidget {
                 subtitle: Text('Zaloguj się do systemu UONET+'),
               ),
               ListTile(
-                onTap: () {
-                  Navigator.pushNamed(context, '/timetable');
-                },
-                leading: Icon(Icons.bug_report),
-                title: Text('Kontynuuj bez logowania'),
-                subtitle: Text('Test interfejsu')
-              )
+                  onTap: () {
+                    Navigator.pushNamed(context, '/timetable');
+                  },
+                  leading: Icon(Icons.bug_report),
+                  title: Text('Kontynuuj bez logowania'),
+                  subtitle: Text('Test interfejsu'))
             ],
           ),
         ),

@@ -89,9 +89,7 @@ class _LoginLibrusState extends State<LoginLibrusScreen> {
                             this.submit(callback);
                           },
                         );
-                      }
-                    )
-                  ),
+                      })),
                 ],
               ),
             )),

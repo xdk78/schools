@@ -1,6 +1,5 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_state.dart';
 import 'package:schools/api/vulcan/state.dart';
 import 'package:schools/store/timetable/timetable_state.dart';

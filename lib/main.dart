@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:schools/store/app_state.dart';
-import 'store/app_reducer.dart';
+import 'package:schools/store/app_reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_middleware.dart';
 import 'package:schools/api/vulcan/middleware.dart';
 import 'package:schools/api/librus/auth/librus_auth_middleware.dart';
-import 'ui/login.dart';
-import 'ui/login_librus.dart';
-import 'ui/login_vulcan.dart';
-import 'ui/timetable.dart';
+import 'package:schools/ui/login.dart';
+import 'package:schools/ui/login_librus.dart';
+import 'package:schools/ui/login_vulcan.dart';
+import 'package:schools/ui/timetable.dart';
 import 'package:schools/keys.dart';
 import 'package:redux_logging/redux_logging.dart';
 
