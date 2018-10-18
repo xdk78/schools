@@ -12,15 +12,21 @@ abstract class Lesson implements Built<Lesson, LessonBuilder> {
 
   @nullable
   String get subject;
+
+  @nullable
+  String get teacherName;
+
   @nullable
   String get classroom;
 
-
-  factory Lesson(int lessonNumber, String subject, String classroom) {
+  factory Lesson(
+      int lessonNumber, String subject, String classroom, String teacherName) {
     return _$Lesson._(
       lessonNumber: lessonNumber,
       subject: subject,
       classroom: classroom,
+      teacherName: teacherName,
     );
-  }  static Serializer<Lesson> get serializer => _$lessonSerializer;
+  }
+  static Serializer<Lesson> get serializer => _$lessonSerializer;
 }

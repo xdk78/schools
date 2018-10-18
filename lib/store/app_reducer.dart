@@ -9,7 +9,8 @@ AppState appReducer(AppState state, action) {
     ..vulcanAuthState
         .replace(vulcanAuth.authReducer(state.vulcanAuthState, action))
     ..vulcanState.replace(vulcan.vulcanReducer(state.vulcanState, action))
-    ..timetableState.replace(timetable.timetableReducer(state.timetableState, action))
+    ..timetableState
+        .replace(timetable.timetableReducer(state.timetableState, action))
     ..librusAuthState
         .replace(librus.authReducer(state.librusAuthState, action)));
 }

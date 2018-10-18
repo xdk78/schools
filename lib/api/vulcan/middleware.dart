@@ -12,7 +12,7 @@ void vulcanMiddleware(Store<AppState> store, action, NextDispatcher next) {
   if (store.state.currentSystem == 'vulcan') {
     if (action is LoadTimetableAction) {
       client.fetchTimetable(store.state.vulcanAuthState).then((el) {
-        store.dispatch(mapVulcanTimetable(el));
+        store.dispatch(mapVulcanTimetable(el, store.state));
       });
     }
   }

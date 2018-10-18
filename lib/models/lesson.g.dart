@@ -43,6 +43,12 @@ class _$LessonSerializer implements StructuredSerializer<Lesson> {
         ..add(serializers.serialize(object.subject,
             specifiedType: const FullType(String)));
     }
+    if (object.teacherName != null) {
+      result
+        ..add('teacherName')
+        ..add(serializers.serialize(object.teacherName,
+            specifiedType: const FullType(String)));
+    }
     if (object.classroom != null) {
       result
         ..add('classroom')
@@ -72,6 +78,10 @@ class _$LessonSerializer implements StructuredSerializer<Lesson> {
           result.subject = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'teacherName':
+          result.teacherName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'classroom':
           result.classroom = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -89,12 +99,16 @@ class _$Lesson extends Lesson {
   @override
   final String subject;
   @override
+  final String teacherName;
+  @override
   final String classroom;
 
   factory _$Lesson([void updates(LessonBuilder b)]) =>
       (new LessonBuilder()..update(updates)).build();
 
-  _$Lesson._({this.lessonNumber, this.subject, this.classroom}) : super._();
+  _$Lesson._(
+      {this.lessonNumber, this.subject, this.teacherName, this.classroom})
+      : super._();
 
   @override
   Lesson rebuild(void updates(LessonBuilder b)) =>
@@ -109,12 +123,15 @@ class _$Lesson extends Lesson {
     return other is Lesson &&
         lessonNumber == other.lessonNumber &&
         subject == other.subject &&
+        teacherName == other.teacherName &&
         classroom == other.classroom;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, lessonNumber.hashCode), subject.hashCode),
+    return $jf($jc(
+        $jc($jc($jc(0, lessonNumber.hashCode), subject.hashCode),
+            teacherName.hashCode),
         classroom.hashCode));
   }
 
@@ -123,6 +140,7 @@ class _$Lesson extends Lesson {
     return (newBuiltValueToStringHelper('Lesson')
           ..add('lessonNumber', lessonNumber)
           ..add('subject', subject)
+          ..add('teacherName', teacherName)
           ..add('classroom', classroom))
         .toString();
   }
@@ -139,6 +157,10 @@ class LessonBuilder implements Builder<Lesson, LessonBuilder> {
   String get subject => _$this._subject;
   set subject(String subject) => _$this._subject = subject;
 
+  String _teacherName;
+  String get teacherName => _$this._teacherName;
+  set teacherName(String teacherName) => _$this._teacherName = teacherName;
+
   String _classroom;
   String get classroom => _$this._classroom;
   set classroom(String classroom) => _$this._classroom = classroom;
@@ -149,6 +171,7 @@ class LessonBuilder implements Builder<Lesson, LessonBuilder> {
     if (_$v != null) {
       _lessonNumber = _$v.lessonNumber;
       _subject = _$v.subject;
+      _teacherName = _$v.teacherName;
       _classroom = _$v.classroom;
       _$v = null;
     }
@@ -172,7 +195,10 @@ class LessonBuilder implements Builder<Lesson, LessonBuilder> {
   _$Lesson build() {
     final _$result = _$v ??
         new _$Lesson._(
-            lessonNumber: lessonNumber, subject: subject, classroom: classroom);
+            lessonNumber: lessonNumber,
+            subject: subject,
+            teacherName: teacherName,
+            classroom: classroom);
     replace(_$result);
     return _$result;
   }

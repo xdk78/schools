@@ -31,6 +31,9 @@ abstract class TimetableData
   @BuiltValueField(wireName: 'Dzien')
   int get dayUnix;
 
+  @BuiltValueField(wireName: 'IdPracownik')
+  int get teacherId;
+
   @BuiltValueField(wireName: 'NumerLekcji')
   int get lessonNumber;
 

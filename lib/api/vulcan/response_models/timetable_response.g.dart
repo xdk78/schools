@@ -83,6 +83,9 @@ class _$TimetableDataSerializer implements StructuredSerializer<TimetableData> {
           specifiedType: const FullType(String)),
       'Dzien',
       serializers.serialize(object.dayUnix, specifiedType: const FullType(int)),
+      'IdPracownik',
+      serializers.serialize(object.teacherId,
+          specifiedType: const FullType(int)),
       'NumerLekcji',
       serializers.serialize(object.lessonNumber,
           specifiedType: const FullType(int)),
@@ -133,6 +136,10 @@ class _$TimetableDataSerializer implements StructuredSerializer<TimetableData> {
           break;
         case 'Dzien':
           result.dayUnix = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'IdPracownik':
+          result.teacherId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'NumerLekcji':
@@ -266,6 +273,8 @@ class _$TimetableData extends TimetableData {
   @override
   final int dayUnix;
   @override
+  final int teacherId;
+  @override
   final int lessonNumber;
   @override
   final int lessonTimeId;
@@ -285,6 +294,7 @@ class _$TimetableData extends TimetableData {
       {this.dayText,
       this.subGroupText,
       this.dayUnix,
+      this.teacherId,
       this.lessonNumber,
       this.lessonTimeId,
       this.subjectName,
@@ -297,6 +307,9 @@ class _$TimetableData extends TimetableData {
     }
     if (dayUnix == null) {
       throw new BuiltValueNullFieldError('TimetableData', 'dayUnix');
+    }
+    if (teacherId == null) {
+      throw new BuiltValueNullFieldError('TimetableData', 'teacherId');
     }
     if (lessonNumber == null) {
       throw new BuiltValueNullFieldError('TimetableData', 'lessonNumber');
@@ -332,6 +345,7 @@ class _$TimetableData extends TimetableData {
         dayText == other.dayText &&
         subGroupText == other.subGroupText &&
         dayUnix == other.dayUnix &&
+        teacherId == other.teacherId &&
         lessonNumber == other.lessonNumber &&
         lessonTimeId == other.lessonTimeId &&
         subjectName == other.subjectName &&
@@ -349,9 +363,11 @@ class _$TimetableData extends TimetableData {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc(0, dayText.hashCode),
-                                    subGroupText.hashCode),
-                                dayUnix.hashCode),
+                                $jc(
+                                    $jc($jc(0, dayText.hashCode),
+                                        subGroupText.hashCode),
+                                    dayUnix.hashCode),
+                                teacherId.hashCode),
                             lessonNumber.hashCode),
                         lessonTimeId.hashCode),
                     subjectName.hashCode),
@@ -366,6 +382,7 @@ class _$TimetableData extends TimetableData {
           ..add('dayText', dayText)
           ..add('subGroupText', subGroupText)
           ..add('dayUnix', dayUnix)
+          ..add('teacherId', teacherId)
           ..add('lessonNumber', lessonNumber)
           ..add('lessonTimeId', lessonTimeId)
           ..add('subjectName', subjectName)
@@ -391,6 +408,10 @@ class TimetableDataBuilder
   int _dayUnix;
   int get dayUnix => _$this._dayUnix;
   set dayUnix(int dayUnix) => _$this._dayUnix = dayUnix;
+
+  int _teacherId;
+  int get teacherId => _$this._teacherId;
+  set teacherId(int teacherId) => _$this._teacherId = teacherId;
 
   int _lessonNumber;
   int get lessonNumber => _$this._lessonNumber;
@@ -424,6 +445,7 @@ class TimetableDataBuilder
       _dayText = _$v.dayText;
       _subGroupText = _$v.subGroupText;
       _dayUnix = _$v.dayUnix;
+      _teacherId = _$v.teacherId;
       _lessonNumber = _$v.lessonNumber;
       _lessonTimeId = _$v.lessonTimeId;
       _subjectName = _$v.subjectName;
@@ -455,6 +477,7 @@ class TimetableDataBuilder
             dayText: dayText,
             subGroupText: subGroupText,
             dayUnix: dayUnix,
+            teacherId: teacherId,
             lessonNumber: lessonNumber,
             lessonTimeId: lessonTimeId,
             subjectName: subjectName,

@@ -9,10 +9,9 @@ abstract class TimetableState
     implements Built<TimetableState, TimetableStateBuilder> {
   @nullable
   BuiltList<Lesson> get monday;
-    @nullable
+  @nullable
   BuiltList<Lesson> get tuesday;
-    @nullable
-
+  @nullable
   BuiltList<Lesson> get wednesday;
 
   @nullable
