@@ -169,7 +169,7 @@ class VulcanClient {
           "User-Agent": "MobileUserAgent",
           "Content-Type": "application/json",
         }));
-  print(dictonaryData.body);
+
     TimetableResponse timetableResponse = serializers.deserializeWith(
         TimetableResponse.serializer, json.decode(dictonaryData.body));
     return timetableResponse;

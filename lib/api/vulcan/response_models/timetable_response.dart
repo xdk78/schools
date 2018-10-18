@@ -42,7 +42,8 @@ abstract class TimetableData
 
   @BuiltValueField(wireName: 'Sala')
   String get classroom;
-
+  @BuiltValueField(wireName: 'PlanUcznia')
+  bool get isUsersPlan;
   @BuiltValueField(wireName: 'AdnotacjaOZmianie')
   String get changeAdnotation;
   factory TimetableData([updates(TimetableDataBuilder b)]) = _$TimetableData;

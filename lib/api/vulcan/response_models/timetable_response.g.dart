@@ -95,6 +95,9 @@ class _$TimetableDataSerializer implements StructuredSerializer<TimetableData> {
       'Sala',
       serializers.serialize(object.classroom,
           specifiedType: const FullType(String)),
+      'PlanUcznia',
+      serializers.serialize(object.isUsersPlan,
+          specifiedType: const FullType(bool)),
       'AdnotacjaOZmianie',
       serializers.serialize(object.changeAdnotation,
           specifiedType: const FullType(String)),
@@ -147,6 +150,10 @@ class _$TimetableDataSerializer implements StructuredSerializer<TimetableData> {
         case 'Sala':
           result.classroom = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'PlanUcznia':
+          result.isUsersPlan = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
           break;
         case 'AdnotacjaOZmianie':
           result.changeAdnotation = serializers.deserialize(value,
@@ -267,6 +274,8 @@ class _$TimetableData extends TimetableData {
   @override
   final String classroom;
   @override
+  final bool isUsersPlan;
+  @override
   final String changeAdnotation;
 
   factory _$TimetableData([void updates(TimetableDataBuilder b)]) =>
@@ -280,6 +289,7 @@ class _$TimetableData extends TimetableData {
       this.lessonTimeId,
       this.subjectName,
       this.classroom,
+      this.isUsersPlan,
       this.changeAdnotation})
       : super._() {
     if (dayText == null) {
@@ -299,6 +309,9 @@ class _$TimetableData extends TimetableData {
     }
     if (classroom == null) {
       throw new BuiltValueNullFieldError('TimetableData', 'classroom');
+    }
+    if (isUsersPlan == null) {
+      throw new BuiltValueNullFieldError('TimetableData', 'isUsersPlan');
     }
     if (changeAdnotation == null) {
       throw new BuiltValueNullFieldError('TimetableData', 'changeAdnotation');
@@ -323,6 +336,7 @@ class _$TimetableData extends TimetableData {
         lessonTimeId == other.lessonTimeId &&
         subjectName == other.subjectName &&
         classroom == other.classroom &&
+        isUsersPlan == other.isUsersPlan &&
         changeAdnotation == other.changeAdnotation;
   }
 
@@ -334,13 +348,15 @@ class _$TimetableData extends TimetableData {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc(0, dayText.hashCode),
-                                subGroupText.hashCode),
-                            dayUnix.hashCode),
-                        lessonNumber.hashCode),
-                    lessonTimeId.hashCode),
-                subjectName.hashCode),
-            classroom.hashCode),
+                            $jc(
+                                $jc($jc(0, dayText.hashCode),
+                                    subGroupText.hashCode),
+                                dayUnix.hashCode),
+                            lessonNumber.hashCode),
+                        lessonTimeId.hashCode),
+                    subjectName.hashCode),
+                classroom.hashCode),
+            isUsersPlan.hashCode),
         changeAdnotation.hashCode));
   }
 
@@ -354,6 +370,7 @@ class _$TimetableData extends TimetableData {
           ..add('lessonTimeId', lessonTimeId)
           ..add('subjectName', subjectName)
           ..add('classroom', classroom)
+          ..add('isUsersPlan', isUsersPlan)
           ..add('changeAdnotation', changeAdnotation))
         .toString();
   }
@@ -391,6 +408,10 @@ class TimetableDataBuilder
   String get classroom => _$this._classroom;
   set classroom(String classroom) => _$this._classroom = classroom;
 
+  bool _isUsersPlan;
+  bool get isUsersPlan => _$this._isUsersPlan;
+  set isUsersPlan(bool isUsersPlan) => _$this._isUsersPlan = isUsersPlan;
+
   String _changeAdnotation;
   String get changeAdnotation => _$this._changeAdnotation;
   set changeAdnotation(String changeAdnotation) =>
@@ -407,6 +428,7 @@ class TimetableDataBuilder
       _lessonTimeId = _$v.lessonTimeId;
       _subjectName = _$v.subjectName;
       _classroom = _$v.classroom;
+      _isUsersPlan = _$v.isUsersPlan;
       _changeAdnotation = _$v.changeAdnotation;
       _$v = null;
     }
@@ -437,6 +459,7 @@ class TimetableDataBuilder
             lessonTimeId: lessonTimeId,
             subjectName: subjectName,
             classroom: classroom,
+            isUsersPlan: isUsersPlan,
             changeAdnotation: changeAdnotation);
     replace(_$result);
     return _$result;
