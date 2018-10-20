@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:schools/api/librus/response_models/accounts_response.dart';
+import 'package:schools/api/librus/response_models/refresh_response.dart';
 import 'package:schools/api/librus/response_models/timetable_response.dart';
 import 'package:schools/api/librus/response_models/serializers.dart';
 
@@ -93,6 +94,27 @@ class LibrusClient {
 
     TimetableResponse response = serializers.deserializeWith(
         TimetableResponse.serializer, json.decode(timetableResponse.data));
+
+    return response;
+  }
+
+  /// Get api Root data
+  Future getRoot(String accessToken) async {
+    var rootResponse = await this.client.get('$baseApiUrl/Root',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    return rootResponse.data;
+  }
+
+  /// Refresh `accessToken` and get new one
+  Future<RefreshResponse> refreshAccessToken(
+      String accessToken, String login) async {
+    var refreshResponse = await this.client.get(
+        '$baseUrl/api/SynergiaAccounts/fresh/$login',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    RefreshResponse response = serializers.deserializeWith(
+        RefreshResponse.serializer, json.decode(refreshResponse.data));
 
     return response;
   }
