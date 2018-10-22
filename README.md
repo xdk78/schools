@@ -4,7 +4,7 @@
 
 # 📰 What is this?
 
-Mobile client for [Liburs](https://portal.librus.pl/) & [vulcan](https://www.vulcan.edu.pl/)
+Mobile client for [Librus](https://portal.librus.pl/) & [vulcan](https://www.vulcan.edu.pl/)
 
 # 👾 Mobile app
 
