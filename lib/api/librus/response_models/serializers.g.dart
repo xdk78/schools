@@ -22,15 +22,14 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AccountResponse.serializer)
       ..add(AccountsResponse.serializer)
+      ..add(ClassResponse.serializer)
+      ..add(ClassroomResponse.serializer)
       ..add(LessonsResponse.serializer)
       ..add(RefreshResponse.serializer)
       ..add(SubjectResponse.serializer)
       ..add(TeacherResponse.serializer)
-      ..add(TimetableResponse.serializer)
+      ..add(TimetableEntryResponse.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AccountResponse)]),
-          () => new ListBuilder<AccountResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(LessonsResponse)]),
-          () => new ListBuilder<LessonsResponse>()))
+          () => new ListBuilder<AccountResponse>()))
     .build();

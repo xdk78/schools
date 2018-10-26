@@ -7,6 +7,6 @@ import 'package:schools/api/librus/response_models/refresh_response.dart';
 
 part 'serializers.g.dart';
 
-@SerializersFor(const [AccountsResponse, TimetableResponse, RefreshResponse])
+@SerializersFor(const [AccountsResponse, LessonsResponse, RefreshResponse])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

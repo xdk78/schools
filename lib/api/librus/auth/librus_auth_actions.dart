@@ -15,6 +15,8 @@ class AuthenticateLibrusAction {
 
 class LoadSavedLibrusAuthState {}
 
+class LoginFinished {}
+
 class LoggedInAction {
   final LibrusAuthResponse authResp;
   LoggedInAction(this.authResp);

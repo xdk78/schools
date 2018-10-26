@@ -86,16 +86,13 @@ class LibrusClient {
   }
 
   /// Get timetable data
-  Future<TimetableResponse> getTimetable(String accessToken) async {
+  Future getTimetable(String accessToken) async {
     // TODO: get current `weekStart`
     var timetableResponse = await this.client.get(
-        '$baseApiUrl/Timetables?weekStart=2018-10-15',
+        '$baseApiUrl/Timetables?weekStart=2018-10-22',
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
 
-    TimetableResponse response = serializers.deserializeWith(
-        TimetableResponse.serializer, json.decode(timetableResponse.data));
-
-    return response;
+    return timetableResponse.data;
   }
 
   /// Get api Root data

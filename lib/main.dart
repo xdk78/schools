@@ -6,6 +6,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_middleware.dart';
 import 'package:schools/api/vulcan/middleware.dart';
 import 'package:schools/api/librus/auth/librus_auth_middleware.dart';
+import 'package:schools/api/librus/middleware.dart';
 import 'package:schools/ui/login.dart';
 import 'package:schools/ui/login_librus.dart';
 import 'package:schools/ui/login_vulcan.dart';
@@ -22,6 +23,7 @@ void main() {
     vulcanAuthMiddleware,
     vulcanMiddleware,
     librusAuthMiddleware,
+    librusMiddleware
   ]);
   runApp(SchoolsApp(
     store: store,
