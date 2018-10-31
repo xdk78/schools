@@ -3,10 +3,8 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:html/parser.dart' show parse;
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:schools/api/librus/response_models/accounts_response.dart';
 import 'package:schools/api/librus/response_models/refresh_response.dart';
-import 'package:schools/api/librus/response_models/timetable_response.dart';
 import 'package:schools/api/librus/response_models/serializers.dart';
 
 class LibrusAuthResponse {
@@ -23,8 +21,7 @@ class LibrusClient {
 
   LibrusClient() {
     var _client = Dio(Options(headers: {'user-agent': 'LibrusMobileApp'}));
-    getTemporaryDirectory()
-        .then((dir) => _client.cookieJar = PersistCookieJar(dir.path));
+    _client.cookieJar = CookieJar();
     this.client = _client;
   }
 

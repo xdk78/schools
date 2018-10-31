@@ -35,7 +35,6 @@ class VulcanAuthResponse {
 }
 
 class BaseVulcanClient extends BaseClient {
-  final String _userAgent = 'MobileUserAgent';
   final Client _inner = new Client();
 
   BaseVulcanClient();
@@ -184,7 +183,7 @@ class VulcanClient {
     var pfx = vulcanAuthState.certificatePfx;
     var certKey = vulcanAuthState.certificateKey;
     var startLoggingBody = createEmptyVulcanRequest();
-    var loggingResponse = await client.post(
+    await client.post(
         '$endpoint/$symbol/$schoolKey/mobile-api/Uczen.v3.Uczen/LogAppStart',
         body: startLoggingBody,
         headers: Map.from({
