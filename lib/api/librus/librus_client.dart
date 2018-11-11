@@ -77,7 +77,7 @@ class LibrusClient {
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
 
     AccountsResponse response = serializers.deserializeWith(
-        AccountsResponse.serializer, json.decode(accountsResponse.data));
+        AccountsResponse.serializer, accountsResponse.data);
 
     return response;
   }
@@ -108,7 +108,7 @@ class LibrusClient {
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
 
     RefreshResponse response = serializers.deserializeWith(
-        RefreshResponse.serializer, json.decode(refreshResponse.data));
+        RefreshResponse.serializer, refreshResponse.data);
 
     return response;
   }
