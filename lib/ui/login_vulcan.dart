@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:schools/reducers/app_state.dart';
+import 'package:schools/store/app_state.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_actions.dart';
 
 class LoginVulcanScreen extends StatefulWidget {
@@ -87,8 +87,9 @@ class _LoginVulcanState extends State<LoginVulcanScreen> {
                   new Container(
                       margin: EdgeInsets.only(top: 12.0),
                       child: StoreConnector<AppState, VoidCallback>(
-                          onInit: (store) { store.dispatch(LoadSavedVulcanAuthState());},
-                          converter: (store) {
+                          onInit: (store) {
+                        store.dispatch(LoadSavedVulcanAuthState());
+                      }, converter: (store) {
                         return () => store.dispatch(AuthenticateVulcanAction(
                             pin: this._data.pin,
                             symbol: this._data.symbol,

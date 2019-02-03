@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:schools/reducers/app_state.dart';
-import 'reducers/app_reducer.dart';
+import 'package:schools/store/app_state.dart';
+import 'package:schools/store/app_reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_middleware.dart';
+import 'package:schools/api/vulcan/middleware.dart';
 import 'package:schools/api/librus/auth/librus_auth_middleware.dart';
-import 'ui/login.dart';
-import 'ui/login_librus.dart';
-import 'ui/login_vulcan.dart';
-import 'ui/timetable.dart';
+import 'package:schools/api/librus/middleware.dart';
+import 'package:schools/ui/login.dart';
+import 'package:schools/ui/login_librus.dart';
+import 'package:schools/ui/login_vulcan.dart';
+import 'package:schools/ui/timetable.dart';
+import 'package:schools/keys.dart';
 import 'package:redux_logging/redux_logging.dart';
 
 final logger = new LoggingMiddleware.printer();
 
 void main() {
-  final store = Store<AppState>(appReducer,
-      initialState: AppState(),
-      middleware: [
-        new LoggingMiddleware.printer(),
-        vulcanAuthMiddleware,
-        librusAuthMiddleware
-      ]);
+  final store =
+      Store<AppState>(appReducer, initialState: AppState(), middleware: [
+    new LoggingMiddleware.printer(),
+    vulcanAuthMiddleware,
+    vulcanMiddleware,
+    librusAuthMiddleware,
+    librusMiddleware
+  ]);
   runApp(SchoolsApp(
     store: store,
   ));
@@ -37,6 +41,7 @@ class SchoolsApp extends StatelessWidget {
         store: store,
         child: MaterialApp(
           title: 'Schools',
+          navigatorKey: Keys.navKey,
           theme: ThemeData(
               primaryColor: Colors.white,
               accentColor: Colors.indigo,

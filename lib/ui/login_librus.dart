@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:schools/reducers/app_state.dart';
+import 'package:schools/store/app_state.dart';
 import 'package:schools/api/librus/auth/librus_auth_actions.dart';
 
 class LoginLibrusScreen extends StatefulWidget {
@@ -89,9 +89,7 @@ class _LoginLibrusState extends State<LoginLibrusScreen> {
                             this.submit(callback);
                           },
                         );
-                      }
-                    )
-                  ),
+                      })),
                 ],
               ),
             )),

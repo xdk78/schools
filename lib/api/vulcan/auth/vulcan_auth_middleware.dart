@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schools/api/vulcan/vulcan_client.dart';
 import 'package:schools/api/vulcan/auth/vulcan_auth_actions.dart';
-import 'package:schools/reducers/app_state.dart';
+import 'package:schools/store/app_state.dart';
 
 void vulcanAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
   if (action is AuthenticateVulcanAction) {
@@ -15,9 +15,10 @@ void vulcanAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
     }, onError: (e) => print(e));
   } else if (action is LoadSavedVulcanAuthState) {
     _loadSavedAuthState().then((el) {
-      store.dispatch(LoggedInAction(el));
+      if (el.certKey != null) {
+        store.dispatch(LoggedInAction(el));
+      }
     });
-
   }
   next(action);
 }
@@ -25,12 +26,15 @@ void vulcanAuthMiddleware(Store<AppState> store, action, NextDispatcher next) {
 Future<VulcanAuthResponse> _loadSavedAuthState() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return VulcanAuthResponse(
-    prefs.getString('certPfx'),
-    prefs.getString('certKey'),
-    prefs.getString('endpoint'),
-    prefs.getString('schoolSymbol'),
-    prefs.getString('symbol'),
-    prefs.getString('name'));
+      prefs.getString('certPfx'),
+      prefs.getString('certKey'),
+      prefs.getString('endpoint'),
+      prefs.getString('schoolSymbol'),
+      prefs.getInt('schoolId'),
+      prefs.getString('symbol'),
+      prefs.getInt('studentId'),
+      prefs.getInt('qualifyingPeriodId'),
+      prefs.getString('name'));
 }
 
 Future<VulcanAuthResponse> _saveAuthState(VulcanAuthResponse state) async {
@@ -40,6 +44,9 @@ Future<VulcanAuthResponse> _saveAuthState(VulcanAuthResponse state) async {
   prefs.setString('certPfx', state.certPfx);
   prefs.setString('schoolSymbol', state.schoolSymbol);
   prefs.setString('symbol', state.symbol);
+  prefs.setInt('schoolId', state.schoolId);
+  prefs.setInt('studentId', state.studentId);
+  prefs.setInt('qualifyingPeriodId', state.qualifyingPeriodId);
   prefs.setString('name', state.name);
 
   return state;

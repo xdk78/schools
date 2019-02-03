@@ -3,8 +3,8 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:html/parser.dart' show parse;
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:schools/api/librus/response_models/accounts_response.dart';
+import 'package:schools/api/librus/response_models/refresh_response.dart';
 import 'package:schools/api/librus/response_models/serializers.dart';
 
 class LibrusAuthResponse {
@@ -15,13 +15,13 @@ class LibrusAuthResponse {
 
 class LibrusClient {
   final String baseUrl = 'https://portal.librus.pl';
+  final String baseApiUrl = 'https://api.librus.pl/2.0';
   final String clientId = 'wmSyUMo8llDAs4y9tJVYY92oyZ6h4lAt7KCuy0Gv';
   Dio client;
 
   LibrusClient() {
     var _client = Dio(Options(headers: {'user-agent': 'LibrusMobileApp'}));
-    getTemporaryDirectory()
-        .then((dir) => _client.cookieJar = PersistCookieJar(dir.path));
+    _client.cookieJar = CookieJar();
     this.client = _client;
   }
 
@@ -71,13 +71,44 @@ class LibrusClient {
   }
 
   /// Get list of Librus Synergia accounts tied to provided Librus account
-  Future<LibrusAccountsResponse> getAccounts(String accessToken) async {
+  Future<AccountsResponse> getAccounts(String accessToken) async {
     var accountsResponse = await this.client.get(
         '$baseUrl/api/SynergiaAccounts',
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
 
-    LibrusAccountsResponse response = serializers.deserializeWith(
-        LibrusAccountsResponse.serializer, json.decode(accountsResponse.data));
+    AccountsResponse response = serializers.deserializeWith(
+        AccountsResponse.serializer, accountsResponse.data);
+
+    return response;
+  }
+
+  /// Get timetable data
+  Future getTimetable(String accessToken) async {
+    // TODO: get current `weekStart`
+    var timetableResponse = await this.client.get(
+        '$baseApiUrl/Timetables?weekStart=2018-10-22',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    return timetableResponse.data;
+  }
+
+  /// Get api Root data
+  Future getRoot(String accessToken) async {
+    var rootResponse = await this.client.get('$baseApiUrl/Root',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    return rootResponse.data;
+  }
+
+  /// Refresh `accessToken` and get new one
+  Future<RefreshResponse> refreshAccessToken(
+      String accessToken, String login) async {
+    var refreshResponse = await this.client.get(
+        '$baseUrl/api/SynergiaAccounts/fresh/$login',
+        options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+
+    RefreshResponse response = serializers.deserializeWith(
+        RefreshResponse.serializer, refreshResponse.data);
 
     return response;
   }

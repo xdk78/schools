@@ -83,6 +83,15 @@ class _$DataSerializer implements StructuredSerializer<Data> {
       'JednostkaSprawozdawczaSymbol',
       serializers.serialize(object.schoolSymbol,
           specifiedType: const FullType(String)),
+      'IdOddzial',
+      serializers.serialize(object.schoolId,
+          specifiedType: const FullType(num)),
+      'IdOkresKlasyfikacyjny',
+      serializers.serialize(object.qualifyingPeriodId,
+          specifiedType: const FullType(num)),
+      'Id',
+      serializers.serialize(object.studentId,
+          specifiedType: const FullType(num)),
       'Imie',
       serializers.serialize(object.firstName,
           specifiedType: const FullType(String)),
@@ -111,6 +120,18 @@ class _$DataSerializer implements StructuredSerializer<Data> {
         case 'JednostkaSprawozdawczaSymbol':
           result.schoolSymbol = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'IdOddzial':
+          result.schoolId = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
+          break;
+        case 'IdOkresKlasyfikacyjny':
+          result.qualifyingPeriodId = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
+          break;
+        case 'Id':
+          result.studentId = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num;
           break;
         case 'Imie':
           result.firstName = serializers.deserialize(value,
@@ -230,6 +251,12 @@ class _$Data extends Data {
   @override
   final String schoolSymbol;
   @override
+  final num schoolId;
+  @override
+  final num qualifyingPeriodId;
+  @override
+  final num studentId;
+  @override
   final String firstName;
   @override
   final String lastName;
@@ -239,10 +266,26 @@ class _$Data extends Data {
   factory _$Data([void updates(DataBuilder b)]) =>
       (new DataBuilder()..update(updates)).build();
 
-  _$Data._({this.schoolSymbol, this.firstName, this.lastName, this.surname})
+  _$Data._(
+      {this.schoolSymbol,
+      this.schoolId,
+      this.qualifyingPeriodId,
+      this.studentId,
+      this.firstName,
+      this.lastName,
+      this.surname})
       : super._() {
     if (schoolSymbol == null) {
       throw new BuiltValueNullFieldError('Data', 'schoolSymbol');
+    }
+    if (schoolId == null) {
+      throw new BuiltValueNullFieldError('Data', 'schoolId');
+    }
+    if (qualifyingPeriodId == null) {
+      throw new BuiltValueNullFieldError('Data', 'qualifyingPeriodId');
+    }
+    if (studentId == null) {
+      throw new BuiltValueNullFieldError('Data', 'studentId');
     }
     if (firstName == null) {
       throw new BuiltValueNullFieldError('Data', 'firstName');
@@ -267,6 +310,9 @@ class _$Data extends Data {
     if (identical(other, this)) return true;
     return other is Data &&
         schoolSymbol == other.schoolSymbol &&
+        schoolId == other.schoolId &&
+        qualifyingPeriodId == other.qualifyingPeriodId &&
+        studentId == other.studentId &&
         firstName == other.firstName &&
         lastName == other.lastName &&
         surname == other.surname;
@@ -275,7 +321,13 @@ class _$Data extends Data {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, schoolSymbol.hashCode), firstName.hashCode),
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, schoolSymbol.hashCode), schoolId.hashCode),
+                        qualifyingPeriodId.hashCode),
+                    studentId.hashCode),
+                firstName.hashCode),
             lastName.hashCode),
         surname.hashCode));
   }
@@ -284,6 +336,9 @@ class _$Data extends Data {
   String toString() {
     return (newBuiltValueToStringHelper('Data')
           ..add('schoolSymbol', schoolSymbol)
+          ..add('schoolId', schoolId)
+          ..add('qualifyingPeriodId', qualifyingPeriodId)
+          ..add('studentId', studentId)
           ..add('firstName', firstName)
           ..add('lastName', lastName)
           ..add('surname', surname))
@@ -297,6 +352,19 @@ class DataBuilder implements Builder<Data, DataBuilder> {
   String _schoolSymbol;
   String get schoolSymbol => _$this._schoolSymbol;
   set schoolSymbol(String schoolSymbol) => _$this._schoolSymbol = schoolSymbol;
+
+  num _schoolId;
+  num get schoolId => _$this._schoolId;
+  set schoolId(num schoolId) => _$this._schoolId = schoolId;
+
+  num _qualifyingPeriodId;
+  num get qualifyingPeriodId => _$this._qualifyingPeriodId;
+  set qualifyingPeriodId(num qualifyingPeriodId) =>
+      _$this._qualifyingPeriodId = qualifyingPeriodId;
+
+  num _studentId;
+  num get studentId => _$this._studentId;
+  set studentId(num studentId) => _$this._studentId = studentId;
 
   String _firstName;
   String get firstName => _$this._firstName;
@@ -315,6 +383,9 @@ class DataBuilder implements Builder<Data, DataBuilder> {
   DataBuilder get _$this {
     if (_$v != null) {
       _schoolSymbol = _$v.schoolSymbol;
+      _schoolId = _$v.schoolId;
+      _qualifyingPeriodId = _$v.qualifyingPeriodId;
+      _studentId = _$v.studentId;
       _firstName = _$v.firstName;
       _lastName = _$v.lastName;
       _surname = _$v.surname;
@@ -341,6 +412,9 @@ class DataBuilder implements Builder<Data, DataBuilder> {
     final _$result = _$v ??
         new _$Data._(
             schoolSymbol: schoolSymbol,
+            schoolId: schoolId,
+            qualifyingPeriodId: qualifyingPeriodId,
+            studentId: studentId,
             firstName: firstName,
             lastName: lastName,
             surname: surname);

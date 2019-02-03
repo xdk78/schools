@@ -1,5 +1,5 @@
 name: schools
-description: A new Flutter project.
+description: Multi dziennik Librus & Vulcan
 
 dependencies:
   flutter:
@@ -9,6 +9,7 @@ dependencies:
   validate: ^1.7.0
   built_collection: ^4.0.0
   shared_preferences: ^0.4.3
+  sticky_headers: ^0.1.7
   built_value: ^6.1.4
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -16,7 +17,6 @@ dependencies:
   http: ^0.12.0
   html: ^0.13.3+3
   dio: ^1.0.6
-  path_provider: ^0.4.1
 
 dev_dependencies:
   build_runner: ^1.0.0

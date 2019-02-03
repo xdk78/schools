@@ -23,6 +23,15 @@ abstract class Data implements Built<Data, DataBuilder> {
   @BuiltValueField(wireName: 'JednostkaSprawozdawczaSymbol')
   String get schoolSymbol;
 
+  @BuiltValueField(wireName: 'IdOddzial')
+  num get schoolId;
+
+  @BuiltValueField(wireName: 'IdOkresKlasyfikacyjny')
+  num get qualifyingPeriodId;
+
+  @BuiltValueField(wireName: "Id")
+  num get studentId;
+
   @BuiltValueField(wireName: 'Imie')
   String get firstName;
 
